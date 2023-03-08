@@ -14,11 +14,11 @@ class LoginPage extends StatelessWidget {
           child: TextButton(
             onPressed: () => _.change(),
             style: TextButton.styleFrom(
-              backgroundColor: _.background,
+              backgroundColor: _.redColor,
             ),
-            child: const Text(
-              'texto',
-              style: TextStyle(color: Colors.black),
+            child: Text(
+              'LOGIN',
+              style: TextStyle(color: _.textBtnColor),
             ),
           ),
         );

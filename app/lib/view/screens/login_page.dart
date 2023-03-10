@@ -1,5 +1,7 @@
 import 'package:app/view/widgets/custom_appbar.dart';
+import 'package:app/view/widgets/custom_big_button.dart';
 import 'package:app/view/widgets/custom_input.dart';
+import 'package:app/view/widgets/custom_small_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
@@ -26,6 +28,16 @@ class LoginPage extends StatelessWidget {
                     inputTittle: 'Senha:',
                   ),
                 ),
+                CustomBigButton(
+                  tittleBtn: 'SALVAR',
+                  customMargin: 15,
+                  function: () => print('object'),
+                ),
+                CustomSmallButton(
+                  tittleBtn: 'LOGIN',
+                  customMargin: 20,
+                  function: () => print('object'),
+                )
               ],
             ),
           ),

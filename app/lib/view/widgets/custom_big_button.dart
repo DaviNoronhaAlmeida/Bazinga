@@ -35,6 +35,8 @@ class CustomBigButton extends StatelessWidget {
             style: TextStyle(
               color: _appColors.textBtnColor,
               fontSize: 20,
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w400,
             ),
           ),
         ),

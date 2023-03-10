@@ -27,8 +27,10 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         child: Text(
           'Usuário',
           style: TextStyle(
+            fontFamily: 'Roboto',
             color: _appColors.textBtnColor,
             fontSize: 13,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),

@@ -33,8 +33,10 @@ class CustomSmallButton extends StatelessWidget {
           child: Text(
             tittleBtn,
             style: TextStyle(
+              fontFamily: 'Roboto',
               color: _appColors.textBtnColor,
               fontSize: 19,
+              fontWeight: FontWeight.w400,
             ),
           ),
         ),

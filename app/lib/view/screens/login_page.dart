@@ -2,6 +2,7 @@ import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_big_button.dart';
 import 'package:app/view/widgets/custom_input.dart';
 import 'package:app/view/widgets/custom_small_button.dart';
+import 'package:app/view/widgets/custom_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
@@ -37,7 +38,11 @@ class LoginPage extends StatelessWidget {
                   tittleBtn: 'LOGIN',
                   customMargin: 20,
                   function: () => print('object'),
-                )
+                ),
+                CustomTextButton(
+                  tittle: 'CADASTRAR',
+                  function: () => print('object'),
+                ),
               ],
             ),
           ),

@@ -1,3 +1,5 @@
+import 'package:app/view/widgets/custom_appbar.dart';
+import 'package:app/view/widgets/custom_input.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
@@ -10,15 +12,21 @@ class LoginPage extends StatelessWidget {
     return GetBuilder<AppColors>(
       init: AppColors(),
       builder: (_) {
-        return Center(
-          child: TextButton(
-            onPressed: () => _.change(),
-            style: TextButton.styleFrom(
-              backgroundColor: _.redColor,
-            ),
-            child: Text(
-              'LOGIN',
-              style: TextStyle(color: _.textBtnColor),
+        return Scaffold(
+          appBar: CustomAppBar(),
+          body: Center(
+            child: Column(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 50),
+                  decoration: const BoxDecoration(
+                    color: Colors.amber,
+                  ),
+                  child: CustomInput(
+                    inputTittle: 'Senha:',
+                  ),
+                ),
+              ],
             ),
           ),
         );

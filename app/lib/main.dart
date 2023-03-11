@@ -1,4 +1,5 @@
 import 'package:app/view/screens/login_page.dart';
+import 'package:app/view/screens/teste.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,6 +18,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/',
           page: () => const LoginPage(),
+        ),
+        GetPage(
+          name: '/teste',
+          page: () => TestPage(),
         ),
       ],
       debugShowCheckedModeBanner: false,

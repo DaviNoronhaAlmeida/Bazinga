@@ -3,14 +3,9 @@ import 'package:get/get.dart';
 import '../styles/app_colors.dart';
 import 'package:chat_bubbles/chat_bubbles.dart';
 
-class PostView extends StatefulWidget {
-  const PostView({super.key});
+class PostView extends StatelessWidget {
+  PostView({super.key});
 
-  @override
-  State<PostView> createState() => _PostViewState();
-}
-
-class _PostViewState extends State<PostView> {
   final AppColors customColors = Get.find();
   @override
   Widget build(BuildContext context) {

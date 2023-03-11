@@ -49,8 +49,8 @@ class LoginPage extends StatelessWidget {
                   ),
                   CustomTextButton(
                     tittle: 'CADASTRAR',
-                    function: () => print('object'),
-                  )
+                    function: () => Get.toNamed('/register'),
+                  ),
                 ],
               ),
             ),

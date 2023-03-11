@@ -7,7 +7,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final AppColors _appColors = Get.find();
 
   @override
-  Size get preferredSize => const Size.fromHeight(59.0);
+  Size get preferredSize => const Size.fromHeight(55.0);
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,10 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         child: Text(
           'Usuário',
           style: TextStyle(
+            fontFamily: 'Roboto',
             color: _appColors.textBtnColor,
             fontSize: 13,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),

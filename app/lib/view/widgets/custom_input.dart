@@ -18,8 +18,10 @@ class CustomInput extends StatelessWidget {
           child: Text(
             inputTittle,
             style: TextStyle(
+              fontFamily: 'Roboto',
               color: _appColors.textColor,
               fontSize: 19,
+              fontWeight: FontWeight.w400,
             ),
           ),
         ),
@@ -43,8 +45,10 @@ class CustomInput extends StatelessWidget {
               ),
             ),
             style: TextStyle(
+              fontFamily: 'Roboto',
               color: _appColors.textColor,
               fontSize: 16,
+              fontWeight: FontWeight.w400,
             ),
           ),
         ),

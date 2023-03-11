@@ -2,6 +2,7 @@ import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_big_button.dart';
 import 'package:app/view/widgets/custom_input.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
+import 'package:app/view/widgets/custom_settings_option.dart';
 import 'package:app/view/widgets/custom_small_button.dart';
 import 'package:app/view/widgets/custom_text_button.dart';
 import 'package:flutter/material.dart';
@@ -17,15 +18,13 @@ class LoginPage extends StatelessWidget {
       init: AppColors(),
       builder: (_) {
         return Scaffold(
+          backgroundColor: _.backgroundColor,
           appBar: CustomAppBar(),
           body: Center(
             child: Column(
               children: [
                 Container(
-                  margin: const EdgeInsets.only(top: 50),
-                  decoration: const BoxDecoration(
-                    color: Colors.amber,
-                  ),
+                  margin: const EdgeInsets.only(top: 35),
                   child: CustomInput(
                     inputTittle: 'Senha:',
                   ),
@@ -43,6 +42,11 @@ class LoginPage extends StatelessWidget {
                 CustomTextButton(
                   tittle: 'CADASTRAR',
                   function: () => print('object'),
+                ),
+                CustomSettingsOption(
+                  function: () => print('object'),
+                  tittle: 'Excluir Conta',
+                  description: 'Excluir conta de forma permanente',
                 ),
               ],
             ),

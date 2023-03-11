@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
-import '../widgets/widgets.dart';
+import '../widgets/modal_widget.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -11,17 +11,18 @@ class LoginPage extends StatelessWidget {
     return GetBuilder<AppColors>(
       init: AppColors(),
       builder: (_) {
-        return Center(
-          child: TextButton(
-            onPressed: () => _.change(),
-            style: TextButton.styleFrom(
-              backgroundColor: _.redColor,
-            ),
-            child: Text(
-              'LOGIN',
-              style: TextStyle(color: _.textBtnColor),
-            ),
-          ),
+        return const Center(
+          child: Modal(),
+        //   child: TextButton(
+        //     onPressed: () => _.change(),
+        //     style: TextButton.styleFrom(
+        //       backgroundColor: _.redColor,
+        //     ),
+        //     child: Text(
+        //       'LOGIN',
+        //       style: TextStyle(color: _.textBtnColor),
+        //     ),
+        //   ),
         );
       },
     );

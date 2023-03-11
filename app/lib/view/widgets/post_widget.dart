@@ -3,14 +3,14 @@ import 'package:get/get.dart';
 import '../styles/app_colors.dart';
 import 'package:chat_bubbles/chat_bubbles.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class PostView extends StatefulWidget {
+  const PostView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<PostView> createState() => _PostViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _PostViewState extends State<PostView> {
   final AppColors customColors = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -56,17 +56,15 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 40, horizontal: 30),
-                      child: RichText(
-                        text: TextSpan(
-                          text:
+                          vertical: 40, horizontal: 20),
+                      child: Text(
                               'Meu nome é Yoshikage Kira. Tenho 33 anos. Minha casa fica na parte nordeste de Morioh, onde todas as casas estão, e eu não sou casado.',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w300,
                             fontSize: 20,
                             color: customColors.textColor,
                           ),
-                        ),
                       ),
                     ),
                   ),

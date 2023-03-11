@@ -1,6 +1,7 @@
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_big_button.dart';
 import 'package:app/view/widgets/custom_input.dart';
+import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_small_button.dart';
 import 'package:app/view/widgets/custom_text_button.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +47,7 @@ class LoginPage extends StatelessWidget {
               ],
             ),
           ),
+          bottomNavigationBar: CustomNavBar(),
         );
       },
     );

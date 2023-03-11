@@ -1,8 +1,4 @@
-import 'package:app/view/widgets/custom_appbar.dart';
-import 'package:app/view/widgets/custom_big_button.dart';
 import 'package:app/view/widgets/custom_input.dart';
-import 'package:app/view/widgets/custom_navbar.dart';
-import 'package:app/view/widgets/custom_settings_option.dart';
 import 'package:app/view/widgets/custom_small_button.dart';
 import 'package:app/view/widgets/custom_text_button.dart';
 import 'package:flutter/material.dart';
@@ -17,41 +13,48 @@ class LoginPage extends StatelessWidget {
     return GetBuilder<AppColors>(
       init: AppColors(),
       builder: (_) {
-        return Scaffold(
-          backgroundColor: _.backgroundColor,
-          appBar: CustomAppBar(),
-          body: Center(
-            child: Column(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 35),
-                  child: CustomInput(
-                    inputTittle: 'Senha:',
+        return GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
+          child: Scaffold(
+            resizeToAvoidBottomInset: false,
+            backgroundColor: _.backgroundColor,
+            body: Center(
+              child: Column(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 90),
+                    width: 150,
+                    height: 150,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/logo_white.png'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                ),
-                CustomBigButton(
-                  tittleBtn: 'SALVAR',
-                  customMargin: 15,
-                  function: () => print('object'),
-                ),
-                CustomSmallButton(
-                  tittleBtn: 'LOGIN',
-                  customMargin: 20,
-                  function: () => print('object'),
-                ),
-                CustomTextButton(
-                  tittle: 'CADASTRAR',
-                  function: () => print('object'),
-                ),
-                CustomSettingsOption(
-                  function: () => print('object'),
-                  tittle: 'Excluir Conta',
-                  description: 'Excluir conta de forma permanente',
-                ),
-              ],
+                  Container(
+                    margin: const EdgeInsets.only(top: 50),
+                    child: CustomInput(inputTittle: 'Email:'),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 19),
+                    child: CustomInput(inputTittle: 'Senha:'),
+                  ),
+                  CustomSmallButton(
+                    tittleBtn: 'LOGIN',
+                    customMargin: 80,
+                    function: () => Get.toNamed('/teste'),
+                  ),
+                  CustomTextButton(
+                    tittle: 'CADASTRAR',
+                    function: () => print('object'),
+                  )
+                ],
+              ),
             ),
           ),
-          bottomNavigationBar: CustomNavBar(),
         );
       },
     );

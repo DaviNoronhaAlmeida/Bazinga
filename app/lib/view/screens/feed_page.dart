@@ -40,6 +40,13 @@ class FeedPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: CustomNavBar(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: _appColors.redColor,
+        onPressed: () {
+          Get.toNamed('/newPost');
+        },
+        child: const Icon(Icons.post_add, size: 30),
+      ),
     );
   }
 }

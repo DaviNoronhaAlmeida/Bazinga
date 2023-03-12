@@ -35,6 +35,7 @@ class CustomPost extends StatelessWidget {
                   text: TextSpan(
                     text: username,
                     style: TextStyle(
+                      fontFamily: 'Roboto',
                       fontWeight: FontWeight.w400,
                       fontSize: 20,
                       color: _appColors.textColor,
@@ -67,6 +68,7 @@ class CustomPost extends StatelessWidget {
                   postText,
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                    fontFamily: 'Roboto',
                     fontWeight: FontWeight.w400,
                     fontSize: 20,
                     color: _appColors.textColor,
@@ -96,7 +98,9 @@ class CustomPost extends StatelessWidget {
                     child: TextButton(
                       style: TextButton.styleFrom(
                           textStyle: const TextStyle(
-                              fontWeight: FontWeight.w400, fontSize: 20)),
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20)),
                       onPressed: () {
                         showDialog(
                           context: context,
@@ -166,7 +170,8 @@ class CustomPost extends StatelessWidget {
                       child: Text(
                         likes.toString(),
                         overflow: TextOverflow.visible,
-                        style: TextStyle(color: _appColors.textColor),
+                        style: TextStyle(
+                            fontFamily: 'Roboto', color: _appColors.textColor),
                         textAlign: TextAlign.left,
                       ),
                     ),

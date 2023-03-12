@@ -46,6 +46,7 @@ class LikingUser extends StatelessWidget {
                           text: TextSpan(
                             text: username,
                             style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400,
                               fontSize: 16,
                               color: _appColors.textColor,

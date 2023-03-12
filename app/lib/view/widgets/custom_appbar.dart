@@ -22,17 +22,25 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           ),
         ),
       ),
-      title: Container(
-        alignment: Alignment.centerRight,
-        child: Text(
-          'Usuário',
-          style: TextStyle(
-            fontFamily: 'Roboto',
-            color: _appColors.textBtnColor,
-            fontSize: 13,
-            fontWeight: FontWeight.w500,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          const Icon(
+            Icons.account_circle,
+            color: Colors.white,
+            size: 30,
           ),
-        ),
+          const SizedBox(width: 10),
+          Text(
+            'Usuário',
+            style: TextStyle(
+              fontFamily: 'Roboto',
+              color: _appColors.textBtnColor,
+              fontSize: 13,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
       ),
     );
   }

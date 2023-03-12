@@ -26,7 +26,7 @@ class CustomNavBar extends StatelessWidget {
           ),
           Container(
             height: 25,
-            width: 1,
+            width: 2,
             decoration: BoxDecoration(
               color: _appColors.bgPostsColor,
             ),
@@ -41,7 +41,7 @@ class CustomNavBar extends StatelessWidget {
           ),
           Container(
             height: 25,
-            width: 1,
+            width: 2,
             decoration: BoxDecoration(
               color: _appColors.bgPostsColor,
             ),
@@ -56,7 +56,7 @@ class CustomNavBar extends StatelessWidget {
           ),
           Container(
             height: 25,
-            width: 1,
+            width: 2,
             decoration: BoxDecoration(
               color: _appColors.bgPostsColor,
             ),

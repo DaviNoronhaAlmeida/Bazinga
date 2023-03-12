@@ -10,6 +10,7 @@ class AppColors extends GetxController {
   static const darkBgPostsColor = Color.fromRGBO(26, 32, 62, 1);
   static const darkTextColor = Color.fromRGBO(255, 255, 255, 1);
   static const darkDescriptionColor = Color.fromRGBO(255, 255, 255, 0.6);
+  static const darkDivider = Color.fromRGBO(26, 32, 62, 1);
 
   static const lightBarColor = Color.fromRGBO(54, 54, 54, 1);
   static const lightBackgroundColor = Color.fromRGBO(245, 245, 245, 1);
@@ -22,6 +23,7 @@ class AppColors extends GetxController {
   dynamic bgPostsColor = darkBgPostsColor;
   dynamic textColor = darkTextColor;
   dynamic descriptionColor = darkDescriptionColor;
+  dynamic dividerColor = darkDivider;
 
   void change() {
     /* backgroundColor = const Color.fromRGBO(245, 245, 245, 1);

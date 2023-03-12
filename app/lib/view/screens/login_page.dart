@@ -45,7 +45,7 @@ class LoginPage extends StatelessWidget {
                   CustomSmallButton(
                     tittleBtn: 'LOGIN',
                     customMargin: 80,
-                    function: () => Get.toNamed('/teste'),
+                    function: () => Get.toNamed('/feed'),
                   ),
                   CustomTextButton(
                     tittle: 'CADASTRAR',

@@ -65,7 +65,7 @@ class EditProfileIconPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
+                SizedBox(
                   height: 350,
                   child: RawScrollbar(
                     thumbVisibility: true,
@@ -97,7 +97,7 @@ class EditProfileIconPage extends StatelessWidget {
           Positioned(
             top: 10,
             left: 16,
-            child: Container(
+            child: SizedBox(
               width: 40,
               child: FloatingActionButton(
                 backgroundColor: _appColors.redColor,

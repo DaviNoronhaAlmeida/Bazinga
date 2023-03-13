@@ -41,7 +41,7 @@ class NewGroupIconPage extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               height: 350,
               child: RawScrollbar(
                 thumbVisibility: true,

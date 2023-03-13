@@ -32,7 +32,7 @@ class CustomNavBar extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () => Get.toNamed('/'),
+            onPressed: () => Get.toNamed('/groupHome'),
             child: Icon(
               Icons.groups_outlined,
               color: _appColors.redColor,

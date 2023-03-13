@@ -47,7 +47,7 @@ class CustomNavBar extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () => Get.toNamed('/'),
+            onPressed: () => Get.toNamed('/profile'),
             child: Icon(
               Icons.person_outline,
               color: _appColors.redColor,

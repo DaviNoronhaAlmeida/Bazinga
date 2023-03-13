@@ -25,65 +25,70 @@ class GroupInfo extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(top: 10),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: _appColors.bgPostsColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(50)),
-                    boxShadow: [
-                      BoxShadow(
-                        color:
-                            const Color.fromARGB(255, 0, 0, 0).withOpacity(0.5),
-                        blurRadius: 5,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 20),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.account_circle,
-                          color: Colors.white,
-                          size: 50,
+                child: GestureDetector(
+                  onTap: () {
+                    Get.toNamed('/groupChat');
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: _appColors.bgPostsColor,
+                      borderRadius: const BorderRadius.all(Radius.circular(50)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color.fromARGB(255, 0, 0, 0)
+                              .withOpacity(0.5),
+                          blurRadius: 5,
+                          offset: const Offset(0, 3),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: RichText(
-                                  text: TextSpan(
-                                    text: groupName,
-                                    style: TextStyle(
-                                      fontFamily: 'Roboto',
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 18,
-                                      color: _appColors.textColor,
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 20),
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.account_circle,
+                            color: Colors.white,
+                            size: 50,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: RichText(
+                                    text: TextSpan(
+                                      text: groupName,
+                                      style: TextStyle(
+                                        fontFamily: 'Roboto',
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: _appColors.textColor,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: RichText(
-                                text: TextSpan(
-                                  text: lastMessage,
-                                  style: TextStyle(
-                                    fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                    color: _appColors.descriptionColor,
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: RichText(
+                                  text: TextSpan(
+                                    text: lastMessage,
+                                    style: TextStyle(
+                                      fontFamily: 'Roboto',
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14,
+                                      color: _appColors.descriptionColor,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

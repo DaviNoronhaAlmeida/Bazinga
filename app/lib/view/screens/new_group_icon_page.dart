@@ -51,7 +51,6 @@ class NewGroupIconPage extends StatelessWidget {
                   controller: _scroll,
                   child: Column(
                     children: [
-                      //Users Found
                       ChooseIcon(),
                     ],
                   ),

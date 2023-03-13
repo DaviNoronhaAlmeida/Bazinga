@@ -3,10 +3,13 @@ import 'package:app/view/widgets/custom_small_button.dart';
 import 'package:app/view/widgets/custom_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../view-model/validators/email_validator.dart';
 import '../styles/app_colors.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,16 +39,28 @@ class LoginPage extends StatelessWidget {
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 50),
-                    child: CustomInput(inputTittle: 'Email:'),
+                    child: CustomInput(
+                      inputTittle: 'Email:',
+                      controller: _emailController,
+                    ),
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 19),
-                    child: CustomInput(inputTittle: 'Senha:'),
+                    child: CustomInput(
+                      inputTittle: 'Senha:',
+                      controller: _passwordController,
+                    ),
                   ),
                   CustomSmallButton(
                     tittleBtn: 'LOGIN',
                     customMargin: 80,
-                    function: () => Get.toNamed('/feed'),
+                    function: () => {
+                      // if (emailValidate(_emailController.text))
+                      //   {
+                      //     Get.toNamed('/feed'),
+                      //   },
+                      Get.toNamed('/feed'),
+                    },
                   ),
                   CustomTextButton(
                     tittle: 'CADASTRAR',

@@ -9,6 +9,7 @@ import '../styles/app_colors.dart';
 class EditGroupNamePage extends StatelessWidget {
   EditGroupNamePage({super.key});
   final AppColors _appColors = Get.find();
+  final TextEditingController _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +59,10 @@ class EditGroupNamePage extends StatelessWidget {
                 ),
 
                 //Itens do Menu
-                CustomInput(inputTittle: 'Novo Nome do Grupo:'),
+                CustomInput(
+                  inputTittle: 'Novo Nome do Grupo:',
+                  controller: _nameController,
+                ),
                 const Spacer(),
 
                 //Botão de salvar

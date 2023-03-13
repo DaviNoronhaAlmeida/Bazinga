@@ -9,6 +9,7 @@ import '../styles/app_colors.dart';
 class DeleteProfilePage extends StatelessWidget {
   DeleteProfilePage({super.key});
   final AppColors _appColors = Get.find();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -64,13 +65,16 @@ class DeleteProfilePage extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: 'Roboto',
                       color: _appColors.textColor,
-                      fontSize: 40,
+                      fontSize: 30,
                       fontWeight: FontWeight.w300,
                     ),
                   ),
                   const Spacer(),
 
-                  CustomInput(inputTittle: 'Senha:'),
+                  CustomInput(
+                    inputTittle: 'Senha:',
+                    controller: _passwordController,
+                  ),
 
                   //Botão de Salvar
                   const Spacer(),

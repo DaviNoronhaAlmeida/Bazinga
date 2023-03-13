@@ -4,7 +4,8 @@ import '../styles/app_colors.dart';
 
 class CustomInput extends StatelessWidget {
   final String inputTittle;
-  CustomInput({super.key, required this.inputTittle});
+  final TextEditingController controller;
+  CustomInput({super.key, required this.inputTittle, required this.controller});
 
   final AppColors _appColors = Get.find();
 
@@ -30,6 +31,7 @@ class CustomInput extends StatelessWidget {
           height: 36,
           width: 320,
           child: TextField(
+            controller: controller,
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.symmetric(horizontal: 12),
               enabledBorder: OutlineInputBorder(

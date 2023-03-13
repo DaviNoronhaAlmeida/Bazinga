@@ -9,6 +9,10 @@ import '../styles/app_colors.dart';
 class EditPasswordPage extends StatelessWidget {
   EditPasswordPage({super.key});
   final AppColors _appColors = Get.find();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _newPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -58,11 +62,20 @@ class EditPasswordPage extends StatelessWidget {
                 ),
 
                 //Itens do Menu
-                CustomInput(inputTittle: 'Senha Anterior:'),
+                CustomInput(
+                  inputTittle: 'Senha Anterior:',
+                  controller: _passwordController,
+                ),
                 const SizedBox(height: 16),
-                CustomInput(inputTittle: 'Senha Atual:'),
+                CustomInput(
+                  inputTittle: 'Senha Atual:',
+                  controller: _newPasswordController,
+                ),
                 const SizedBox(height: 16),
-                CustomInput(inputTittle: 'Repetir Senha Atual:'),
+                CustomInput(
+                  inputTittle: 'Repetir Senha Atual:',
+                  controller: _confirmPasswordController,
+                ),
 
                 //Botão de salvar
                 const Spacer(),

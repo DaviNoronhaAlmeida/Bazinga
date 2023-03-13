@@ -1,3 +1,4 @@
+import 'package:app/view-model/validators/email_validator.dart';
 import 'package:app/view/widgets/custom_input.dart';
 import 'package:app/view/widgets/custom_small_button.dart';
 import 'package:app/view/widgets/custom_text_button.dart';
@@ -8,6 +9,9 @@ import '../styles/app_colors.dart';
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
   final AppColors _appColors = Get.find();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,20 +38,34 @@ class RegisterPage extends StatelessWidget {
               ),
               Container(
                 margin: const EdgeInsets.only(top: 42.5),
-                child: CustomInput(inputTittle: 'Nome de usuário:'),
+                child: CustomInput(
+                  inputTittle: 'Nome de usuário:',
+                  controller: _nameController,
+                ),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 19.5),
-                child: CustomInput(inputTittle: 'Email:'),
+                child: CustomInput(
+                  inputTittle: 'Email:',
+                  controller: _emailController,
+                ),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 19.5),
-                child: CustomInput(inputTittle: 'Senha:'),
+                child: CustomInput(
+                  inputTittle: 'Senha:',
+                  controller: _passwordController,
+                ),
               ),
               CustomSmallButton(
                 tittleBtn: 'CADASTRAR',
                 customMargin: 70,
-                function: () => Get.toNamed('/'),
+                function: () => {
+                  if (emailValidate(_emailController.text))
+                    {
+                      Get.toNamed('/'),
+                    },
+                },
               ),
               CustomTextButton(
                 tittle: 'VOLTAR',

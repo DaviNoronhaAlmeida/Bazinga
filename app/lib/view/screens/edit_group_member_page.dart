@@ -11,6 +11,7 @@ import '../styles/app_colors.dart';
 class EditGroupMemberPage extends StatelessWidget {
   EditGroupMemberPage({super.key});
   final AppColors _appColors = Get.find();
+  final TextEditingController _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,10 @@ class EditGroupMemberPage extends StatelessWidget {
                   ),
 
                   //Search User
-                  CustomInput(inputTittle: 'Pesquisar Usuário:'),
+                  CustomInput(
+                    inputTittle: 'Pesquisar Usuário:',
+                    controller: _nameController,
+                  ),
 
                   SizedBox(
                     height: 200,

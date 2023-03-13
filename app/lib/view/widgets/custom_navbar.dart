@@ -17,7 +17,7 @@ class CustomNavBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           TextButton(
-            onPressed: () => Get.toNamed('/'),
+            onPressed: () => Get.toNamed('/feed'),
             child: Icon(
               Icons.home_outlined,
               color: _appColors.redColor,
@@ -26,13 +26,13 @@ class CustomNavBar extends StatelessWidget {
           ),
           Container(
             height: 25,
-            width: 1,
+            width: 2,
             decoration: BoxDecoration(
               color: _appColors.bgPostsColor,
             ),
           ),
           TextButton(
-            onPressed: () => Get.toNamed('/'),
+            onPressed: () => Get.toNamed('/groupHome'),
             child: Icon(
               Icons.groups_outlined,
               color: _appColors.redColor,
@@ -41,13 +41,13 @@ class CustomNavBar extends StatelessWidget {
           ),
           Container(
             height: 25,
-            width: 1,
+            width: 2,
             decoration: BoxDecoration(
               color: _appColors.bgPostsColor,
             ),
           ),
           TextButton(
-            onPressed: () => Get.toNamed('/'),
+            onPressed: () => Get.toNamed('/profile'),
             child: Icon(
               Icons.person_outline,
               color: _appColors.redColor,
@@ -56,13 +56,13 @@ class CustomNavBar extends StatelessWidget {
           ),
           Container(
             height: 25,
-            width: 1,
+            width: 2,
             decoration: BoxDecoration(
               color: _appColors.bgPostsColor,
             ),
           ),
           TextButton(
-            onPressed: () => Get.toNamed('/'),
+            onPressed: () => Get.toNamed('/settings'),
             child: Icon(
               Icons.settings_outlined,
               color: _appColors.redColor,

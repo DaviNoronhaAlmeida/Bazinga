@@ -33,6 +33,7 @@ class CustomSettingsOption extends StatelessWidget {
                 fontWeight: FontWeight.w400,
               ),
             ),
+            const SizedBox(height: 8),
             Text(
               description,
               style: TextStyle(

@@ -15,6 +15,7 @@ class CustomInput extends StatelessWidget {
       children: [
         Container(
           margin: const EdgeInsets.symmetric(vertical: 5),
+          padding: const EdgeInsets.only(bottom: 10),
           child: Text(
             inputTittle,
             style: TextStyle(
@@ -32,15 +33,11 @@ class CustomInput extends StatelessWidget {
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.symmetric(horizontal: 12),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: _appColors.redColor,
-                ),
+                borderSide: BorderSide(color: _appColors.redColor, width: 2),
                 borderRadius: BorderRadius.circular(10.0),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: _appColors.redColor,
-                ),
+                borderSide: BorderSide(color: _appColors.redColor, width: 2),
                 borderRadius: BorderRadius.circular(10.0),
               ),
             ),

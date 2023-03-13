@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
 
-class EditGroupNamePage extends StatelessWidget {
-  EditGroupNamePage({super.key});
+class EditPasswordPage extends StatelessWidget {
+  EditPasswordPage({super.key});
   final AppColors _appColors = Get.find();
 
   @override
@@ -43,7 +43,7 @@ class EditGroupNamePage extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 10),
                         child: RichText(
                           text: TextSpan(
-                            text: 'Nome do Grupo',
+                            text: 'Nome do Usuário',
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400,
@@ -58,10 +58,14 @@ class EditGroupNamePage extends StatelessWidget {
                 ),
 
                 //Itens do Menu
-                CustomInput(inputTittle: 'Novo Nome do Grupo:'),
-                const Spacer(),
+                CustomInput(inputTittle: 'Senha Anterior:'),
+                const SizedBox(height: 16),
+                CustomInput(inputTittle: 'Senha Atual:'),
+                const SizedBox(height: 16),
+                CustomInput(inputTittle: 'Repetir Senha Atual:'),
 
                 //Botão de salvar
+                const Spacer(),
                 Container(
                   margin: const EdgeInsets.only(bottom: 20.0),
                   child: CustomBigButton(

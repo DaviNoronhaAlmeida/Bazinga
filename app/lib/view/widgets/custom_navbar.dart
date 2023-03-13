@@ -62,7 +62,7 @@ class CustomNavBar extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () => Get.toNamed('/'),
+            onPressed: () => Get.toNamed('/settings'),
             child: Icon(
               Icons.settings_outlined,
               color: _appColors.redColor,

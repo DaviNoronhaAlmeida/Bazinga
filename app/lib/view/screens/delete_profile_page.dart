@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
 
-class EditGroupNamePage extends StatelessWidget {
-  EditGroupNamePage({super.key});
+class DeleteProfilePage extends StatelessWidget {
+  DeleteProfilePage({super.key});
   final AppColors _appColors = Get.find();
 
   @override
@@ -26,14 +26,14 @@ class EditGroupNamePage extends StatelessWidget {
         appBar: CustomAppBar(),
         body: Stack(
           children: [
-            Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 30.0),
-                  child: Row(
+            Container(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  //Ícone e nome do grupo
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      //Ícone e nome do grupo
                       const Icon(
                         Icons.account_circle,
                         color: Colors.white,
@@ -43,7 +43,7 @@ class EditGroupNamePage extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 10),
                         child: RichText(
                           text: TextSpan(
-                            text: 'Nome do Grupo',
+                            text: 'Nome do Usuário',
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400,
@@ -55,22 +55,33 @@ class EditGroupNamePage extends StatelessWidget {
                       ),
                     ],
                   ),
-                ),
 
-                //Itens do Menu
-                CustomInput(inputTittle: 'Novo Nome do Grupo:'),
-                const Spacer(),
+                  //Texto
+                  const Spacer(),
+                  Text(
+                    'Tem certeza que deseja excluir a conta? :(',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      color: _appColors.textColor,
+                      fontSize: 40,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  const Spacer(),
 
-                //Botão de salvar
-                Container(
-                  margin: const EdgeInsets.only(bottom: 20.0),
-                  child: CustomBigButton(
+                  CustomInput(inputTittle: 'Senha:'),
+
+                  //Botão de Salvar
+                  const Spacer(),
+                  const Spacer(),
+                  CustomBigButton(
                     tittleBtn: 'SALVAR',
-                    customMargin: 70,
+                    customMargin: 0,
                     function: () => Get.back(),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
 
             //Botão de voltar

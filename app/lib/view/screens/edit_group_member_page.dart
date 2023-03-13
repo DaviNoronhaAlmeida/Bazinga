@@ -14,153 +14,163 @@ class EditGroupMemberPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: _appColors.backgroundColor,
-      appBar: CustomAppBar(),
-      body: Stack(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    //Ícone e nome do grupo
-                    const Icon(
-                      Icons.account_circle,
-                      color: Colors.white,
-                      size: 70,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: RichText(
-                        text: TextSpan(
-                          text: 'Nome do Grupo',
-                          style: TextStyle(
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.w400,
-                            fontSize: 30,
-                            color: _appColors.textColor,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
-                //Search User
-                CustomInput(inputTittle: 'Pesquisar Usuário:'),
-
-                Container(
-                  height: 200,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        //Users Found
-                        AddMember(
-                          username: 'Usuário 1',
-                          icon: 'Endereço do ícone',
-                        ),
-                        const SizedBox(height: 6),
-                        AddMember(
-                          username: 'Usuário 2',
-                          icon: 'Endereço do ícone',
-                        ),
-                        const SizedBox(height: 6),
-                        AddMember(
-                          username: 'Usuário 3',
-                          icon: 'Endereço do ícone',
-                        ),
-                        const SizedBox(height: 6),
-                        AddMember(
-                          username: 'Usuário 4',
-                          icon: 'Endereço do ícone',
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-
-                //Added list
-                const Spacer(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: Divider(color: _appColors.dividerColor, thickness: 2),
-                ),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Column(
+    return GestureDetector(
+      onTap: () {
+        // recupera o foco atual e o remove
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: _appColors.backgroundColor,
+        appBar: CustomAppBar(),
+        body: Stack(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Align(
-                        alignment: Alignment.topLeft,
+                      //Ícone e nome do grupo
+                      const Icon(
+                        Icons.account_circle,
+                        color: Colors.white,
+                        size: 70,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
                         child: RichText(
                           text: TextSpan(
-                            text: 'Usuários adicionados',
+                            text: 'Nome do Grupo',
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400,
-                              fontSize: 18,
-                              color: _appColors.descriptionColor,
+                              fontSize: 30,
+                              color: _appColors.textColor,
                             ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              AddedMember(
-                                  username: 'Usuário 1',
-                                  icon: 'Endereçodo ícone'),
-                              const SizedBox(width: 10),
-                              AddedMember(
-                                  username: 'Usuário 2',
-                                  icon: 'Endereçodo ícone'),
-                              const SizedBox(width: 10),
-                              AddedMember(
-                                  username: 'Usuário 3',
-                                  icon: 'Endereçodo ícone'),
-                            ],
                           ),
                         ),
                       ),
                     ],
                   ),
-                ),
 
-                //Botão de Salvar
-                const Spacer(),
-                CustomBigButton(
-                  tittleBtn: 'SALVAR',
-                  customMargin: 0,
-                  function: () => Get.back(),
-                ),
-              ],
-            ),
-          ),
+                  //Search User
+                  CustomInput(inputTittle: 'Pesquisar Usuário:'),
 
-          //Botão de voltar
-          Positioned(
-            top: 10,
-            left: 16,
-            child: Container(
-              width: 40,
-              child: FloatingActionButton(
-                backgroundColor: _appColors.redColor,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Icon(Icons.arrow_back, size: 30),
+                  Container(
+                    height: 200,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          //Users Found
+                          AddMember(
+                            username: 'Usuário 1',
+                            icon: 'Endereço do ícone',
+                          ),
+                          const SizedBox(height: 6),
+                          AddMember(
+                            username: 'Usuário 2',
+                            icon: 'Endereço do ícone',
+                          ),
+                          const SizedBox(height: 6),
+                          AddMember(
+                            username: 'Usuário 3',
+                            icon: 'Endereço do ícone',
+                          ),
+                          const SizedBox(height: 6),
+                          AddMember(
+                            username: 'Usuário 4',
+                            icon: 'Endereço do ícone',
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  //Added list
+                  const Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 40),
+                    child:
+                        Divider(color: _appColors.dividerColor, thickness: 2),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Column(
+                      children: [
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: RichText(
+                            text: TextSpan(
+                              text: 'Usuários adicionados',
+                              style: TextStyle(
+                                fontFamily: 'Roboto',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18,
+                                color: _appColors.descriptionColor,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                AddedMember(
+                                    username: 'Usuário 1',
+                                    icon: 'Endereçodo ícone'),
+                                const SizedBox(width: 10),
+                                AddedMember(
+                                    username: 'Usuário 2',
+                                    icon: 'Endereçodo ícone'),
+                                const SizedBox(width: 10),
+                                AddedMember(
+                                    username: 'Usuário 3',
+                                    icon: 'Endereçodo ícone'),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  //Botão de Salvar
+                  const Spacer(),
+                  CustomBigButton(
+                    tittleBtn: 'SALVAR',
+                    customMargin: 0,
+                    function: () => Get.back(),
+                  ),
+                ],
               ),
             ),
-          ),
-        ],
+
+            //Botão de voltar
+            Positioned(
+              top: 10,
+              left: 16,
+              child: Container(
+                width: 40,
+                child: FloatingActionButton(
+                  backgroundColor: _appColors.redColor,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(Icons.arrow_back, size: 30),
+                ),
+              ),
+            ),
+          ],
+        ),
+        bottomNavigationBar: CustomNavBar(),
       ),
-      bottomNavigationBar: CustomNavBar(),
     );
   }
 }

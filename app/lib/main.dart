@@ -12,6 +12,11 @@ import 'package:app/view/screens/edit_group_icon_page.dart';
 import 'package:app/view/screens/edit_group_member_page.dart';
 import 'package:app/view/screens/delete_group_page.dart';
 import 'package:app/view/screens/profile_page.dart';
+import 'package:app/view/screens/settings_page.dart';
+import 'package:app/view/screens/edit_profile_name_email_page.dart';
+import 'package:app/view/screens/edit_profile_icon_page.dart';
+import 'package:app/view/screens/edit_profile_password_page.dart';
+import 'package:app/view/screens/delete_profile_page.dart';
 import 'package:app/view/screens/teste.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -83,6 +88,26 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/profile',
           page: () => ProfilePage(),
+        ),
+        GetPage(
+          name: '/settings',
+          page: () => SettingsPage(),
+        ),
+        GetPage(
+          name: '/editNameEmail',
+          page: () => EditNameEmailPage(),
+        ),
+        GetPage(
+          name: '/editProfileIcon',
+          page: () => EditProfileIconPage(),
+        ),
+        GetPage(
+          name: '/editPassword',
+          page: () => EditPasswordPage(),
+        ),
+        GetPage(
+          name: '/deleteProfile',
+          page: () => DeleteProfilePage(),
         ),
         GetPage(
           name: '/teste',

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
 
@@ -32,6 +33,9 @@ class CustomInput extends StatelessWidget {
           width: 320,
           child: TextField(
             controller: controller,
+            inputFormatters: [
+              LengthLimitingTextInputFormatter(50),
+            ],
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.symmetric(horizontal: 12),
               enabledBorder: OutlineInputBorder(

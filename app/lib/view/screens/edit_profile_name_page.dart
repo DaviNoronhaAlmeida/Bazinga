@@ -10,7 +10,6 @@ class EditNameEmailPage extends StatelessWidget {
   EditNameEmailPage({super.key});
   final AppColors _appColors = Get.find();
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -63,11 +62,6 @@ class EditNameEmailPage extends StatelessWidget {
                 CustomInput(
                   inputTittle: 'Novo Nome do Usuário:',
                   controller: _nameController,
-                ),
-                const SizedBox(height: 20),
-                CustomInput(
-                  inputTittle: 'Novo Email do Usuário:',
-                  controller: _emailController,
                 ),
 
                 //Botão de salvar

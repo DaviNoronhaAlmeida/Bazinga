@@ -1,3 +1,4 @@
+import 'package:app/view-model/validators/equality_validator.dart';
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_input.dart';
@@ -63,17 +64,17 @@ class EditPasswordPage extends StatelessWidget {
 
                 //Itens do Menu
                 CustomInput(
-                  inputTittle: 'Senha Anterior:',
+                  inputTittle: 'Senha Atual:',
                   controller: _passwordController,
                 ),
                 const SizedBox(height: 16),
                 CustomInput(
-                  inputTittle: 'Senha Atual:',
+                  inputTittle: 'Nova Senha:',
                   controller: _newPasswordController,
                 ),
                 const SizedBox(height: 16),
                 CustomInput(
-                  inputTittle: 'Repetir Senha Atual:',
+                  inputTittle: 'Confirmar Nova Senha:',
                   controller: _confirmPasswordController,
                 ),
 
@@ -84,7 +85,13 @@ class EditPasswordPage extends StatelessWidget {
                   child: CustomBigButton(
                     tittleBtn: 'SALVAR',
                     customMargin: 70,
-                    function: () => Get.back(),
+                    function: () => {
+                      if (equalityValidate(_newPasswordController.text,
+                          _confirmPasswordController.text))
+                        {
+                          Get.back(),
+                        },
+                    },
                   ),
                 ),
               ],

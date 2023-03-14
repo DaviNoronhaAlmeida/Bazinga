@@ -13,7 +13,7 @@ import 'package:app/view/screens/edit_group_member_page.dart';
 import 'package:app/view/screens/delete_group_page.dart';
 import 'package:app/view/screens/profile_page.dart';
 import 'package:app/view/screens/settings_page.dart';
-import 'package:app/view/screens/edit_profile_name_email_page.dart';
+import 'package:app/view/screens/edit_profile_name_page.dart';
 import 'package:app/view/screens/edit_profile_icon_page.dart';
 import 'package:app/view/screens/edit_profile_password_page.dart';
 import 'package:app/view/screens/delete_profile_page.dart';

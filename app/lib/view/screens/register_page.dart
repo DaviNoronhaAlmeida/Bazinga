@@ -1,4 +1,6 @@
 import 'package:app/view-model/validators/email_validator.dart';
+import 'package:app/view-model/validators/nickname_validator.dart';
+import 'package:app/view-model/validators/password_validator.dart';
 import 'package:app/view/widgets/custom_input.dart';
 import 'package:app/view/widgets/custom_small_button.dart';
 import 'package:app/view/widgets/custom_text_button.dart';
@@ -61,7 +63,9 @@ class RegisterPage extends StatelessWidget {
                 tittleBtn: 'CADASTRAR',
                 customMargin: 70,
                 function: () => {
-                  if (emailValidate(_emailController.text))
+                  if (nickValidate(_nameController.text) &&
+                      emailValidate(_emailController.text) &&
+                      passwordValidate(_passwordController.text))
                     {
                       Get.toNamed('/'),
                     },

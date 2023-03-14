@@ -25,7 +25,7 @@ class LikingUser extends StatelessWidget {
                   BoxShadow(
                     color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.5),
                     blurRadius: 5,
-                    offset: Offset(0, 3),
+                    offset: const Offset(0, 3),
                   ),
                 ],
               ),

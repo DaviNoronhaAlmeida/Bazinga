@@ -17,7 +17,6 @@ import 'package:app/view/screens/edit_profile_name_email_page.dart';
 import 'package:app/view/screens/edit_profile_icon_page.dart';
 import 'package:app/view/screens/edit_profile_password_page.dart';
 import 'package:app/view/screens/delete_profile_page.dart';
-import 'package:app/view/screens/teste.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -108,10 +107,6 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/deleteProfile',
           page: () => DeleteProfilePage(),
-        ),
-        GetPage(
-          name: '/teste',
-          page: () => TestPage(),
         ),
       ],
       debugShowCheckedModeBanner: false,

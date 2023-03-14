@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
-import 'package:app/view/widgets/custom_likingUser.dart';
+import 'package:app/view/widgets/custom_liking_user.dart';
 
 class CustomPost extends StatelessWidget {
   final String username;
@@ -57,7 +57,7 @@ class CustomPost extends StatelessWidget {
                   BoxShadow(
                     color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.5),
                     blurRadius: 5,
-                    offset: Offset(0, 3),
+                    offset: const Offset(0, 3),
                   ),
                 ],
               ),

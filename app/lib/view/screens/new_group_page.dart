@@ -26,7 +26,7 @@ class NewGroupPage extends StatelessWidget {
             //Search User
             CustomInput(inputTittle: 'Pesquisar Usuário:'),
 
-            Container(
+            SizedBox(
               height: 285,
               child: SingleChildScrollView(
                 child: Column(

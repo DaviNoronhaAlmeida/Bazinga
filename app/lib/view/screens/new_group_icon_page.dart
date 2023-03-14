@@ -12,6 +12,7 @@ class NewGroupIconPage extends StatelessWidget {
   final ScrollController _scroll = ScrollController();
 
   final AppColors _appColors = Get.find();
+  final TextEditingController _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,10 @@ class NewGroupIconPage extends StatelessWidget {
         child: Column(
           children: [
             //Search User
-            CustomInput(inputTittle: 'Nome do Grupo:'),
+            CustomInput(
+              inputTittle: 'Nome do Grupo:',
+              controller: _nameController,
+            ),
 
             Align(
               alignment: Alignment.topLeft,

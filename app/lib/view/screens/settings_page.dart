@@ -56,8 +56,8 @@ class SettingsPage extends StatelessWidget {
               const Spacer(),
               CustomSettingsOption(
                 function: () => {Get.toNamed('/editNameEmail')},
-                tittle: 'Editar Nome e Email',
-                description: 'Trocar Nome de Usuário ou Email',
+                tittle: 'Editar Nome',
+                description: 'Trocar Nome de Usuário',
               ),
               const Spacer(),
               CustomSettingsOption(

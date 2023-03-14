@@ -12,6 +12,7 @@ class NewGroupPage extends StatelessWidget {
   NewGroupPage({super.key});
 
   final AppColors _appColors = Get.find();
+  final TextEditingController _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,10 @@ class NewGroupPage extends StatelessWidget {
         child: Column(
           children: [
             //Search User
-            CustomInput(inputTittle: 'Pesquisar Usuário:'),
+            CustomInput(
+              inputTittle: 'Pesquisar Usuário:',
+              controller: _nameController,
+            ),
 
             SizedBox(
               height: 285,

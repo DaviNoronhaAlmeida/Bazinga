@@ -9,6 +9,8 @@ import '../styles/app_colors.dart';
 class EditNameEmailPage extends StatelessWidget {
   EditNameEmailPage({super.key});
   final AppColors _appColors = Get.find();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +60,15 @@ class EditNameEmailPage extends StatelessWidget {
                 ),
 
                 //Itens do Menu
-                CustomInput(inputTittle: 'Novo Nome do Usuário:'),
+                CustomInput(
+                  inputTittle: 'Novo Nome do Usuário:',
+                  controller: _nameController,
+                ),
                 const SizedBox(height: 20),
-                CustomInput(inputTittle: 'Novo Email do Usuário:'),
+                CustomInput(
+                  inputTittle: 'Novo Email do Usuário:',
+                  controller: _emailController,
+                ),
 
                 //Botão de salvar
                 const Spacer(),

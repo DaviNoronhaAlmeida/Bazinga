@@ -3,7 +3,7 @@ import 'package:app/view/widgets/custom_small_button.dart';
 import 'package:app/view/widgets/custom_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../view-model/validators/email_validator.dart';
+import '../../view-model/services/login_service.dart';
 import '../styles/app_colors.dart';
 
 class LoginPage extends StatelessWidget {
@@ -55,11 +55,7 @@ class LoginPage extends StatelessWidget {
                     tittleBtn: 'LOGIN',
                     customMargin: 80,
                     function: () => {
-                      // if (emailValidate(_emailController.text))
-                      //   {
-                      //     Get.toNamed('/feed'),
-                      //   },
-                      Get.toNamed('/feed'),
+                      login(_emailController.text, _passwordController.text)
                     },
                   ),
                   CustomTextButton(

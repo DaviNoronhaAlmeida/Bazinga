@@ -83,6 +83,13 @@ class SettingsPage extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: CustomNavBar(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: _appColors.redColor,
+        onPressed: () {
+          Get.toNamed('/');
+        },
+        child: const Icon(Icons.logout, size: 30),
+      ),
     );
   }
 }

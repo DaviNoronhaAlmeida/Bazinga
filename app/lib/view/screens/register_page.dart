@@ -1,6 +1,4 @@
-import 'package:app/view-model/validators/email_validator.dart';
-import 'package:app/view-model/validators/nickname_validator.dart';
-import 'package:app/view-model/validators/password_validator.dart';
+import 'package:app/view-model/services/register_service.dart';
 import 'package:app/view/widgets/custom_input.dart';
 import 'package:app/view/widgets/custom_small_button.dart';
 import 'package:app/view/widgets/custom_text_button.dart';
@@ -22,60 +20,57 @@ class RegisterPage extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
         backgroundColor: _appColors.backgroundColor,
-        body: Center(
-          child: Column(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: 90),
-                width: 150,
-                height: 150,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/logo_white.png'),
-                    fit: BoxFit.cover,
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 90),
+                  width: 150,
+                  height: 150,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/logo_white.png'),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 42.5),
-                child: CustomInput(
-                  inputTittle: 'Nome de usuário:',
-                  controller: _nameController,
+                Container(
+                  margin: const EdgeInsets.only(top: 42.5),
+                  child: CustomInput(
+                    inputTittle: 'Nome de usuário:',
+                    controller: _nameController,
+                  ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 19.5),
-                child: CustomInput(
-                  inputTittle: 'Email:',
-                  controller: _emailController,
+                Container(
+                  margin: const EdgeInsets.only(top: 19.5),
+                  child: CustomInput(
+                    inputTittle: 'Email:',
+                    controller: _emailController,
+                  ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 19.5),
-                child: CustomInput(
-                  inputTittle: 'Senha:',
-                  controller: _passwordController,
+                Container(
+                  margin: const EdgeInsets.only(top: 19.5),
+                  child: CustomInput(
+                    inputTittle: 'Senha:',
+                    controller: _passwordController,
+                  ),
                 ),
-              ),
-              CustomSmallButton(
-                tittleBtn: 'CADASTRAR',
-                customMargin: 70,
-                function: () => {
-                  if (nickValidate(_nameController.text) &&
-                      emailValidate(_emailController.text) &&
-                      passwordValidate(_passwordController.text))
-                    {
-                      Get.toNamed('/'),
-                    },
-                },
-              ),
-              CustomTextButton(
-                tittle: 'VOLTAR',
-                function: () => Get.back(),
-              )
-            ],
+                CustomSmallButton(
+                  tittleBtn: 'CADASTRAR',
+                  customMargin: 70,
+                  function: () => {
+                    register(_nameController.text, _emailController.text,
+                        _passwordController.text),
+                  },
+                ),
+                CustomTextButton(
+                  tittle: 'VOLTAR',
+                  function: () => Get.back(),
+                )
+              ],
+            ),
           ),
         ),
       ),

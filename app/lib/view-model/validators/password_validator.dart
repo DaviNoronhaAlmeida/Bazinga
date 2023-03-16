@@ -7,9 +7,13 @@ RegExp passwordRegex = RegExp(
 );
 
 bool passwordValidate(String password) {
+  if (password.length < 6) {
+    CustomSnackBar.show('A senha precisa ter ao menos 6 caracteres!');
+    return false;
+  }
   bool valid = passwordRegex.hasMatch(password);
   if (!valid) {
-    CustomSnackBar.show('Senha inválida!');
+    CustomSnackBar.show('Formato de senha inválido!');
   }
   return valid;
 }

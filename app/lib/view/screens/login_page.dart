@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../view-model/services/login_service.dart';
 import '../styles/app_colors.dart';
+import '../../model/authentication/token.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -51,11 +52,17 @@ class LoginPage extends StatelessWidget {
                       controller: _passwordController,
                     ),
                   ),
-                  CustomSmallButton(
-                    tittleBtn: 'LOGIN',
-                    customMargin: 80,
-                    function: () => {
-                      login(_emailController.text, _passwordController.text)
+                  GetBuilder<Token>(
+                    init: Token(),
+                    builder: (tokenController) {
+                      return CustomSmallButton(
+                        tittleBtn: 'LOGIN',
+                        customMargin: 80,
+                        function: () => {
+                          login(_emailController.text, _passwordController.text,
+                              tokenController.token)
+                        },
+                      );
                     },
                   ),
                   CustomTextButton(

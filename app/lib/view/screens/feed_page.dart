@@ -1,3 +1,4 @@
+import 'package:app/model/feed_functions/feed_controller.dart';
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_post.dart';
@@ -6,39 +7,51 @@ import 'package:get/get.dart';
 import '../styles/app_colors.dart';
 
 class FeedPage extends StatelessWidget {
-  FeedPage({super.key});
+  FeedPage({Key? key});
 
   final AppColors _appColors = Get.find();
+  final FeedController _feedController = Get.put(FeedController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: _appColors.backgroundColor,
       appBar: CustomAppBar(),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.only(top: 10),
-              child: CustomPost(
-                  username: 'Usuário',
-                  postText:
-                      'Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.',
-                  likes: 1),
+      body: Obx(() {
+        final List<dynamic>? feedData = _feedController.feedData.value;
+        if (feedData != null) {
+          return SingleChildScrollView(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                for (var post in feedData)
+                  Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: CustomPost(
+                          username: post['id_creator'],
+                          postText: post['content'],
+                          likes: int.tryParse(post['likes'].toString()) ?? 0,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 40, vertical: 20),
+                        child: Divider(
+                          color: _appColors.dividerColor,
+                          thickness: 2,
+                        ),
+                      ),
+                    ],
+                  ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40),
-              child: Divider(color: _appColors.dividerColor, thickness: 2),
-            ),
-            Container(
-              padding: const EdgeInsets.only(top: 10),
-              child: CustomPost(
-                  username: 'Usuário', postText: 'Textinho de Post.', likes: 1),
-            ),
-          ],
-        ),
-      ),
+          );
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
+      }),
       bottomNavigationBar: CustomNavBar(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: _appColors.redColor,

@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import '../validators/email_validator.dart';
 import '../validators/password_validator.dart';
 
-void login(String email, String password) async {
+void login(String email, String password, String? token) async {
   if (emailValidate(email) && passwordValidate(password)) {
-    Map<String, dynamic> data = await loginReq(email, password);
+    Map<String, dynamic> data = await loginReq(email, password, token);
 
     if (data['status'] == 200) {
       Get.toNamed('/feed');

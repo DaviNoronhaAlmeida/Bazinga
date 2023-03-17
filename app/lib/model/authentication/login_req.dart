@@ -12,7 +12,10 @@ Future<Map<String, dynamic>> loginReq(
   );
   final jsonResponse = jsonDecode(response.body);
   final responseToken = jsonResponse['token'];
-  Get.find<Token>().setToken(responseToken);
+
+  if (response.statusCode == 200) {
+    Get.find<Token>().setToken(responseToken);
+  }
 
   return <String, dynamic>{
     'status': response.statusCode,

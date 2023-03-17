@@ -2,13 +2,13 @@ import 'package:app/view/widgets/custom_big_input.dart';
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_big_button.dart';
-import 'package:app/model/feed_functions/new_post.dart';
 import '../../view-model/services/new_post_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
 import '../../model/authentication/token.dart';
 
+// ignore: must_be_immutable
 class NewPostPage extends StatelessWidget {
   NewPostPage({super.key});
   final TextEditingController _postController = TextEditingController();
@@ -43,7 +43,7 @@ class NewPostPage extends StatelessWidget {
                         customMargin: 15,
                         function: () => {
                           sendToken = Get.find<Token>().token,
-                          new_post(_postController.text, sendToken),
+                          newPost(_postController.text, sendToken),
                         },
                       ),
                     ),

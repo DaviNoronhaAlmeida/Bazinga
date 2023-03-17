@@ -1,4 +1,4 @@
-import 'package:app/model/feed_functions/feed_controller.dart';
+import 'package:app/view-model/controllers/feed_controller.dart';
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_post.dart';
@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import '../styles/app_colors.dart';
 
 class FeedPage extends StatelessWidget {
-  FeedPage({Key? key});
+  FeedPage({super.key});
 
   final AppColors _appColors = Get.find();
   final FeedController _feedController = Get.put(FeedController());
@@ -18,6 +18,7 @@ class FeedPage extends StatelessWidget {
       backgroundColor: _appColors.backgroundColor,
       appBar: CustomAppBar(),
       body: Obx(() {
+        // ignore: invalid_use_of_protected_member, unnecessary_nullable_for_final_variable_declarations
         final List<dynamic>? feedData = _feedController.feedData.value;
         if (feedData != null) {
           return SingleChildScrollView(
@@ -30,7 +31,7 @@ class FeedPage extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.only(top: 10),
                         child: CustomPost(
-                          username: post['id_creator'],
+                          username: post['id_creator']['nick'],
                           postText: post['content'],
                           likes: int.tryParse(post['likes'].toString()) ?? 0,
                         ),

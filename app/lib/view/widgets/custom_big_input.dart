@@ -4,7 +4,9 @@ import '../styles/app_colors.dart';
 
 class CustomBigInput extends StatelessWidget {
   final String inputTittle;
-  CustomBigInput({super.key, required this.inputTittle});
+  final TextEditingController controller;
+  CustomBigInput(
+      {super.key, required this.inputTittle, required this.controller});
 
   final AppColors _appColors = Get.find();
 
@@ -33,6 +35,7 @@ class CustomBigInput extends StatelessWidget {
               scrollDirection: Axis.vertical,
               child: TextField(
                 maxLines: 16,
+                controller: controller,
                 decoration: InputDecoration(
                   contentPadding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 16),

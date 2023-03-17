@@ -2,12 +2,17 @@ import 'package:app/view/widgets/custom_big_input.dart';
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_big_button.dart';
+import 'package:app/model/feed_functions/new_post.dart';
+import '../../view-model/services/new_post_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
+import '../../model/authentication/token.dart';
 
 class NewPostPage extends StatelessWidget {
-  const NewPostPage({super.key});
+  NewPostPage({super.key});
+  final TextEditingController _postController = TextEditingController();
+  dynamic sendToken = "";
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +32,20 @@ class NewPostPage extends StatelessWidget {
                 margin: const EdgeInsets.only(top: 30, bottom: 50),
                 child: Column(
                   children: [
-                    CustomBigInput(inputTittle: 'Nova Publicação:'),
+                    CustomBigInput(
+                      inputTittle: 'Nova Publicação:',
+                      controller: _postController,
+                    ),
                     const Spacer(),
-                    CustomBigButton(
-                      tittleBtn: 'PUBLICAR',
-                      customMargin: 15,
-                      function: () => Get.toNamed('/feed'),
+                    GetBuilder<Token>(
+                      builder: (token) => CustomBigButton(
+                        tittleBtn: 'PUBLICAR',
+                        customMargin: 15,
+                        function: () => {
+                          sendToken = Get.find<Token>().token,
+                          new_post(_postController.text, sendToken),
+                        },
+                      ),
                     ),
                   ],
                 ),

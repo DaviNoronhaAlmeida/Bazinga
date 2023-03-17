@@ -62,7 +62,7 @@ class RegisterPage extends StatelessWidget {
                   customMargin: 70,
                   function: () => {
                     register(_nameController.text, _emailController.text,
-                        _passwordController.text),
+                        _passwordController.text, context),
                   },
                 ),
                 CustomTextButton(

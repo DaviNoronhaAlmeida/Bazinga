@@ -3,12 +3,14 @@ import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_post.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../view-model/utils/user_info.dart';
 import '../styles/app_colors.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
 
   final AppColors _appColors = Get.find();
+  final userName = Get.find<Info>().name;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class ProfilePage extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 10),
                     child: RichText(
                       text: TextSpan(
-                        text: 'Nome do Usuário',
+                        text: userName,
                         style: TextStyle(
                           fontFamily: 'Roboto',
                           fontWeight: FontWeight.w400,

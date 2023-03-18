@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:get/get.dart';
-import './token.dart';
+import '../../view-model/utils/token.dart';
 import 'package:http/http.dart' as http;
 
 Future<Map<String, dynamic>> loginReq(

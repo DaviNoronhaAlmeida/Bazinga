@@ -56,7 +56,7 @@ class LoginPage extends StatelessWidget {
                     init: Token(),
                     builder: (tokenController) {
                       return CustomSmallButton(
-                        tittleBtn: 'LOGIN',
+                        tittleBtn: 'ENTRAR',
                         customMargin: 80,
                         function: () => {
                           login(_emailController.text, _passwordController.text,

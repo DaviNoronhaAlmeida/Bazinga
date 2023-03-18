@@ -52,7 +52,7 @@ class CustomPost extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 color: _appColors.bgPostsColor,
-                borderRadius: const BorderRadius.all(Radius.circular(50)),
+                borderRadius: const BorderRadius.all(Radius.circular(30)),
                 boxShadow: [
                   BoxShadow(
                     color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.5),
@@ -63,10 +63,10 @@ class CustomPost extends StatelessWidget {
               ),
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 40, horizontal: 30),
+                    const EdgeInsets.symmetric(vertical: 30, horizontal: 25),
                 child: Text(
                   postText,
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.start,
                   style: TextStyle(
                     fontFamily: 'Roboto',
                     fontWeight: FontWeight.w400,

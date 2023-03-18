@@ -1,3 +1,4 @@
+import 'package:app/view-model/services/delete_user_service.dart';
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_input.dart';
@@ -80,9 +81,9 @@ class DeleteProfilePage extends StatelessWidget {
                   const Spacer(),
                   const Spacer(),
                   CustomBigButton(
-                    tittleBtn: 'SALVAR',
+                    tittleBtn: 'EXCLUIR',
                     customMargin: 0,
-                    function: () => Get.back(),
+                    function: () => delete(context),
                   ),
                 ],
               ),

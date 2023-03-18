@@ -15,7 +15,7 @@ void register(
 
     if (data['status'] == 200) {
       // ignore: use_build_context_synchronously
-      showCustomDialog(context);
+      showCustomDialog(context, 'Cadastrado com sucesso!', 'ENTRAR');
     } else {
       CustomSnackBar.show(data['content']['message']);
     }

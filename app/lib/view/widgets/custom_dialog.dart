@@ -3,7 +3,7 @@ import 'package:app/view/widgets/custom_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-showCustomDialog(BuildContext context) {
+showCustomDialog(BuildContext context, String text, String btnText) {
   // ignore: no_leading_underscores_for_local_identifiers
   final AppColors _appColors = Get.find();
 
@@ -24,7 +24,7 @@ showCustomDialog(BuildContext context) {
                 margin:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
                 child: Text(
-                  'Cadastrado com sucesso!',
+                  text,
                   style: TextStyle(
                     fontFamily: 'Roboto',
                     color: _appColors.textColor,
@@ -34,7 +34,7 @@ showCustomDialog(BuildContext context) {
                 ),
               ),
               CustomTextButton(
-                tittle: 'ENTRAR',
+                tittle: btnText,
                 function: () => Get.toNamed('/'),
               )
             ],

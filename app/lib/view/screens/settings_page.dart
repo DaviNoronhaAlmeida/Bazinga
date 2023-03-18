@@ -1,3 +1,4 @@
+import 'package:app/view-model/utils/user_info.dart';
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_settings_option.dart';
@@ -8,6 +9,7 @@ import '../styles/app_colors.dart';
 class SettingsPage extends StatelessWidget {
   SettingsPage({super.key});
   final AppColors _appColors = Get.find();
+  final userName = Get.find<Info>().name;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class SettingsPage extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 10),
                       child: RichText(
                         text: TextSpan(
-                          text: 'Nome do Usuário',
+                          text: userName,
                           style: TextStyle(
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400,

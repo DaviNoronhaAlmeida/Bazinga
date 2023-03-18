@@ -6,7 +6,7 @@ import '../../view-model/services/new_post_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
-import '../../model/authentication/token.dart';
+import '../../view-model/utils/token.dart';
 
 // ignore: must_be_immutable
 class NewPostPage extends StatelessWidget {

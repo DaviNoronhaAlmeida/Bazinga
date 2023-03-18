@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../view-model/services/login_service.dart';
 import '../styles/app_colors.dart';
-import '../../model/authentication/token.dart';
+import '../../view-model/utils/token.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});

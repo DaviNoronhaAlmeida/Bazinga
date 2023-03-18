@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../view-model/utils/user_info.dart';
 import '../styles/app_colors.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   CustomAppBar({super.key});
   final AppColors _appColors = Get.find();
+  final userName = Get.find<Info>().name;
 
   @override
   Size get preferredSize => const Size.fromHeight(55.0);
@@ -32,11 +34,11 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           ),
           const SizedBox(width: 10),
           Text(
-            'Usuário',
+            userName,
             style: TextStyle(
               fontFamily: 'Roboto',
               color: _appColors.textBtnColor,
-              fontSize: 13,
+              fontSize: 14,
               fontWeight: FontWeight.w500,
             ),
           ),

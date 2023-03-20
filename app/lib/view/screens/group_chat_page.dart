@@ -17,7 +17,7 @@ class GroupChatPage extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        backgroundColor: _appColors.backgroundColor,
+        backgroundColor: _appColors.backgroundColor.value,
         appBar: CustomAppBar(),
         body: Stack(
           children: [
@@ -89,18 +89,20 @@ class GroupChatPage extends StatelessWidget {
                                     const EdgeInsets.symmetric(horizontal: 12),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                      color: _appColors.redColor, width: 2),
+                                      color: _appColors.redColor.value,
+                                      width: 2),
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                      color: _appColors.redColor, width: 2),
+                                      color: _appColors.redColor.value,
+                                      width: 2),
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
                               ),
                               style: TextStyle(
                                 fontFamily: 'Roboto',
-                                color: _appColors.textColor,
+                                color: _appColors.textColor.value,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -111,7 +113,7 @@ class GroupChatPage extends StatelessWidget {
                             height: 40,
                             alignment: Alignment.bottomLeft,
                             child: FloatingActionButton(
-                              backgroundColor: _appColors.redColor,
+                              backgroundColor: _appColors.redColor.value,
                               onPressed: () {},
                               child: const Icon(Icons.arrow_forward, size: 30),
                             ),
@@ -132,7 +134,7 @@ class GroupChatPage extends StatelessWidget {
               child: SizedBox(
                 width: 40,
                 child: FloatingActionButton(
-                  backgroundColor: _appColors.redColor,
+                  backgroundColor: _appColors.redColor.value,
                   onPressed: () {
                     Get.toNamed('/editGroup');
                   },

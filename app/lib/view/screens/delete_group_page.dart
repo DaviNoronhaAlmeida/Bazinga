@@ -13,7 +13,7 @@ class DeleteGroupPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: _appColors.backgroundColor,
+      backgroundColor: _appColors.backgroundColor.value,
       appBar: CustomAppBar(),
       body: Stack(
         children: [
@@ -39,7 +39,7 @@ class DeleteGroupPage extends StatelessWidget {
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400,
                             fontSize: 30,
-                            color: _appColors.textColor,
+                            color: _appColors.textColor.value,
                           ),
                         ),
                       ),
@@ -54,7 +54,7 @@ class DeleteGroupPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: 'Roboto',
-                    color: _appColors.textColor,
+                    color: _appColors.textColor.value,
                     fontSize: 40,
                     fontWeight: FontWeight.w300,
                   ),
@@ -65,7 +65,7 @@ class DeleteGroupPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: 'Roboto',
-                    color: _appColors.descriptionColor,
+                    color: _appColors.descriptionColor.value,
                     fontSize: 35,
                     fontWeight: FontWeight.w300,
                   ),
@@ -89,7 +89,7 @@ class DeleteGroupPage extends StatelessWidget {
             child: SizedBox(
               width: 40,
               child: FloatingActionButton(
-                backgroundColor: _appColors.redColor,
+                backgroundColor: _appColors.redColor.value,
                 onPressed: () {
                   Navigator.pop(context);
                 },

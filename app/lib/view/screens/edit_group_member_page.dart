@@ -25,7 +25,7 @@ class EditGroupMemberPage extends StatelessWidget {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: _appColors.backgroundColor,
+        backgroundColor: _appColors.backgroundColor.value,
         appBar: CustomAppBar(),
         body: Stack(
           children: [
@@ -51,7 +51,7 @@ class EditGroupMemberPage extends StatelessWidget {
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400,
                               fontSize: 30,
-                              color: _appColors.textColor,
+                              color: _appColors.textColor.value,
                             ),
                           ),
                         ),
@@ -99,8 +99,8 @@ class EditGroupMemberPage extends StatelessWidget {
                   const Spacer(),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 40),
-                    child:
-                        Divider(color: _appColors.dividerColor, thickness: 2),
+                    child: Divider(
+                        color: _appColors.dividerColor.value, thickness: 2),
                   ),
                   Align(
                     alignment: Alignment.topLeft,
@@ -115,7 +115,7 @@ class EditGroupMemberPage extends StatelessWidget {
                                 fontFamily: 'Roboto',
                                 fontWeight: FontWeight.w400,
                                 fontSize: 18,
-                                color: _appColors.descriptionColor,
+                                color: _appColors.descriptionColor.value,
                               ),
                             ),
                           ),
@@ -163,7 +163,7 @@ class EditGroupMemberPage extends StatelessWidget {
               child: SizedBox(
                 width: 40,
                 child: FloatingActionButton(
-                  backgroundColor: _appColors.redColor,
+                  backgroundColor: _appColors.redColor.value,
                   onPressed: () {
                     Navigator.pop(context);
                   },

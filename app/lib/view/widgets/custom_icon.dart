@@ -18,7 +18,7 @@ class ChooseIcon extends StatelessWidget {
               SingleChildScrollView(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: _appColors.bgPostsColor,
+                    color: _appColors.bgPostsColor.value,
                     boxShadow: [
                       BoxShadow(
                         color:

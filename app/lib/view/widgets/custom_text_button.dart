@@ -19,7 +19,7 @@ class CustomTextButton extends StatelessWidget {
           tittle,
           style: TextStyle(
             fontFamily: 'Roboto',
-            color: _appColors.redColor,
+            color: _appColors.redColor.value,
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),

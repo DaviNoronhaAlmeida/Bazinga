@@ -16,34 +16,36 @@ class CustomSettingsOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.centerLeft,
-      width: 304,
-      child: TextButton(
-        onPressed: function,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              tittle,
-              style: TextStyle(
-                fontFamily: 'Roboto',
-                color: _appColors.textColor,
-                fontSize: 22,
-                fontWeight: FontWeight.w400,
+    return Obx(
+      () => Container(
+        alignment: Alignment.centerLeft,
+        width: 304,
+        child: TextButton(
+          onPressed: function,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                tittle,
+                style: TextStyle(
+                  fontFamily: 'Roboto',
+                  color: _appColors.textColor.value,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              description,
-              style: TextStyle(
-                fontFamily: 'Roboto',
-                color: _appColors.descriptionColor,
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
+              const SizedBox(height: 8),
+              Text(
+                description,
+                style: TextStyle(
+                  fontFamily: 'Roboto',
+                  color: _appColors.descriptionColor.value,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

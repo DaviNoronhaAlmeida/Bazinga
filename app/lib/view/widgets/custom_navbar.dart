@@ -8,68 +8,70 @@ class CustomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 45,
-      decoration: BoxDecoration(
-        color: _appColors.barColor,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          TextButton(
-            onPressed: () => Get.toNamed('/feed'),
-            child: Icon(
-              Icons.home_outlined,
-              color: _appColors.redColor,
-              size: 25,
+    return Obx(
+      () => Container(
+        height: 45,
+        decoration: BoxDecoration(
+          color: _appColors.barColor.value,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            TextButton(
+              onPressed: () => {Get.toNamed('/feed')},
+              child: Icon(
+                Icons.home_outlined,
+                color: _appColors.redColor.value,
+                size: 25,
+              ),
             ),
-          ),
-          Container(
-            height: 25,
-            width: 2,
-            decoration: BoxDecoration(
-              color: _appColors.bgPostsColor,
+            Container(
+              height: 25,
+              width: 2,
+              decoration: BoxDecoration(
+                color: _appColors.dividerColor.value,
+              ),
             ),
-          ),
-          TextButton(
-            onPressed: () => Get.toNamed('/groupHome'),
-            child: Icon(
-              Icons.groups_outlined,
-              color: _appColors.redColor,
-              size: 25,
+            TextButton(
+              onPressed: () => Get.toNamed('/groupHome'),
+              child: Icon(
+                Icons.groups_outlined,
+                color: _appColors.redColor.value,
+                size: 25,
+              ),
             ),
-          ),
-          Container(
-            height: 25,
-            width: 2,
-            decoration: BoxDecoration(
-              color: _appColors.bgPostsColor,
+            Container(
+              height: 25,
+              width: 2,
+              decoration: BoxDecoration(
+                color: _appColors.dividerColor.value,
+              ),
             ),
-          ),
-          TextButton(
-            onPressed: () => Get.toNamed('/profile'),
-            child: Icon(
-              Icons.person_outline,
-              color: _appColors.redColor,
-              size: 25,
+            TextButton(
+              onPressed: () => Get.toNamed('/profile'),
+              child: Icon(
+                Icons.person_outline,
+                color: _appColors.redColor.value,
+                size: 25,
+              ),
             ),
-          ),
-          Container(
-            height: 25,
-            width: 2,
-            decoration: BoxDecoration(
-              color: _appColors.bgPostsColor,
+            Container(
+              height: 25,
+              width: 2,
+              decoration: BoxDecoration(
+                color: _appColors.dividerColor.value,
+              ),
             ),
-          ),
-          TextButton(
-            onPressed: () => Get.toNamed('/settings'),
-            child: Icon(
-              Icons.settings_outlined,
-              color: _appColors.redColor,
-              size: 25,
+            TextButton(
+              onPressed: () => Get.toNamed('/settings'),
+              child: Icon(
+                Icons.settings_outlined,
+                color: _appColors.redColor.value,
+                size: 25,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

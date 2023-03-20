@@ -22,7 +22,7 @@ class AddMember extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 10),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: _appColors.bgPostsColor,
+                    color: _appColors.bgPostsColor.value,
                     borderRadius: const BorderRadius.all(Radius.circular(50)),
                     boxShadow: [
                       BoxShadow(
@@ -53,7 +53,7 @@ class AddMember extends StatelessWidget {
                                   fontFamily: 'Roboto',
                                   fontWeight: FontWeight.w400,
                                   fontSize: 20,
-                                  color: _appColors.textColor,
+                                  color: _appColors.textColor.value,
                                 ),
                               ),
                             ),

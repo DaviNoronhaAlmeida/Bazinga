@@ -23,7 +23,7 @@ class CustomBigInput extends StatelessWidget {
               inputTittle,
               style: TextStyle(
                 fontFamily: 'Roboto',
-                color: _appColors.textColor,
+                color: _appColors.textColor.value,
                 fontSize: 19,
                 fontWeight: FontWeight.w400,
               ),
@@ -34,25 +34,25 @@ class CustomBigInput extends StatelessWidget {
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: TextField(
-                maxLines: 16,
+                maxLines: 10,
                 controller: controller,
                 decoration: InputDecoration(
                   contentPadding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
                   enabledBorder: OutlineInputBorder(
                     borderSide:
-                        BorderSide(color: _appColors.redColor, width: 2),
+                        BorderSide(color: _appColors.redColor.value, width: 2),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide:
-                        BorderSide(color: _appColors.redColor, width: 2),
+                        BorderSide(color: _appColors.redColor.value, width: 2),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
                 style: TextStyle(
                   fontFamily: 'Roboto',
-                  color: _appColors.textColor,
+                  color: _appColors.textColor.value,
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
                 ),

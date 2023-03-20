@@ -15,7 +15,7 @@ class EditGroupIconPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: _appColors.backgroundColor,
+      backgroundColor: _appColors.backgroundColor.value,
       appBar: CustomAppBar(),
       body: Stack(
         children: [
@@ -41,7 +41,7 @@ class EditGroupIconPage extends StatelessWidget {
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400,
                             fontSize: 30,
-                            color: _appColors.textColor,
+                            color: _appColors.textColor.value,
                           ),
                         ),
                       ),
@@ -58,7 +58,7 @@ class EditGroupIconPage extends StatelessWidget {
                       'Ícones:',
                       style: TextStyle(
                         fontFamily: 'Roboto',
-                        color: _appColors.textColor,
+                        color: _appColors.textColor.value,
                         fontSize: 19,
                         fontWeight: FontWeight.w400,
                       ),
@@ -100,7 +100,7 @@ class EditGroupIconPage extends StatelessWidget {
             child: SizedBox(
               width: 40,
               child: FloatingActionButton(
-                backgroundColor: _appColors.redColor,
+                backgroundColor: _appColors.redColor.value,
                 onPressed: () {
                   Navigator.pop(context);
                 },

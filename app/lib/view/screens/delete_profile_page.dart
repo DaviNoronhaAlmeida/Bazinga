@@ -24,7 +24,7 @@ class DeleteProfilePage extends StatelessWidget {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: _appColors.backgroundColor,
+        backgroundColor: _appColors.backgroundColor.value,
         appBar: CustomAppBar(),
         body: Stack(
           children: [
@@ -50,7 +50,7 @@ class DeleteProfilePage extends StatelessWidget {
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400,
                               fontSize: 30,
-                              color: _appColors.textColor,
+                              color: _appColors.textColor.value,
                             ),
                           ),
                         ),
@@ -65,7 +65,7 @@ class DeleteProfilePage extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: 'Roboto',
-                      color: _appColors.textColor,
+                      color: _appColors.textColor.value,
                       fontSize: 30,
                       fontWeight: FontWeight.w300,
                     ),
@@ -96,7 +96,7 @@ class DeleteProfilePage extends StatelessWidget {
               child: SizedBox(
                 width: 40,
                 child: FloatingActionButton(
-                  backgroundColor: _appColors.redColor,
+                  backgroundColor: _appColors.redColor.value,
                   onPressed: () {
                     Navigator.pop(context);
                   },

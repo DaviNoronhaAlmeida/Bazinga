@@ -2,31 +2,74 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AppColors extends GetxController {
-  Color textBtnColor = const Color.fromRGBO(255, 255, 255, 1);
-  Color redColor = const Color.fromRGBO(228, 64, 64, 1);
+  final textBtnColor = const Color.fromRGBO(255, 255, 255, 1).obs;
+  final redColor = const Color.fromRGBO(228, 64, 64, 1).obs;
+  var isDarkMode = true.obs;
 
-  static const darkBarColor = Color.fromRGBO(25, 14, 79, 1);
-  static const darkBackgroundColor = Color.fromRGBO(3, 1, 44, 1);
-  static const darkBgPostsColor = Color.fromRGBO(26, 32, 62, 1);
-  static const darkTextColor = Color.fromRGBO(255, 255, 255, 1);
-  static const darkDescriptionColor = Color.fromRGBO(255, 255, 255, 0.6);
-  static const darkDivider = Color.fromRGBO(26, 32, 62, 1);
+  static final darkBarColor = Color.fromRGBO(25, 14, 79, 1);
+  static final darkBackgroundColor = Color.fromRGBO(3, 1, 44, 1);
+  static final darkBgPostsColor = Color.fromRGBO(26, 32, 62, 1);
+  static final darkTextColor = Color.fromRGBO(255, 255, 255, 1);
+  static final darkDescriptionColor = Color.fromRGBO(255, 255, 255, 0.6);
+  static final darkDivider = Color.fromRGBO(26, 32, 62, 1);
+  static const darkSettingsDescription = 'Tema Escuro';
 
-  static const lightBarColor = Color.fromRGBO(54, 54, 54, 1);
-  static const lightBackgroundColor = Color.fromRGBO(245, 245, 245, 1);
-  static const lightBgPostsColor = Color.fromRGBO(225, 225, 225, 1);
-  static const lightTextColor = Color.fromARGB(0, 0, 0, 1);
-  static const lightDescriptionColor = Color.fromRGBO(0, 0, 0, 0.6);
+  static final lightBarColor = Color.fromRGBO(54, 54, 54, 1);
+  static final lightBackgroundColor = Color.fromRGBO(245, 245, 245, 1);
+  static final lightBgPostsColor = Color.fromRGBO(225, 225, 225, 1);
+  static final lightTextColor = Color.fromRGBO(8, 8, 8, 1);
+  static final lightDescriptionColor = Color.fromRGBO(0, 0, 0, 0.6);
+  static final lightDivider = Color.fromRGBO(86, 86, 86, 1);
+  static const lightSettingsDescription = 'Tema Claro';
 
-  dynamic barColor = darkBarColor;
-  dynamic backgroundColor = darkBackgroundColor;
-  dynamic bgPostsColor = darkBgPostsColor;
-  dynamic textColor = darkTextColor;
-  dynamic descriptionColor = darkDescriptionColor;
-  dynamic dividerColor = darkDivider;
+  final barColor = darkBarColor.obs;
+  final backgroundColor = darkBackgroundColor.obs;
+  final bgPostsColor = darkBgPostsColor.obs;
+  final textColor = darkTextColor.obs;
+  final descriptionColor = darkDescriptionColor.obs;
+  final dividerColor = darkDivider.obs;
+  final settingsDescription = darkSettingsDescription.obs;
 
-  void change() {
-    /* backgroundColor = const Color.fromRGBO(245, 245, 245, 1);
-    update(); */
+  /* void change() {
+    if (settingsDescription.value == darkSettingsDescription) {
+      barColor.value = lightBarColor;
+      backgroundColor.value = lightBackgroundColor;
+      bgPostsColor.value = lightBgPostsColor;
+      textColor.value = lightTextColor;
+      descriptionColor.value = lightDescriptionColor;
+      dividerColor.value = lightDivider;
+      settingsDescription.value = lightSettingsDescription;
+      print('mudou para claro');
+    } else {
+      barColor.value = darkBarColor;
+      backgroundColor.value = darkBackgroundColor;
+      bgPostsColor.value = darkBgPostsColor;
+      textColor.value = darkTextColor;
+      descriptionColor.value = darkDescriptionColor;
+      dividerColor.value = darkDivider;
+      settingsDescription.value = darkSettingsDescription;
+      print('mudou para escuro');
+    }
+  } */
+
+  void updateColors() {
+    isDarkMode.value = !isDarkMode.value;
+    if (isDarkMode.value) {
+      barColor.value = lightBarColor;
+      backgroundColor.value = lightBackgroundColor;
+      bgPostsColor.value = lightBgPostsColor;
+      textColor.value = lightTextColor;
+      descriptionColor.value = lightDescriptionColor;
+      dividerColor.value = lightDivider;
+      settingsDescription.value = lightSettingsDescription;
+    } else {
+      barColor.value = darkBarColor;
+      backgroundColor.value = darkBackgroundColor;
+      bgPostsColor.value = darkBgPostsColor;
+      textColor.value = darkTextColor;
+      descriptionColor.value = darkDescriptionColor;
+      dividerColor.value = darkDivider;
+      settingsDescription.value = darkSettingsDescription;
+    }
   }
 }

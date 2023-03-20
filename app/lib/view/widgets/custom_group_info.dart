@@ -31,7 +31,7 @@ class GroupInfo extends StatelessWidget {
                   },
                   child: Container(
                     decoration: BoxDecoration(
-                      color: _appColors.bgPostsColor,
+                      color: _appColors.bgPostsColor.value,
                       borderRadius: const BorderRadius.all(Radius.circular(50)),
                       boxShadow: [
                         BoxShadow(
@@ -65,7 +65,7 @@ class GroupInfo extends StatelessWidget {
                                         fontFamily: 'Roboto',
                                         fontWeight: FontWeight.w400,
                                         fontSize: 18,
-                                        color: _appColors.textColor,
+                                        color: _appColors.textColor.value,
                                       ),
                                     ),
                                   ),
@@ -80,7 +80,7 @@ class GroupInfo extends StatelessWidget {
                                       fontFamily: 'Roboto',
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14,
-                                      color: _appColors.descriptionColor,
+                                      color: _appColors.descriptionColor.value,
                                     ),
                                   ),
                                 ),

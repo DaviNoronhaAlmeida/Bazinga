@@ -5,48 +5,71 @@ import 'package:app/view/widgets/custom_post.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'dart:core';
 
 class FeedPage extends StatelessWidget {
   FeedPage({super.key});
 
   final AppColors _appColors = Get.find();
   final FeedController _feedController = Get.put(FeedController());
+  final RefreshController _refreshController = RefreshController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _appColors.backgroundColor,
+      backgroundColor: _appColors.backgroundColor.value,
       appBar: CustomAppBar(),
       body: Obx(() {
-        // ignore: invalid_use_of_protected_member, unnecessary_nullable_for_final_variable_declarations
         final List<dynamic>? feedData = _feedController.feedData.value;
         if (feedData != null) {
-          return SingleChildScrollView(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                for (var post in feedData)
-                  Column(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: CustomPost(
-                          username: post['id_creator']['nick'],
-                          postText: post['content'],
-                          likes: int.tryParse(post['likes'].toString()) ?? 0,
+          return SmartRefresher(
+            controller: RefreshController(),
+            onRefresh: () {
+              Future.delayed(Duration(seconds: 2)).then((_) {
+                _refreshController.refreshCompleted();
+              });
+              _feedController.loadFeed();
+            },
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  for (var post in feedData.reversed)
+                    Column(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: CustomPost(
+                            postId: post['_id'],
+                            username: post['id_creator'] != null
+                                ? post['id_creator']['nick']
+                                : '',
+                            postText: post['content'],
+                            likes: post['likes'] != null
+                                ? post['likes'].length
+                                : 0,
+                            likingUsers: post['likes'] != null
+                                ? List<String>.from(post['likes']
+                                    .map((like) => like['nick'].toString()))
+                                : [],
+                            img: post.containsKey('img') && post['img'] != ""
+                                ? post['img'].toString()
+                                : null,
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 40, vertical: 20),
-                        child: Divider(
-                          color: _appColors.dividerColor,
-                          thickness: 2,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 40, vertical: 20),
+                          child: Divider(
+                            color: _appColors.dividerColor.value,
+                            thickness: 2,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-              ],
+                      ],
+                    ),
+                ],
+              ),
             ),
           );
         } else {
@@ -55,7 +78,7 @@ class FeedPage extends StatelessWidget {
       }),
       bottomNavigationBar: CustomNavBar(),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: _appColors.redColor,
+        backgroundColor: _appColors.redColor.value,
         onPressed: () {
           Get.toNamed('/newPost');
         },

@@ -7,9 +7,10 @@ import 'package:get/get.dart';
 import '../styles/app_colors.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'dart:core';
-import 'dart:async';
 
 class FeedPage extends StatelessWidget {
+  FeedPage({super.key});
+
   final AppColors _appColors = Get.find();
   final FeedController _feedController = Get.put(FeedController());
   final RefreshController _refreshController = RefreshController();

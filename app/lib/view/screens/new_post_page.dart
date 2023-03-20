@@ -37,13 +37,14 @@ class _NewPostPageState extends State<NewPostPage> {
       });
       return File(pickedFile.path);
     } else {
-      final path = '';
-      return File(path);
+      imagePath = '';
+      return File(imagePath);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    String serverPath;
     return GetBuilder<AppColors>(
       init: AppColors(),
       builder: (_) {
@@ -91,9 +92,16 @@ class _NewPostPageState extends State<NewPostPage> {
                         customMargin: 15,
                         function: () async {
                           sendToken = Get.find<Token>().token;
-                          final serverPath = await uploadImg(imagePath);
-                          newPost(_postController.text.trim(), sendToken,
-                              serverPath['content']['url']);
+                          if (imagePath != '') {
+                            final serverPath = await uploadImg(imagePath);
+                            newPost(_postController.text.trim(), sendToken,
+                                serverPath['content']['url']);
+                          } else {
+                            serverPath = '';
+                            newPost(_postController.text.trim(), sendToken,
+                                serverPath);
+                          }
+                          ;
                           Get.find<FeedController>()
                               .refreshController
                               .requestRefresh();

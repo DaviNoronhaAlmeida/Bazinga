@@ -54,10 +54,13 @@ class ProfilePage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.only(top: 10),
               child: CustomPost(
-                  username: 'Usuário',
-                  postText:
-                      'Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.',
-                  likes: 1),
+                postId: 'id',
+                username: 'Usuário',
+                postText:
+                    'Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.Textinho de Post.',
+                likes: 1,
+                likingUsers: [],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -66,7 +69,12 @@ class ProfilePage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.only(top: 10),
               child: CustomPost(
-                  username: 'Usuário', postText: 'Textinho de Post.', likes: 1),
+                postId: 'id',
+                username: 'Usuário',
+                postText: 'Textinho de Post.',
+                likes: 1,
+                likingUsers: [],
+              ),
             ),
           ],
         ),

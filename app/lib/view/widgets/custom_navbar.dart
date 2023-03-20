@@ -17,7 +17,7 @@ class CustomNavBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           TextButton(
-            onPressed: () => Get.toNamed('/feed'),
+            onPressed: () => {Get.toNamed('/feed')},
             child: Icon(
               Icons.home_outlined,
               color: _appColors.redColor,

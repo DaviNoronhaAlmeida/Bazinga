@@ -34,7 +34,7 @@ class CustomBigInput extends StatelessWidget {
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: TextField(
-                maxLines: 16,
+                maxLines: 10,
                 controller: controller,
                 decoration: InputDecoration(
                   contentPadding:

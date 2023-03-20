@@ -9,8 +9,10 @@ import '../../view-model/utils/token.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController()
+    ..text = "leo@poldo.com";
+  final TextEditingController _passwordController = TextEditingController()
+    ..text = "123456";
 
   @override
   Widget build(BuildContext context) {

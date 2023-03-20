@@ -22,7 +22,7 @@ class CustomInput extends StatelessWidget {
             inputTittle,
             style: TextStyle(
               fontFamily: 'Roboto',
-              color: _appColors.textColor,
+              color: _appColors.textColor.value,
               fontSize: 19,
               fontWeight: FontWeight.w400,
             ),
@@ -39,17 +39,19 @@ class CustomInput extends StatelessWidget {
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.symmetric(horizontal: 12),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: _appColors.redColor, width: 2),
+                borderSide:
+                    BorderSide(color: _appColors.redColor.value, width: 2),
                 borderRadius: BorderRadius.circular(10.0),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: _appColors.redColor, width: 2),
+                borderSide:
+                    BorderSide(color: _appColors.redColor.value, width: 2),
                 borderRadius: BorderRadius.circular(10.0),
               ),
             ),
             style: TextStyle(
               fontFamily: 'Roboto',
-              color: _appColors.textColor,
+              color: _appColors.textColor.value,
               fontSize: 16,
               fontWeight: FontWeight.w400,
             ),

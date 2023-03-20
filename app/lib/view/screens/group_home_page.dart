@@ -13,7 +13,7 @@ class GroupHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _appColors.backgroundColor,
+      backgroundColor: _appColors.backgroundColor.value,
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -47,7 +47,7 @@ class GroupHomePage extends StatelessWidget {
       ),
       bottomNavigationBar: CustomNavBar(),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: _appColors.redColor,
+        backgroundColor: _appColors.redColor.value,
         onPressed: () {
           Get.toNamed('/newGroup');
         },

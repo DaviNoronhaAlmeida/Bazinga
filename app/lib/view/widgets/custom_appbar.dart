@@ -14,7 +14,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: _appColors.barColor,
+      backgroundColor: _appColors.barColor.value,
       leading: Container(
         margin: const EdgeInsets.all(8),
         decoration: const BoxDecoration(
@@ -37,7 +37,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             userName,
             style: TextStyle(
               fontFamily: 'Roboto',
-              color: _appColors.textBtnColor,
+              color: _appColors.textBtnColor.value,
               fontSize: 14,
               fontWeight: FontWeight.w500,
             ),

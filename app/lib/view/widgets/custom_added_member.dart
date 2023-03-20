@@ -22,7 +22,7 @@ class AddedMember extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 10),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: _appColors.bgPostsColor,
+                    color: _appColors.bgPostsColor.value,
                     borderRadius: const BorderRadius.all(Radius.circular(5)),
                     boxShadow: [
                       BoxShadow(
@@ -53,7 +53,7 @@ class AddedMember extends StatelessWidget {
                                     fontFamily: 'Roboto',
                                     fontWeight: FontWeight.w400,
                                     fontSize: 16,
-                                    color: _appColors.textColor,
+                                    color: _appColors.textColor.value,
                                   ),
                                 ),
                               ),
@@ -68,7 +68,7 @@ class AddedMember extends StatelessWidget {
                           onTap: () {},
                           child: Icon(
                             Icons.close,
-                            color: _appColors.redColor,
+                            color: _appColors.redColor.value,
                           ),
                         ),
                       ),

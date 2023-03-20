@@ -11,7 +11,7 @@ showCustomDialog(BuildContext context, String text, String btnText) {
     context: context,
     builder: (BuildContext context) {
       return Dialog(
-        backgroundColor: _appColors.backgroundColor,
+        backgroundColor: _appColors.backgroundColor.value,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
@@ -27,7 +27,7 @@ showCustomDialog(BuildContext context, String text, String btnText) {
                   text,
                   style: TextStyle(
                     fontFamily: 'Roboto',
-                    color: _appColors.textColor,
+                    color: _appColors.textColor.value,
                     fontSize: 21,
                     fontWeight: FontWeight.w400,
                   ),

@@ -23,7 +23,7 @@ class CustomSmallButton extends StatelessWidget {
       height: 42,
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: _appColors.redColor,
+          backgroundColor: _appColors.redColor.value,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -34,7 +34,7 @@ class CustomSmallButton extends StatelessWidget {
             tittleBtn,
             style: TextStyle(
               fontFamily: 'Roboto',
-              color: _appColors.textBtnColor,
+              color: _appColors.textBtnColor.value,
               fontSize: 19,
               fontWeight: FontWeight.w400,
             ),

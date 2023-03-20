@@ -12,7 +12,7 @@ class EditGroupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _appColors.backgroundColor,
+      backgroundColor: _appColors.backgroundColor.value,
       appBar: CustomAppBar(),
       body: Stack(
         children: [
@@ -37,7 +37,7 @@ class EditGroupPage extends StatelessWidget {
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400,
                             fontSize: 30,
-                            color: _appColors.textColor,
+                            color: _appColors.textColor.value,
                           ),
                         ),
                       ),
@@ -77,7 +77,7 @@ class EditGroupPage extends StatelessWidget {
             child: SizedBox(
               width: 40,
               child: FloatingActionButton(
-                backgroundColor: _appColors.redColor,
+                backgroundColor: _appColors.redColor.value,
                 onPressed: () {
                   Navigator.pop(context);
                 },

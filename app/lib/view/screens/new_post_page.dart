@@ -55,7 +55,7 @@ class _NewPostPageState extends State<NewPostPage> {
           child: Scaffold(
             appBar: CustomAppBar(),
             resizeToAvoidBottomInset: false,
-            backgroundColor: _.backgroundColor,
+            backgroundColor: _.backgroundColor.value,
             body: Center(
               child: Container(
                 margin: const EdgeInsets.only(top: 30, bottom: 50),
@@ -80,7 +80,7 @@ class _NewPostPageState extends State<NewPostPage> {
                       child: Text('ADICIONAR IMAGEM'),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
-                          _.redColor,
+                          _.redColor.value,
                         ),
                       ),
                     ),

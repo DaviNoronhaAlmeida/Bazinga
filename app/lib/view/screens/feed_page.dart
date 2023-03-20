@@ -18,7 +18,7 @@ class FeedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _appColors.backgroundColor,
+      backgroundColor: _appColors.backgroundColor.value,
       appBar: CustomAppBar(),
       body: Obx(() {
         final List<dynamic>? feedData = _feedController.feedData.value;
@@ -62,7 +62,7 @@ class FeedPage extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 40, vertical: 20),
                           child: Divider(
-                            color: _appColors.dividerColor,
+                            color: _appColors.dividerColor.value,
                             thickness: 2,
                           ),
                         ),
@@ -78,7 +78,7 @@ class FeedPage extends StatelessWidget {
       }),
       bottomNavigationBar: CustomNavBar(),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: _appColors.redColor,
+        backgroundColor: _appColors.redColor.value,
         onPressed: () {
           Get.toNamed('/newPost');
         },

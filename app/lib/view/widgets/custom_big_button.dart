@@ -23,7 +23,7 @@ class CustomBigButton extends StatelessWidget {
       height: 65,
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: _appColors.redColor,
+          backgroundColor: _appColors.redColor.value,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -33,7 +33,7 @@ class CustomBigButton extends StatelessWidget {
           child: Text(
             tittleBtn,
             style: TextStyle(
-              color: _appColors.textBtnColor,
+              color: _appColors.textBtnColor.value,
               fontSize: 20,
               fontFamily: 'Roboto',
               fontWeight: FontWeight.w400,

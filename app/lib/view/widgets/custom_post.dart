@@ -53,7 +53,7 @@ class CustomPost extends StatelessWidget {
                       fontFamily: 'Roboto',
                       fontWeight: FontWeight.w400,
                       fontSize: 20,
-                      color: _appColors.textColor,
+                      color: _appColors.textColor.value,
                     ),
                   ),
                 ),
@@ -66,7 +66,7 @@ class CustomPost extends StatelessWidget {
             padding: const EdgeInsets.only(top: 10),
             child: Container(
               decoration: BoxDecoration(
-                color: _appColors.bgPostsColor,
+                color: _appColors.bgPostsColor.value,
                 borderRadius: const BorderRadius.all(Radius.circular(30)),
                 boxShadow: [
                   BoxShadow(
@@ -88,15 +88,18 @@ class CustomPost extends StatelessWidget {
                         fontFamily: 'Roboto',
                         fontWeight: FontWeight.w400,
                         fontSize: 20,
-                        color: _appColors.textColor,
+                        color: _appColors.textColor.value,
                       ),
                     ),
                     if (img != null)
-                      SizedBox(
-                        width: 300,
-                        child: Image.network(
-                          '$img',
-                          fit: BoxFit.cover,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: SizedBox(
+                          width: 300,
+                          child: Image.network(
+                            '$img',
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                   ],
@@ -115,7 +118,7 @@ class CustomPost extends StatelessWidget {
                   constraints: BoxConstraints.tight(const Size(20, 20)),
                   iconSize: 20,
                   icon: const Icon(Icons.favorite_border),
-                  color: _appColors.redColor,
+                  color: _appColors.redColor.value,
                   onPressed: () async {
                     final response = await likePostReq(postId);
                     if (response['content'] == '+1') {
@@ -146,7 +149,7 @@ class CustomPost extends StatelessWidget {
                                 context: context,
                                 builder: (BuildContext context) {
                                   return Dialog(
-                                    backgroundColor: _appColors.barColor,
+                                    backgroundColor: _appColors.barColor.value,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30.0),
                                     ),
@@ -197,7 +200,7 @@ class CustomPost extends StatelessWidget {
                                             },
                                             child: Icon(
                                               Icons.close,
-                                              color: _appColors.redColor,
+                                              color: _appColors.redColor.value,
                                             ),
                                           ),
                                         ),
@@ -214,7 +217,7 @@ class CustomPost extends StatelessWidget {
                         overflow: TextOverflow.visible,
                         style: TextStyle(
                           fontFamily: 'Roboto',
-                          color: _appColors.textColor,
+                          color: _appColors.textColor.value,
                         ),
                         textAlign: TextAlign.left,
                       ),

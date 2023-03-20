@@ -13,7 +13,6 @@ Future<Map<String, dynamic>> profileReq() async {
     },
   );
   final jsonResponse = jsonDecode(response.body);
-  print(jsonResponse);
 
   return <String, dynamic>{
     'status': response.statusCode,

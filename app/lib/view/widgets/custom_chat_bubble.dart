@@ -41,7 +41,7 @@ class CustomChat extends StatelessWidget {
                         fontFamily: 'Roboto',
                         fontWeight: FontWeight.w400,
                         fontSize: 20,
-                        color: _appColors.textColor,
+                        color: _appColors.textColor.value,
                       ),
                     ),
                   ),
@@ -55,7 +55,7 @@ class CustomChat extends StatelessWidget {
               child: Container(
                 constraints: const BoxConstraints(maxWidth: 300),
                 decoration: BoxDecoration(
-                  color: _appColors.bgPostsColor,
+                  color: _appColors.bgPostsColor.value,
                   borderRadius: const BorderRadius.all(Radius.circular(50)),
                   boxShadow: [
                     BoxShadow(
@@ -78,7 +78,7 @@ class CustomChat extends StatelessWidget {
                         fontFamily: 'Roboto',
                         fontWeight: FontWeight.w400,
                         fontSize: 20,
-                        color: _appColors.textColor,
+                        color: _appColors.textColor.value,
                       ),
                     ),
                   ),

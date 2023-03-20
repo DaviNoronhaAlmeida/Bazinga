@@ -25,7 +25,7 @@ class LoginPage extends StatelessWidget {
           },
           child: Scaffold(
             resizeToAvoidBottomInset: false,
-            backgroundColor: _.backgroundColor,
+            backgroundColor: _.backgroundColor.value,
             body: Center(
               child: Column(
                 children: [

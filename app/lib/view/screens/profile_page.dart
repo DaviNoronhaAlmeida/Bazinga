@@ -20,7 +20,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _appColors.backgroundColor,
+      backgroundColor: _appColors.backgroundColor.value,
       appBar: CustomAppBar(),
       body: Obx(() {
         final List<dynamic>? profileData = _profileController.profileData.value;
@@ -57,7 +57,7 @@ class ProfilePage extends StatelessWidget {
                                 fontFamily: 'Roboto',
                                 fontWeight: FontWeight.w400,
                                 fontSize: 30,
-                                color: _appColors.textColor,
+                                color: _appColors.textColor.value,
                               ),
                             ),
                           ),
@@ -94,7 +94,7 @@ class ProfilePage extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 40, vertical: 20),
                           child: Divider(
-                            color: _appColors.dividerColor,
+                            color: _appColors.dividerColor.value,
                             thickness: 2,
                           ),
                         ),
@@ -110,7 +110,7 @@ class ProfilePage extends StatelessWidget {
       }),
       bottomNavigationBar: CustomNavBar(),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: _appColors.redColor,
+        backgroundColor: _appColors.redColor.value,
         onPressed: () {
           Get.toNamed('/newPost');
         },

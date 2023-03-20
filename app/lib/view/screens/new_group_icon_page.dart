@@ -18,7 +18,7 @@ class NewGroupIconPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: _appColors.backgroundColor,
+      backgroundColor: _appColors.backgroundColor.value,
       appBar: CustomAppBar(),
       body: Container(
         padding: const EdgeInsets.all(20),
@@ -38,7 +38,7 @@ class NewGroupIconPage extends StatelessWidget {
                   'Ícones:',
                   style: TextStyle(
                     fontFamily: 'Roboto',
-                    color: _appColors.textColor,
+                    color: _appColors.textColor.value,
                     fontSize: 19,
                     fontWeight: FontWeight.w400,
                   ),

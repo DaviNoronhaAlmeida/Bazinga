@@ -20,7 +20,7 @@ class RegisterPage extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        backgroundColor: _appColors.backgroundColor,
+        backgroundColor: _appColors.backgroundColor.value,
         body: SingleChildScrollView(
           child: Center(
             child: Column(

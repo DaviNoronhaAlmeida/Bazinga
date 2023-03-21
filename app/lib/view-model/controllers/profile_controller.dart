@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:app/view/widgets/custom_snackbar.dart';
 import 'package:app/model/feed_functions/profile_req.dart';
+// ignore: depend_on_referenced_packages
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class ProfileController extends GetxController {

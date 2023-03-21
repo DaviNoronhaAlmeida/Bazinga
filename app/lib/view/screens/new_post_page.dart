@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import '../styles/app_colors.dart';
 import '../../view-model/utils/token.dart';
 import 'package:app/view-model/controllers/feed_controller.dart';
+// ignore: depend_on_referenced_packages
 import 'package:image_picker/image_picker.dart';
 import '../../model/feed_functions/upload_img.dart';
 import 'dart:io';
@@ -77,12 +78,12 @@ class _NewPostPageState extends State<NewPostPage> {
                     //UPLOAD IMAGEM
                     ElevatedButton(
                       onPressed: _getImage,
-                      child: Text('ADICIONAR IMAGEM'),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
                           _.redColor.value,
                         ),
                       ),
+                      child: const Text('ADICIONAR IMAGEM'),
                     ),
 
                     //BOTÃO

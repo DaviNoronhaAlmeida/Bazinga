@@ -14,7 +14,10 @@ import '../../model/feed_functions/upload_img.dart';
 import 'dart:io';
 
 class NewPostPage extends StatefulWidget {
+  const NewPostPage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _NewPostPageState createState() => _NewPostPageState();
 }
 
@@ -22,12 +25,11 @@ class _NewPostPageState extends State<NewPostPage> {
   File? _image;
   final TextEditingController _postController = TextEditingController();
   dynamic sendToken = "";
-  final FeedController _feedController = Get.put(FeedController());
   String imagePath = '';
 
   Future<File> _getImage() async {
-    final imagePicker = ImagePicker();
     final pickedFile =
+        // ignore: deprecated_member_use
         await ImagePicker().getImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
@@ -102,7 +104,6 @@ class _NewPostPageState extends State<NewPostPage> {
                             newPost(_postController.text.trim(), sendToken,
                                 serverPath);
                           }
-                          ;
                           Get.find<FeedController>()
                               .refreshController
                               .requestRefresh();

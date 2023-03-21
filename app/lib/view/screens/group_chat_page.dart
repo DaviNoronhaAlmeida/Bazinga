@@ -5,6 +5,7 @@ import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_chat_bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+// ignore: library_prefixes
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import '../styles/app_colors.dart';
 
@@ -23,15 +24,13 @@ class _GroupChatPageState extends State<GroupChatPage> {
   @override
   void initState() {
     super.initState();
-    socket = IO.io('${Base().url}', <String, dynamic>{
+    socket = IO.io(Base().url, <String, dynamic>{
       'transports': ['websocket'],
     });
     socket.onConnect((_) {
       print('connected');
     });
-    socket.emit('select_group', {
-      'group_id':"6419ee0a0e85f6f15e3478ea"
-    });
+    socket.emit('select_group', {'group_id': "6419ee0a0e85f6f15e3478ea"});
   }
 
   @override
@@ -39,6 +38,7 @@ class _GroupChatPageState extends State<GroupChatPage> {
     super.dispose();
     socket.disconnect();
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -148,8 +148,7 @@ class _GroupChatPageState extends State<GroupChatPage> {
                             alignment: Alignment.bottomLeft,
                             child: FloatingActionButton(
                               backgroundColor: _appColors.redColor.value,
-                              onPressed: () {
-                              },
+                              onPressed: () {},
                               child: const Icon(Icons.arrow_forward, size: 30),
                             ),
                           ),

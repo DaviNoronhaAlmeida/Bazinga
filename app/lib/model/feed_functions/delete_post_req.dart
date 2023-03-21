@@ -1,13 +1,11 @@
 import 'dart:convert';
 import 'package:app/config/base.dart';
-import 'package:app/view-model/utils/user_info.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:app/view-model/utils/token.dart';
 
 Future<Map<String, dynamic>> deletePostReq(String id) async {
   final token = Get.find<Token>().token;
-  final userID = Get.find<Info>().id;
   final response = await http.delete(
     Uri.parse('${Base().url}/api/posts/$id'),
     headers: {

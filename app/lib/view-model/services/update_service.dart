@@ -19,6 +19,7 @@ void update(String? token, String req, String param, String newName) async {
 
     Get.find<Info>().setName(newName);
 
+    // ignore: no_leading_underscores_for_local_identifiers
     final FeedController _feedController = Get.put(FeedController());
     _feedController.loadFeed();
     /* await Future.delayed(const Duration(seconds: 2));

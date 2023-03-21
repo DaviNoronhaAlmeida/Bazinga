@@ -24,7 +24,7 @@ class FeedPage extends StatelessWidget {
         final List<dynamic>? feedData = _feedController.feedData.value;
         if (feedData != null) {
           return SmartRefresher(
-            controller: RefreshController(),
+            controller: _refreshController,
             onRefresh: () {
               Future.delayed(Duration(seconds: 2)).then((_) {
                 _refreshController.refreshCompleted();
@@ -53,9 +53,25 @@ class FeedPage extends StatelessWidget {
                                 ? List<String>.from(post['likes']
                                     .map((like) => like['nick'].toString()))
                                 : [],
+                            likedId: post['likes'] != null
+                                ? List<String>.from(post['likes']
+                                    .map((like) => like['_id'].toString()))
+                                : [],
                             img: post.containsKey('img') && post['img'] != ""
                                 ? post['img'].toString()
                                 : null,
+                            comments: post['comments'] != null
+                                ? post['comments'].length
+                                : 0,
+                            commentUser: post['comments'] != null
+                                ? List<String>.from(post['comments'].map(
+                                    (comment) => comment['id_creator']['nick']
+                                        .toString()))
+                                : [],
+                            commentContent: post['comments'] != null
+                                ? List<String>.from(post['comments'].map(
+                                    (comment) => comment['content'].toString()))
+                                : [],
                           ),
                         ),
                         Padding(

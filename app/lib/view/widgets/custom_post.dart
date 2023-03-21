@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
 import 'package:app/view/widgets/custom_liking_user.dart';
+import '../../view-model/utils/token.dart';
+import '../../view-model/services/new_comment_service.dart';
+import 'package:app/view-model/controllers/feed_controller.dart';
+import '../../view-model/utils/user_info.dart';
 
 class CustomPost extends StatelessWidget {
   final String postId;
@@ -10,6 +14,10 @@ class CustomPost extends StatelessWidget {
   final String postText;
   final int likes;
   final List<String> likingUsers;
+  final List<String> likedId;
+  final int comments;
+  List<String> commentUser;
+  List<String> commentContent;
   final String? img;
 
   CustomPost({
@@ -19,18 +27,203 @@ class CustomPost extends StatelessWidget {
     required this.postText,
     required this.likes,
     required this.likingUsers,
+    required this.likedId,
+    required this.comments,
+    required this.commentUser,
+    required this.commentContent,
     this.img,
   }) : super(key: key);
+
+  final myId = Get.find<Info>().id;
+  final myName = Get.find<Info>().name;
+
+  Future<void> updateFeed() async {
+    final FeedController feedController = Get.find();
+    feedController.loadFeed();
+  }
 
   final AppColors _appColors = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _likesController = TextEditingController();
-    _likesController.text = likes.toString();
+    final TextEditingController commentController = TextEditingController();
+    TextEditingController likesController = TextEditingController();
+    likesController.text = likes.toString();
     int totalLikes = likes;
-    void _updateLikes() {
-      totalLikes = int.parse(_likesController.text);
+    void updateLikes() {
+      totalLikes = int.parse(likesController.text);
+    }
+
+    TextEditingController commentsController = TextEditingController();
+    commentsController.text = comments.toString();
+    int totalComments = comments;
+    void updateComments() {
+      totalComments = int.parse(commentsController.text);
+    }
+
+    void _showCommentsSection(BuildContext context, List<String> commentUser,
+        List<String> commentContent) {
+      final AppColors appColors = Get.find();
+      Color? textColor = appColors.textColor.value;
+      showModalBottomSheet<void>(
+        context: context,
+        isScrollControlled: true,
+        builder: (BuildContext context) {
+          return GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.8,
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: appColors.backgroundColor.value,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Comentários",
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 20,
+                      color: appColors.textColor.value,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 16,
+                      ),
+                      child: ListView.builder(
+                        itemCount: commentUser.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 15.0),
+                                  child: Text(
+                                    commentUser[index],
+                                    style: TextStyle(
+                                      fontFamily: 'Roboto',
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 20,
+                                      color: appColors.textColor.value,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: appColors.bgPostsColor.value,
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(30),
+                                    ),
+                                  ),
+                                  width: double.infinity,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Text(
+                                      commentContent[index],
+                                      style: TextStyle(
+                                        fontFamily: 'Roboto',
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18,
+                                        color: appColors.textColor.value,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+
+                  //INPUT
+                  SingleChildScrollView(
+                    child: Expanded(
+                      flex: 1,
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 10.0),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 50,
+                              width: 280,
+                              alignment: Alignment.center,
+                              child: TextField(
+                                maxLines: null,
+                                onSubmitted: (_) {
+                                  FocusScope.of(context).unfocus();
+                                },
+                                controller: commentController,
+                                textInputAction: TextInputAction.done,
+                                decoration: InputDecoration(
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 12),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: _appColors.redColor.value,
+                                        width: 2),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: _appColors.redColor.value,
+                                        width: 2),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                ),
+                                style: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  color: _appColors.textColor.value,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                            const Spacer(),
+                            Container(
+                              height: 40,
+                              alignment: Alignment.bottomLeft,
+                              child: FloatingActionButton(
+                                backgroundColor: _appColors.redColor.value,
+                                onPressed: () async {
+                                  dynamic sendToken = Get.find<Token>().token;
+                                  newComment(commentController.text.trim(),
+                                      sendToken, postId);
+                                  await updateFeed();
+
+                                  commentUser.insert(comments, myName);
+                                  commentContent.insert(
+                                      comments, commentController.text.trim());
+                                  Navigator.pop(context);
+                                  commentController.clear();
+                                  _showCommentsSection(
+                                      context, commentUser, commentContent);
+                                },
+                                child:
+                                    const Icon(Icons.arrow_forward, size: 30),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      );
     }
 
     return Center(
@@ -110,23 +303,28 @@ class CustomPost extends StatelessWidget {
 
           //Likes
           Padding(
-            padding: const EdgeInsets.only(top: 10, left: 30),
+            padding: const EdgeInsets.only(top: 20, left: 30),
             child: Row(
               children: [
+                //LikeIcon
                 IconButton(
                   padding: EdgeInsets.zero,
                   constraints: BoxConstraints.tight(const Size(20, 20)),
                   iconSize: 20,
-                  icon: const Icon(Icons.favorite_border),
+                  icon: likedId.contains(myId)
+                      ? const Icon(Icons.favorite)
+                      : const Icon(Icons.favorite_border),
                   color: _appColors.redColor.value,
                   onPressed: () async {
                     final response = await likePostReq(postId);
                     if (response['content'] == '+1') {
                       totalLikes += 1;
-                      _likesController.text = totalLikes.toString();
+                      likesController.text = totalLikes.toString();
+                      updateFeed();
                     } else {
                       totalLikes -= 1;
-                      _likesController.text = totalLikes.toString();
+                      likesController.text = totalLikes.toString();
+                      updateFeed();
                     }
                   },
                 ),
@@ -213,7 +411,7 @@ class CustomPost extends StatelessWidget {
                       },
                       //Número de likes
                       child: Text(
-                        _likesController.text,
+                        likesController.text,
                         overflow: TextOverflow.visible,
                         style: TextStyle(
                           fontFamily: 'Roboto',
@@ -221,6 +419,42 @@ class CustomPost extends StatelessWidget {
                         ),
                         textAlign: TextAlign.left,
                       ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(
+                  width: 40,
+                ),
+                //CommentIcon
+                IconButton(
+                  padding: EdgeInsets.zero,
+                  constraints: BoxConstraints.tight(const Size(20, 20)),
+                  iconSize: 20,
+                  icon: const Icon(Icons.comment_outlined),
+                  color: _appColors.redColor.value,
+                  onPressed: () async {
+                    _showCommentsSection(context, commentUser, commentContent);
+                  },
+                ),
+
+                //Número
+                Padding(
+                  padding: const EdgeInsets.only(left: 5),
+                  child: TextButton(
+                    onPressed: () {
+                      _showCommentsSection(
+                          context, commentUser, commentContent);
+                    },
+                    child: Text(
+                      commentsController.text,
+                      overflow: TextOverflow.visible,
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontSize: 20,
+                        color: _appColors.textColor.value,
+                      ),
+                      textAlign: TextAlign.left,
                     ),
                   ),
                 ),

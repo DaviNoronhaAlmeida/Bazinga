@@ -30,28 +30,6 @@ class AppColors extends GetxController {
   final dividerColor = darkDivider.obs;
   final settingsDescription = darkSettingsDescription.obs;
 
-  /* void change() {
-    if (settingsDescription.value == darkSettingsDescription) {
-      barColor.value = lightBarColor;
-      backgroundColor.value = lightBackgroundColor;
-      bgPostsColor.value = lightBgPostsColor;
-      textColor.value = lightTextColor;
-      descriptionColor.value = lightDescriptionColor;
-      dividerColor.value = lightDivider;
-      settingsDescription.value = lightSettingsDescription;
-      print('mudou para claro');
-    } else {
-      barColor.value = darkBarColor;
-      backgroundColor.value = darkBackgroundColor;
-      bgPostsColor.value = darkBgPostsColor;
-      textColor.value = darkTextColor;
-      descriptionColor.value = darkDescriptionColor;
-      dividerColor.value = darkDivider;
-      settingsDescription.value = darkSettingsDescription;
-      print('mudou para escuro');
-    }
-  } */
-
   void updateColors() {
     isDarkMode.value = !isDarkMode.value;
     if (isDarkMode.value) {

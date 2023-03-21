@@ -7,6 +7,8 @@ class FeedController extends GetxController {
   final feedData = <dynamic>[].obs;
   RefreshController refreshController =
       RefreshController(initialRefresh: false);
+  final commentUser = ''.obs;
+  final commentContent = ''.obs;
 
   @override
   void onInit() {

@@ -31,8 +31,7 @@ class GroupInfo extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 10),
                 child: GestureDetector(
                   onTap: () {
-                    print(id);
-                    final req = groupIdReq(id);
+                    print(this.id);
                     Get.toNamed('/groupChat');
                   },
                   child: Container(

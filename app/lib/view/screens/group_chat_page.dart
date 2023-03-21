@@ -18,7 +18,24 @@ class GroupChatPage extends StatefulWidget {
 class _GroupChatPageState extends State<GroupChatPage> {
   final AppColors _appColors = Get.find();
   String text = "";
-  IO.Socket socket = IO.io('${Base().url}');
+  late IO.Socket socket;
+
+  @override
+  void initState() {
+    super.initState();
+    socket = IO.io('${Base().url}', <String, dynamic>{
+      'transports': ['websocket'],
+    });
+    socket.onConnect((_) {
+      print('connected');
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    socket.disconnect();
+  }
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -129,14 +146,6 @@ class _GroupChatPageState extends State<GroupChatPage> {
                             child: FloatingActionButton(
                               backgroundColor: _appColors.redColor.value,
                               onPressed: () {
-                                socket.onConnect((_) {
-                                  print('connect');
-                                  Map json = {
-                                    'group_id': "6419ee0a0e85f6f15e3478ea",
-                                    'message': text
-                                  };
-                                  socket.emit('message', json);
-                                });
                               },
                               child: const Icon(Icons.arrow_forward, size: 30),
                             ),

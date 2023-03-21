@@ -1,15 +1,19 @@
+import 'package:app/view-model/utils/group_id.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../model/authentication/group_id_req.dart';
 import '../styles/app_colors.dart';
 
 class GroupInfo extends StatelessWidget {
   final String groupName;
   final String icon;
   final String lastMessage;
+  final String id;
 
   GroupInfo(
       {super.key,
       required this.groupName,
+      required this.id,
       required this.icon,
       required this.lastMessage});
 
@@ -27,6 +31,7 @@ class GroupInfo extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 10),
                 child: GestureDetector(
                   onTap: () {
+                    print(this.id);
                     Get.toNamed('/groupChat');
                   },
                   child: Container(
@@ -78,7 +83,7 @@ class GroupInfo extends StatelessWidget {
                                 padding: const EdgeInsets.only(left: 10),
                                 child: RichText(
                                   text: TextSpan(
-                                    text: lastMessage,
+                                    text: id,
                                     style: TextStyle(
                                       fontFamily: 'Roboto',
                                       fontWeight: FontWeight.w400,

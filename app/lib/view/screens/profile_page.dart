@@ -5,6 +5,7 @@ import 'package:app/view/widgets/custom_post.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../view-model/utils/user_info.dart';
+// ignore: depend_on_referenced_packages
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../styles/app_colors.dart';
 import 'dart:core';
@@ -23,12 +24,13 @@ class ProfilePage extends StatelessWidget {
       backgroundColor: _appColors.backgroundColor.value,
       appBar: CustomAppBar(),
       body: Obx(() {
+        // ignore: invalid_use_of_protected_member, unnecessary_nullable_for_final_variable_declarations
         final List<dynamic>? profileData = _profileController.profileData.value;
         if (profileData != null) {
           return SmartRefresher(
             controller: RefreshController(),
             onRefresh: () {
-              Future.delayed(Duration(seconds: 2)).then((_) {
+              Future.delayed(const Duration(seconds: 2)).then((_) {
                 _refreshController.refreshCompleted();
               });
               _profileController.loadProfile();

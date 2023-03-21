@@ -9,9 +9,9 @@ void newPost(String text, String? token, String imagePath) async {
   if (data['status'] == 200) {
     showDialog(
       context: Get.context!,
-      builder: (_) => AlertDialog(
-        title: const Text('Postagem feita'),
-        content: const Text('Sua postagem foi publicada com sucesso!'),
+      builder: (_) => const AlertDialog(
+        title: Text('Postagem feita'),
+        content: Text('Sua postagem foi publicada com sucesso!'),
       ),
     );
     // Aguarda 2 segundos antes de fechar o AlertDialog

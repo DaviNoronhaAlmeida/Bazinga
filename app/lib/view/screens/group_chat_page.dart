@@ -29,6 +29,9 @@ class _GroupChatPageState extends State<GroupChatPage> {
     socket.onConnect((_) {
       print('connected');
     });
+    socket.emit('select_group', {
+      'group_id':"6419ee0a0e85f6f15e3478ea"
+    });
   }
 
   @override

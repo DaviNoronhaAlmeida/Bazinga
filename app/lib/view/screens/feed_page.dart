@@ -11,7 +11,7 @@ import 'dart:core';
 class FeedPage extends StatelessWidget {
   FeedPage({super.key});
 
-  final AppColors _appColors = Get.find();
+  final AppColors _appColors = Get.put(AppColors());
   final FeedController _feedController = Get.put(FeedController());
   final RefreshController _refreshController = RefreshController();
 

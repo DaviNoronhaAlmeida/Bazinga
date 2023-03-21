@@ -6,6 +6,7 @@ import 'package:app/view/widgets/custom_group_info.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../view-model/controllers/groups_controller.dart';
 import '../styles/app_colors.dart';
 
 class GroupHomePage extends StatelessWidget {

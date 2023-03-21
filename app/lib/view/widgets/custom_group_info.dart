@@ -65,7 +65,9 @@ class GroupInfo extends StatelessWidget {
                                   padding: const EdgeInsets.only(left: 10),
                                   child: RichText(
                                     text: TextSpan(
-                                      text: groupName,
+                                      text: groupName.length > 20
+                                          ? "${groupName.substring(0, 20)}..."
+                                          : groupName,
                                       style: TextStyle(
                                         fontFamily: 'Roboto',
                                         fontWeight: FontWeight.w400,
@@ -73,6 +75,7 @@ class GroupInfo extends StatelessWidget {
                                         color: _appColors.textColor.value,
                                       ),
                                     ),
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               ),

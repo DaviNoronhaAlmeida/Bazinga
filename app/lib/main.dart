@@ -17,10 +17,14 @@ import 'package:app/view/screens/edit_profile_name_page.dart';
 import 'package:app/view/screens/edit_profile_icon_page.dart';
 import 'package:app/view/screens/edit_profile_password_page.dart';
 import 'package:app/view/screens/delete_profile_page.dart';
+import 'view/styles/app_colors.dart';
+import 'view-model/utils/user_info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
+  Get.put(AppColors());
+  Get.put(Info());
   runApp(const MyApp());
 }
 

@@ -1,15 +1,24 @@
+import 'package:app/config/base.dart';
+import 'package:app/view-model/utils/group_id.dart';
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_chat_bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 import '../styles/app_colors.dart';
 
-class GroupChatPage extends StatelessWidget {
-  GroupChatPage({super.key});
+class GroupChatPage extends StatefulWidget {
+  const GroupChatPage({super.key});
 
+  @override
+  State<GroupChatPage> createState() => _GroupChatPageState();
+}
+
+class _GroupChatPageState extends State<GroupChatPage> {
   final AppColors _appColors = Get.find();
-
+  String text = "";
+  IO.Socket socket = IO.io('${Base().url}');
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -83,6 +92,11 @@ class GroupChatPage extends StatelessWidget {
                             width: 280,
                             alignment: Alignment.bottomLeft,
                             child: TextField(
+                              onChanged: (value) => {
+                                setState(() {
+                                  text = value;
+                                })
+                              },
                               maxLines: null,
                               decoration: InputDecoration(
                                 contentPadding:
@@ -114,7 +128,16 @@ class GroupChatPage extends StatelessWidget {
                             alignment: Alignment.bottomLeft,
                             child: FloatingActionButton(
                               backgroundColor: _appColors.redColor.value,
-                              onPressed: () {},
+                              onPressed: () {
+                                socket.onConnect((_) {
+                                  print('connect');
+                                  Map json = {
+                                    'group_id': "6419ee0a0e85f6f15e3478ea",
+                                    'message': text
+                                  };
+                                  socket.emit('message', json);
+                                });
+                              },
                               child: const Icon(Icons.arrow_forward, size: 30),
                             ),
                           ),

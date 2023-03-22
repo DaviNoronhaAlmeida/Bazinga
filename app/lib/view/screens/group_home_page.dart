@@ -3,7 +3,7 @@ import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_group_info.dart';
 // ignore: depend_on_referenced_packages
-//import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
@@ -33,7 +33,10 @@ class GroupHomePage extends StatelessWidget {
                     groupName: group['name'],
                     id: group['_id'],
                     icon: 'Endereço do ícone',
-                    lastMessage: "group['messages'][0]",
+                    lastMessage: group['messages'].isNotEmpty
+                        ? group['messages'].last['text']
+                        : "",
+                    messages: group['messages'],
                   ),
                 const SizedBox(height: 10),
               ],

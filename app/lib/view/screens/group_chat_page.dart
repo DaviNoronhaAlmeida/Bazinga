@@ -20,10 +20,7 @@ class GroupChatPage extends StatefulWidget {
 class _GroupChatPageState extends State<GroupChatPage> {
   final AppColors _appColors = Get.find();
   String text = "";
-<<<<<<< HEAD
   late var dados;
-=======
->>>>>>> upstream/main
   late IO.Socket socket;
 
   @override

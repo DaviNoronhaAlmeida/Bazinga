@@ -15,7 +15,7 @@ void newPost(String text, String? token, String imagePath) async {
       ),
     );
     await Future.delayed(const Duration(seconds: 2));
-    Get.offAllNamed('/feed');
+    Get.toNamed('/feed');
   } else {
     CustomSnackBar.show(data['content']['message']);
   }

@@ -6,7 +6,6 @@ import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_chat_bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// ignore: library_prefixes
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import '../styles/app_colors.dart';
 

@@ -9,10 +9,8 @@ import '../../view-model/utils/token.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
-  final TextEditingController _emailController = TextEditingController()
-    ..text = "lucas@email.com";
-  final TextEditingController _passwordController = TextEditingController()
-    ..text = "Password";
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +43,7 @@ class LoginPage extends StatelessWidget {
                     child: CustomInput(
                       inputTittle: 'Email:',
                       controller: _emailController,
+                      hide: false,
                     ),
                   ),
                   Container(
@@ -52,6 +51,7 @@ class LoginPage extends StatelessWidget {
                     child: CustomInput(
                       inputTittle: 'Senha:',
                       controller: _passwordController,
+                      hide: true,
                     ),
                   ),
                   GetBuilder<Token>(

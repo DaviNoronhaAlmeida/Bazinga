@@ -62,6 +62,7 @@ class EditGroupNamePage extends StatelessWidget {
                 CustomInput(
                   inputTittle: 'Novo Nome do Grupo:',
                   controller: _nameController,
+                  hide: false,
                 ),
                 const Spacer(),
 

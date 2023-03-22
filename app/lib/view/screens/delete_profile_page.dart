@@ -1,7 +1,7 @@
 import 'package:app/view-model/services/delete_user_service.dart';
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
-import 'package:app/view/widgets/custom_input.dart';
+//import 'package:app/view/widgets/custom_input.dart';
 import 'package:app/view/widgets/custom_big_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,7 +10,7 @@ import '../styles/app_colors.dart';
 class DeleteProfilePage extends StatelessWidget {
   DeleteProfilePage({super.key});
   final AppColors _appColors = Get.find();
-  final TextEditingController _passwordController = TextEditingController();
+  //final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -71,11 +71,6 @@ class DeleteProfilePage extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-
-                  CustomInput(
-                    inputTittle: 'Senha:',
-                    controller: _passwordController,
-                  ),
 
                   //Botão de Salvar
                   const Spacer(),

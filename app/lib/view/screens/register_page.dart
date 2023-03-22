@@ -41,6 +41,7 @@ class RegisterPage extends StatelessWidget {
                   child: CustomInput(
                     inputTittle: 'Nome de usuário:',
                     controller: _nameController,
+                    hide: false,
                   ),
                 ),
                 Container(
@@ -48,6 +49,7 @@ class RegisterPage extends StatelessWidget {
                   child: CustomInput(
                     inputTittle: 'Email:',
                     controller: _emailController,
+                    hide: false,
                   ),
                 ),
                 Container(
@@ -55,6 +57,7 @@ class RegisterPage extends StatelessWidget {
                   child: CustomInput(
                     inputTittle: 'Senha:',
                     controller: _passwordController,
+                    hide: true,
                   ),
                 ),
                 CustomSmallButton(

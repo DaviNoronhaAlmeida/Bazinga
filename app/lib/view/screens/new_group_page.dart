@@ -1,9 +1,9 @@
 import 'package:app/view-model/services/search_service.dart';
+import 'package:app/view-model/services/search_user_id_service.dart';
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_big_button.dart';
 import 'package:app/view/widgets/custom_add_member.dart';
-import 'package:app/view/widgets/custom_added_member.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -14,11 +14,55 @@ class NewGroupPage extends StatelessWidget {
 
   final AppColors _appColors = Get.find();
   final TextEditingController _nameController = TextEditingController();
-  final Search _searchController = Get.put(Search());
 
   @override
   Widget build(BuildContext context) {
-    final RxList<dynamic>? searchData = _searchController.searchData;
+    void showResults(BuildContext context, List<dynamic> search) {
+      final AppColors appColors = Get.find();
+      showModalBottomSheet<void>(
+        context: context,
+        isScrollControlled: true,
+        builder: (BuildContext context) {
+          return GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.8,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: appColors.backgroundColor.value,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 16),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 16,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            for (var user in search)
+                              AddMember(
+                                  username: user['suggestion'], icon: 'icon'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    }
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -70,11 +114,13 @@ class NewGroupPage extends StatelessWidget {
                         padding: const EdgeInsets.all(5),
                         color: _appColors.textColor.value,
                         icon: const Icon(Icons.search),
-                        onPressed: () => {
-                          if (_nameController.text.isNotEmpty)
-                            {
-                              Search().search(_nameController.text),
-                            }
+                        onPressed: () async {
+                          if (_nameController.text.isNotEmpty) {
+                            var result =
+                                await Search().search(_nameController.text);
+                            // ignore: use_build_context_synchronously
+                            showResults(context, result);
+                          }
                         },
                       ),
                     ),
@@ -87,33 +133,6 @@ class NewGroupPage extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
-
-            SizedBox(
-              height: 285,
-              child: Obx(
-                () {
-                  if (searchData != null) {
-                    return SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          //Users Found
-                          for (var user in searchData)
-                            AddMember(
-                              username: user['suggestion'],
-                              icon: 'Endereço do ícone',
-                            ),
-                          const SizedBox(height: 6),
-                        ],
-                      ),
-                    );
-                  } else {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                },
-              ),
             ),
 
             //Added list
@@ -147,14 +166,20 @@ class NewGroupPage extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          AddedMember(
-                              username: 'Usuário 1', icon: 'Endereçodo ícone'),
-                          const SizedBox(width: 10),
-                          AddedMember(
-                              username: 'Usuário 2', icon: 'Endereçodo ícone'),
-                          const SizedBox(width: 10),
-                          AddedMember(
-                              username: 'Usuário 3', icon: 'Endereçodo ícone'),
+                          GetBuilder<SearchUsersId>(
+                            init: SearchUsersId(),
+                            builder: (context) {
+                              return Text(
+                                'Escolhidos: ${context.users.length}',
+                                style: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 18,
+                                  color: _appColors.descriptionColor.value,
+                                ),
+                              );
+                            },
+                          ),
                         ],
                       ),
                     ),

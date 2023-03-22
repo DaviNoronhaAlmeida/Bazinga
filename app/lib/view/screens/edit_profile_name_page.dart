@@ -70,6 +70,7 @@ class EditNameEmailPage extends StatelessWidget {
                 CustomInput(
                   inputTittle: 'Novo Nome do Usuário:',
                   controller: _nameController,
+                  hide: false,
                 ),
 
                 //Botão de salvar

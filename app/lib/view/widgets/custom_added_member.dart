@@ -5,8 +5,13 @@ import '../styles/app_colors.dart';
 class AddedMember extends StatelessWidget {
   final String username;
   final String icon;
+  final String id;
 
-  AddedMember({super.key, required this.username, required this.icon});
+  AddedMember(
+      {super.key,
+      required this.username,
+      required this.icon,
+      required this.id});
 
   final AppColors _appColors = Get.find();
 

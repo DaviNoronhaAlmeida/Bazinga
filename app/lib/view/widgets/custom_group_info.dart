@@ -1,3 +1,4 @@
+import 'package:app/model/chat_functions/select_groups_req.dart';
 import 'package:app/view-model/utils/group_id.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,8 +30,8 @@ class GroupInfo extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: GestureDetector(
-                  onTap: () {
-                    print(id);
+                  onTap: () async{
+                    var res = await selectGroupReq(id);
                     Get.toNamed('/groupChat');
                   },
                   child: Container(

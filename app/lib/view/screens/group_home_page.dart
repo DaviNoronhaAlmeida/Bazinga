@@ -33,7 +33,10 @@ class GroupHomePage extends StatelessWidget {
                     groupName: group['name'],
                     id: group['_id'],
                     icon: 'Endereço do ícone',
-                    lastMessage: "group['messages'][0]",
+                    lastMessage: group['messages'].isNotEmpty
+                        ? group['messages'].last['text']
+                        : "",
+                    messages: group['messages'],
                   ),
                 const SizedBox(height: 10),
               ],

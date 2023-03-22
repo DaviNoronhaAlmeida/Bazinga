@@ -1,3 +1,5 @@
+import 'package:app/view-model/controllers/groups_controller.dart';
+import 'package:app/view-model/services/delete_group_service.dart';
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_big_button.dart';
@@ -10,6 +12,7 @@ class DeleteGroupPage extends StatelessWidget {
   DeleteGroupPage({super.key});
   final AppColors _appColors = Get.find();
   final GroupId groupInfo = Get.find();
+  final GroupsController groups = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +81,10 @@ class DeleteGroupPage extends StatelessWidget {
                 CustomBigButton(
                   tittleBtn: 'EXCLUIR',
                   customMargin: 0,
-                  function: () => Get.back(),
+                  function: () {
+                    deleteGroup(context, groupInfo.groupId);
+                    groups.loadFeed();
+                  },
                 ),
               ],
             ),

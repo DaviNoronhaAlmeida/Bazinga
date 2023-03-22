@@ -21,7 +21,7 @@ class _GroupChatPageState extends State<GroupChatPage> {
   final AppColors _appColors = Get.find();
   final Token _token = Get.find();
   final GroupId _idGroup = Get.find();
-  String text = "";
+  TextEditingController inputController = TextEditingController();
   var dados = [];
   late IO.Socket socket;
   @override
@@ -130,11 +130,7 @@ class _GroupChatPageState extends State<GroupChatPage> {
                             width: 280,
                             alignment: Alignment.bottomLeft,
                             child: TextField(
-                              onChanged: (value) => {
-                                setState(() {
-                                  text = value;
-                                })
-                              },
+                              controller: inputController,
                               maxLines: null,
                               decoration: InputDecoration(
                                 contentPadding:
@@ -167,11 +163,17 @@ class _GroupChatPageState extends State<GroupChatPage> {
                             child: FloatingActionButton(
                               backgroundColor: _appColors.redColor.value,
                               onPressed: () {
-                                socket.emitWithAck('message', {
-                                  'group_id': "${_idGroup.groupId}",
-                                  'token': '${_token.token}',
-                                  'message': text
-                                });
+                                if (inputController.text.isNotEmpty) {
+                                  socket.emitWithAck(
+                                    'message',
+                                    {
+                                      'group_id': "${_idGroup.groupId}",
+                                      'token': '${_token.token}',
+                                      'message': inputController.text
+                                    },
+                                  );
+                                  inputController.clear();
+                                }
                               },
                               child: const Icon(Icons.arrow_forward, size: 30),
                             ),

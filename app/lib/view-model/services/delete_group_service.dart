@@ -1,19 +1,19 @@
-import 'package:app/model/users_functions/delete_user_req.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import '../../model/group_functions/delete_group_req.dart';
 import '../../view/widgets/custom_dialog.dart';
 import '../../view/widgets/custom_snackbar.dart';
 
-void delete(BuildContext context) async {
-  Map<String, dynamic> data = await deleteUserReq();
+void deleteGroup(BuildContext context, String id) async {
+  Map<String, dynamic> data = await deleteGroupReq(id);
 
   if (data['status'] == 200) {
     // ignore: use_build_context_synchronously
     showCustomDialog(
       context,
-      'Conta deletada!',
+      'Grupo deletado!',
       'SAIR',
-      () => Get.toNamed('/'),
+      () => Get.toNamed('/groupHome'),
     );
   } else {
     CustomSnackBar.show(data['content']['message']);

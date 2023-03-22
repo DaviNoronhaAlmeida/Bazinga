@@ -3,7 +3,8 @@ import 'package:app/view/widgets/custom_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-showCustomDialog(BuildContext context, String text, String btnText) {
+showCustomDialog(
+    BuildContext context, String text, String btnText, VoidCallback func) {
   // ignore: no_leading_underscores_for_local_identifiers
   final AppColors _appColors = Get.find();
 
@@ -35,7 +36,7 @@ showCustomDialog(BuildContext context, String text, String btnText) {
               ),
               CustomTextButton(
                 tittle: btnText,
-                function: () => Get.toNamed('/'),
+                function: func,
               )
             ],
           ),

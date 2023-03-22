@@ -1,3 +1,4 @@
+import 'package:app/view-model/utils/group_id.dart';
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_settings_option.dart';
@@ -8,6 +9,7 @@ import '../styles/app_colors.dart';
 class EditGroupPage extends StatelessWidget {
   EditGroupPage({super.key});
   final AppColors _appColors = Get.find();
+  final GroupId groupInfo = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class EditGroupPage extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 10),
                       child: RichText(
                         text: TextSpan(
-                          text: 'Nome do Grupo',
+                          text: groupInfo.groupName,
                           style: TextStyle(
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400,
@@ -50,12 +52,12 @@ class EditGroupPage extends StatelessWidget {
                 tittle: 'Editar Nome',
                 description: 'Trocar Nome do Grupo',
               ),
-              const Spacer(),
-              CustomSettingsOption(
-                function: () => {Get.toNamed('/editGroupIcon')},
-                tittle: 'Editar Ícone',
-                description: 'Trocar Imagem do Grupo',
-              ),
+              // const Spacer(),
+              // CustomSettingsOption(
+              //   function: () => {Get.toNamed('/editGroupIcon')},
+              //   tittle: 'Editar Ícone',
+              //   description: 'Trocar Imagem do Grupo',
+              // ),
               const Spacer(),
               CustomSettingsOption(
                 function: () => {Get.toNamed('/editGroupMember')},

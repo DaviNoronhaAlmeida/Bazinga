@@ -1,8 +1,8 @@
-import 'package:app/view-model/controllers/feed_controller.dart';
 import 'package:app/view-model/controllers/groups_controller.dart';
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_group_info.dart';
+// ignore: depend_on_referenced_packages
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,13 +27,13 @@ class GroupHomePage extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             child: Column(
               children: [
-                for(var group in groupData)
-                GroupInfo(
-                  groupName: group['name'],
-                  id: group['_id'],
-                  icon: 'Endereço do ícone',
-                  lastMessage: "group['messages'][0]",
-                ),
+                for (var group in groupData)
+                  GroupInfo(
+                    groupName: group['name'],
+                    id: group['_id'],
+                    icon: 'Endereço do ícone',
+                    lastMessage: "group['messages'][0]",
+                  ),
                 const SizedBox(height: 10),
               ],
             ),

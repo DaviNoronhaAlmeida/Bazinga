@@ -1,15 +1,17 @@
 import 'dart:convert';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:app/view-model/utils/token.dart';
 import '../../config/base.dart';
 
-Future<Map<String, dynamic>> newUpdateReq(String? token, String req) async {
-  final response = await http.patch(
-    Uri.parse('${Base().url}/api/user'),
+Future<Map<String, dynamic>> searchReq(String search) async {
+  final token = Get.find<Token>().token;
+  final response = await http.get(
+    Uri.parse('${Base().url}/api/users/suggestion/$search'),
     headers: {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer $token'
     },
-    body: req,
   );
   final jsonResponse = jsonDecode(response.body);
 

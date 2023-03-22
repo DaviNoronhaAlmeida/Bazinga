@@ -8,6 +8,7 @@ import '../../view-model/services/new_comment_service.dart';
 import 'package:app/view-model/controllers/feed_controller.dart';
 import '../../view-model/utils/user_info.dart';
 
+// ignore: must_be_immutable
 class CustomPost extends StatelessWidget {
   final String postId;
   final String username;
@@ -50,21 +51,14 @@ class CustomPost extends StatelessWidget {
     TextEditingController likesController = TextEditingController();
     likesController.text = likes.toString();
     int totalLikes = likes;
-    void updateLikes() {
-      totalLikes = int.parse(likesController.text);
-    }
 
     TextEditingController commentsController = TextEditingController();
     commentsController.text = comments.toString();
-    int totalComments = comments;
-    void updateComments() {
-      totalComments = int.parse(commentsController.text);
-    }
 
+    // ignore: no_leading_underscores_for_local_identifiers
     void _showCommentsSection(BuildContext context, List<String> commentUser,
         List<String> commentContent) {
       final AppColors appColors = Get.find();
-      Color? textColor = appColors.textColor.value;
       showModalBottomSheet<void>(
         context: context,
         isScrollControlled: true,
@@ -75,7 +69,7 @@ class CustomPost extends StatelessWidget {
             },
             child: Container(
               height: MediaQuery.of(context).size.height * 0.8,
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: appColors.backgroundColor.value,
               ),
@@ -204,8 +198,10 @@ class CustomPost extends StatelessWidget {
                                   commentUser.insert(comments, myName);
                                   commentContent.insert(
                                       comments, commentController.text.trim());
+                                  // ignore: use_build_context_synchronously
                                   Navigator.pop(context);
                                   commentController.clear();
+                                  // ignore: use_build_context_synchronously
                                   _showCommentsSection(
                                       context, commentUser, commentContent);
                                 },

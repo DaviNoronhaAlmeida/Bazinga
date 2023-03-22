@@ -9,9 +9,9 @@ void newComment(String text, String? token, String postId) async {
   if (data['status'] == 200) {
     showDialog(
       context: Get.context!,
-      builder: (_) => AlertDialog(
-        title: const Text('Comentário enviado'),
-        content: const Text('Seu comentário foi publicado com sucesso!'),
+      builder: (_) => const AlertDialog(
+        title: Text('Comentário enviado'),
+        content: Text('Seu comentário foi publicado com sucesso!'),
       ),
     );
     await Future.delayed(const Duration(seconds: 2));

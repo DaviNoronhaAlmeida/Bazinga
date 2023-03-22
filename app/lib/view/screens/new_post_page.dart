@@ -8,12 +8,16 @@ import 'package:get/get.dart';
 import '../styles/app_colors.dart';
 import '../../view-model/utils/token.dart';
 import 'package:app/view-model/controllers/feed_controller.dart';
+// ignore: depend_on_referenced_packages
 import 'package:image_picker/image_picker.dart';
 import '../../model/feed_functions/upload_img.dart';
 import 'dart:io';
 
 class NewPostPage extends StatefulWidget {
+  const NewPostPage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _NewPostPageState createState() => _NewPostPageState();
 }
 
@@ -21,12 +25,11 @@ class _NewPostPageState extends State<NewPostPage> {
   File? _image;
   final TextEditingController _postController = TextEditingController();
   dynamic sendToken = "";
-  final FeedController _feedController = Get.put(FeedController());
   String imagePath = '';
 
   Future<File> _getImage() async {
-    final imagePicker = ImagePicker();
     final pickedFile =
+        // ignore: deprecated_member_use
         await ImagePicker().getImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
@@ -77,12 +80,12 @@ class _NewPostPageState extends State<NewPostPage> {
                     //UPLOAD IMAGEM
                     ElevatedButton(
                       onPressed: _getImage,
-                      child: Text('ADICIONAR IMAGEM'),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
                           _.redColor.value,
                         ),
                       ),
+                      child: const Text('ADICIONAR IMAGEM'),
                     ),
 
                     //BOTÃO
@@ -101,7 +104,6 @@ class _NewPostPageState extends State<NewPostPage> {
                             newPost(_postController.text.trim(), sendToken,
                                 serverPath);
                           }
-                          ;
                           Get.find<FeedController>()
                               .refreshController
                               .requestRefresh();

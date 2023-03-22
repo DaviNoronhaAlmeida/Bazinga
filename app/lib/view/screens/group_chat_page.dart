@@ -6,6 +6,7 @@ import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_chat_bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+// ignore: library_prefixes
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import '../styles/app_colors.dart';
 
@@ -19,7 +20,10 @@ class GroupChatPage extends StatefulWidget {
 class _GroupChatPageState extends State<GroupChatPage> {
   final AppColors _appColors = Get.find();
   String text = "";
+<<<<<<< HEAD
   late var dados;
+=======
+>>>>>>> upstream/main
   late IO.Socket socket;
 
   @override

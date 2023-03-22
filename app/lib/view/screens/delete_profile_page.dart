@@ -5,11 +5,13 @@ import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_big_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../view-model/utils/user_info.dart';
 import '../styles/app_colors.dart';
 
 class DeleteProfilePage extends StatelessWidget {
   DeleteProfilePage({super.key});
   final AppColors _appColors = Get.find();
+  final userName = Get.find<Info>().name;
   //final TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -45,7 +47,7 @@ class DeleteProfilePage extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 10),
                         child: RichText(
                           text: TextSpan(
-                            text: 'Nome do Usuário',
+                            text: userName,
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400,

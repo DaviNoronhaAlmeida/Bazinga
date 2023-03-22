@@ -7,6 +7,7 @@ import '../../view-model/services/update_password_service.dart';
 import '../../view-model/utils/token.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../view-model/utils/user_info.dart';
 import '../styles/app_colors.dart';
 import 'dart:convert';
 
@@ -14,6 +15,7 @@ import 'dart:convert';
 class EditPasswordPage extends StatelessWidget {
   EditPasswordPage({super.key});
   final AppColors _appColors = Get.find();
+  final userName = Get.find<Info>().name;
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _newPasswordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
@@ -56,7 +58,7 @@ class EditPasswordPage extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 10),
                         child: RichText(
                           text: TextSpan(
-                            text: 'Nome do Usuário',
+                            text: userName,
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400,

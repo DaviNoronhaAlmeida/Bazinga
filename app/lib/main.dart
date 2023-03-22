@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/groupChat',
-          page: () => GroupChatPage(),
+          page: () => const GroupChatPage(),
         ),
         GetPage(
           name: '/editGroup',

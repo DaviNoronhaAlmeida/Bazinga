@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/newPost',
-          page: () => NewPostPage(),
+          page: () => const NewPostPage(),
         ),
         GetPage(
           name: '/groupHome',

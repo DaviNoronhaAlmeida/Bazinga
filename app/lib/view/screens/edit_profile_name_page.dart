@@ -2,6 +2,7 @@ import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_input.dart';
 import 'package:app/view/widgets/custom_big_button.dart';
+import 'package:app/view/widgets/custom_snackbar.dart';
 import '../../view-model/services/update_service.dart';
 import '../../view-model/utils/token.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:get/get.dart';
 import '../styles/app_colors.dart';
 import 'dart:convert';
 
+// ignore: must_be_immutable
 class EditNameEmailPage extends StatelessWidget {
   EditNameEmailPage({super.key});
   final AppColors _appColors = Get.find();
@@ -79,14 +81,8 @@ class EditNameEmailPage extends StatelessWidget {
                     customMargin: 70,
                     function: () async {
                       if (_nameController.text.isEmpty) {
-                        print('aqui');
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                                'Por favor, preencha o novo nome do usuário.'),
-                            duration: Duration(seconds: 3),
-                          ),
-                        );
+                        CustomSnackBar.show(
+                            'Por favor, preencha o novo nome do usuário!');
                       } else {
                         sendToken = Get.find<Token>().token;
                         req = {"nick": _nameController.text};

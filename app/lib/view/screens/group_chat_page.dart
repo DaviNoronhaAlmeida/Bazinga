@@ -19,6 +19,7 @@ class GroupChatPage extends StatefulWidget {
 }
 
 class _GroupChatPageState extends State<GroupChatPage> {
+  final TextEditingController _controller = TextEditingController();
   final AppColors _appColors = Get.find();
   final Token _token = Get.find();
   final GroupId _idGroup = Get.find();
@@ -49,7 +50,6 @@ class _GroupChatPageState extends State<GroupChatPage> {
       Get.put(GroupId()).setData(data);
     });
     socket.on('message', (data) {
-      print(data);
       setState(() {
         dados.add(data);
       });
@@ -132,6 +132,7 @@ class _GroupChatPageState extends State<GroupChatPage> {
                             width: 280,
                             alignment: Alignment.bottomLeft,
                             child: TextField(
+                              controller: _controller,
                               onChanged: (value) => {
                                 setState(() {
                                   text = value;
@@ -173,6 +174,10 @@ class _GroupChatPageState extends State<GroupChatPage> {
                                   'group_id': "${_idGroup.groupId}",
                                   'token': '${_token.token}',
                                   'message': "${text}"
+                                });
+                                setState(() {
+                                  text= "";
+                                  _controller.text = "";
                                 });
                               },
                               child: const Icon(Icons.arrow_forward, size: 30),

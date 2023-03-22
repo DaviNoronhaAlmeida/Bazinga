@@ -8,13 +8,15 @@ class GroupInfo extends StatelessWidget {
   final String icon;
   final String lastMessage;
   final String id;
+  dynamic messages;
 
   GroupInfo(
       {super.key,
       required this.groupName,
       required this.id,
       required this.icon,
-      required this.lastMessage});
+      required this.lastMessage,
+      required this.messages});
 
   final AppColors _appColors = Get.find();
 
@@ -82,7 +84,7 @@ class GroupInfo extends StatelessWidget {
                                 padding: const EdgeInsets.only(left: 10),
                                 child: RichText(
                                   text: TextSpan(
-                                    text: id,
+                                    text: lastMessage,
                                     style: TextStyle(
                                       fontFamily: 'Roboto',
                                       fontWeight: FontWeight.w400,

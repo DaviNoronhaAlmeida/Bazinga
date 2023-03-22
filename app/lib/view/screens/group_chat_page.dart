@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:app/config/base.dart';
 import 'package:app/view-model/utils/group_id.dart';
 import 'package:app/view-model/utils/token.dart';
@@ -8,6 +6,7 @@ import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_chat_bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+// ignore: library_prefixes
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import '../styles/app_colors.dart';
 
@@ -28,7 +27,7 @@ class _GroupChatPageState extends State<GroupChatPage> {
   @override
   void initState() {
     super.initState();
-    socket = IO.io('${Base().url}', <String, dynamic>{
+    socket = IO.io(Base().url, <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': true,
       'extraHeaders': {
@@ -46,15 +45,15 @@ class _GroupChatPageState extends State<GroupChatPage> {
       setState(() {
         dados = data;
       });
-      Get.put(GroupId()).setData(data);
+      _idGroup.setData(data);
     });
     socket.on('message', (data) {
-      print(data);
       setState(() {
         dados.add(data);
       });
     });
   }
+
   @override
   void dispose() {
     socket.disconnect();
@@ -80,10 +79,9 @@ class _GroupChatPageState extends State<GroupChatPage> {
                   Expanded(
                     flex: 7,
                     child: SingleChildScrollView(
-                      child: new ListView.builder(
-
+                      child: ListView.builder(
                           shrinkWrap: true,
-                          physics: ClampingScrollPhysics(),
+                          physics: const ClampingScrollPhysics(),
                           itemCount: dados.length,
                           itemBuilder: (BuildContext context, int index) {
                             return Container(
@@ -172,7 +170,7 @@ class _GroupChatPageState extends State<GroupChatPage> {
                                 socket.emitWithAck('message', {
                                   'group_id': "${_idGroup.groupId}",
                                   'token': '${_token.token}',
-                                  'message': "${text}"
+                                  'message': text
                                 });
                               },
                               child: const Icon(Icons.arrow_forward, size: 30),

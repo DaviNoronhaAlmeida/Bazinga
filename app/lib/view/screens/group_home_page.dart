@@ -3,7 +3,7 @@ import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_group_info.dart';
 // ignore: depend_on_referenced_packages
-import 'package:pull_to_refresh/pull_to_refresh.dart';
+//import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
@@ -13,7 +13,7 @@ class GroupHomePage extends StatelessWidget {
 
   final AppColors _appColors = Get.find();
   final GroupsController _groupController = Get.put(GroupsController());
-  final RefreshController _refreshController = RefreshController();
+  //final RefreshController _refreshController = RefreshController();
 
   @override
   Widget build(BuildContext context) {

@@ -33,8 +33,10 @@ class GroupInfo extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: GestureDetector(
-                  onTap: () async{
-                    var res = await selectGroupReq(id);
+                  onTap: () async {
+                    await selectGroupReq(id);
+                    GroupId group = Get.put(GroupId());
+                    group.setName(groupName);
                     Get.toNamed('/groupChat');
                   },
                   child: Container(

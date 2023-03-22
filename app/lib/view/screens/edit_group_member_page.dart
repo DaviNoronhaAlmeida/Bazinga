@@ -2,7 +2,6 @@ import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_input.dart';
 import 'package:app/view/widgets/custom_big_button.dart';
-import 'package:app/view/widgets/custom_added_member.dart';
 import 'package:app/view/widgets/custom_add_member.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -63,6 +62,7 @@ class EditGroupMemberPage extends StatelessWidget {
                   CustomInput(
                     inputTittle: 'Pesquisar Usuário:',
                     controller: _nameController,
+                    hide: false,
                   ),
 
                   SizedBox(
@@ -125,19 +125,7 @@ class EditGroupMemberPage extends StatelessWidget {
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(
-                              children: [
-                                AddedMember(
-                                    username: 'Usuário 1',
-                                    icon: 'Endereçodo ícone'),
-                                const SizedBox(width: 10),
-                                AddedMember(
-                                    username: 'Usuário 2',
-                                    icon: 'Endereçodo ícone'),
-                                const SizedBox(width: 10),
-                                AddedMember(
-                                    username: 'Usuário 3',
-                                    icon: 'Endereçodo ícone'),
-                              ],
+                              children: const [],
                             ),
                           ),
                         ),

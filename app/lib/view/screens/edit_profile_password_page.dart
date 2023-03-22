@@ -66,16 +66,19 @@ class EditPasswordPage extends StatelessWidget {
                 CustomInput(
                   inputTittle: 'Senha Atual:',
                   controller: _passwordController,
+                  hide: true,
                 ),
                 const SizedBox(height: 16),
                 CustomInput(
                   inputTittle: 'Nova Senha:',
                   controller: _newPasswordController,
+                  hide: true,
                 ),
                 const SizedBox(height: 16),
                 CustomInput(
                   inputTittle: 'Confirmar Nova Senha:',
                   controller: _confirmPasswordController,
+                  hide: true,
                 ),
 
                 //Botão de salvar

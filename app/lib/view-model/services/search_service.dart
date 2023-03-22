@@ -3,13 +3,14 @@ import 'package:app/view/widgets/custom_snackbar.dart';
 import 'package:get/get.dart';
 
 class Search extends GetxController {
-  final searchData = <dynamic>[].obs;
+  late List searchData = <dynamic>[];
 
-  void search(String search) async {
+  search(String search) async {
     Map<String, dynamic> data = await searchReq(search);
 
     if (data['status'] == 200) {
-      searchData.value = data['content'];
+      searchData = data['content'];
+      return searchData;
     } else {
       CustomSnackBar.show(data['content']['message']);
     }

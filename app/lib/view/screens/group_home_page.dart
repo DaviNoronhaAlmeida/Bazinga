@@ -3,7 +3,7 @@ import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_group_info.dart';
 // ignore: depend_on_referenced_packages
-import 'package:pull_to_refresh/pull_to_refresh.dart';
+//import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
@@ -12,7 +12,7 @@ class GroupHomePage extends StatelessWidget {
   GroupHomePage({super.key});
 
   final AppColors _appColors = Get.find();
-  final RefreshController _refreshController = RefreshController();
+  //final RefreshController _refreshController = RefreshController();
   final GroupsController _groupController = Get.put(GroupsController());
 
   @override
@@ -21,6 +21,7 @@ class GroupHomePage extends StatelessWidget {
       backgroundColor: _appColors.backgroundColor.value,
       appBar: CustomAppBar(),
       body: Obx(() {
+        // ignore: unnecessary_nullable_for_final_variable_declarations, invalid_use_of_protected_member
         final List<dynamic>? groupData = _groupController.groupData.value;
         if (groupData != null) {
           return SingleChildScrollView(

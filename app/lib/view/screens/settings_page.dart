@@ -69,12 +69,12 @@ class SettingsPage extends StatelessWidget {
                   description: 'Trocar Nome de Usuário',
                 ),
                 const Spacer(),
-                CustomSettingsOption(
-                  function: () => {Get.toNamed('/editProfileIcon')},
-                  tittle: 'Editar Ícone',
-                  description: 'Trocar Ícone do Perfil',
-                ),
-                const Spacer(),
+                // CustomSettingsOption(
+                //   function: () => {Get.toNamed('/editProfileIcon')},
+                //   tittle: 'Editar Ícone',
+                //   description: 'Trocar Ícone do Perfil',
+                // ),
+                // const Spacer(),
                 CustomSettingsOption(
                   function: () => {Get.toNamed('/editPassword')},
                   tittle: 'Nova Senha',

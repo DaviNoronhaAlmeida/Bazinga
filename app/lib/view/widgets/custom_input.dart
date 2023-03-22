@@ -5,8 +5,13 @@ import '../styles/app_colors.dart';
 
 class CustomInput extends StatelessWidget {
   final String inputTittle;
+  final bool hide;
   final TextEditingController controller;
-  CustomInput({super.key, required this.inputTittle, required this.controller});
+  CustomInput(
+      {super.key,
+      required this.inputTittle,
+      required this.controller,
+      required this.hide});
 
   final AppColors _appColors = Get.find();
 
@@ -33,6 +38,7 @@ class CustomInput extends StatelessWidget {
           width: 320,
           child: TextField(
             controller: controller,
+            obscureText: hide,
             inputFormatters: [
               LengthLimitingTextInputFormatter(50),
             ],

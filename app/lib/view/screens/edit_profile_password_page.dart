@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import '../styles/app_colors.dart';
 import 'dart:convert';
 
+// ignore: must_be_immutable
 class EditPasswordPage extends StatelessWidget {
   EditPasswordPage({super.key});
   final AppColors _appColors = Get.find();

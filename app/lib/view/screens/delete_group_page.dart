@@ -74,7 +74,7 @@ class DeleteGroupPage extends StatelessWidget {
                 const Spacer(),
                 const Spacer(),
                 CustomBigButton(
-                  tittleBtn: 'SALVAR',
+                  tittleBtn: 'EXCLUIR',
                   customMargin: 0,
                   function: () => Get.back(),
                 ),

@@ -3,7 +3,6 @@ import 'package:app/view-model/controllers/feed_controller.dart';
 import 'package:app/view/widgets/custom_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../view-model/utils/user_info.dart';
 import '../../view-model/utils/token.dart';
 
 void updatePassword(

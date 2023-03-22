@@ -72,6 +72,7 @@ class AddMember extends StatelessWidget {
                           color: _appColors.textColor.value,
                           onPressed: () async {
                             await usersId.search(username);
+                            Get.back();
                           },
                         ),
                       ],

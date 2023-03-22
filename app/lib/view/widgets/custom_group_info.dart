@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
 
+// ignore: must_be_immutable
 class GroupInfo extends StatelessWidget {
   final String groupName;
   final String icon;
@@ -32,7 +33,9 @@ class GroupInfo extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 10),
                 child: GestureDetector(
                   onTap: () {
-                    print(id);
+                    GroupId groupInfo = Get.put(GroupId());
+                    groupInfo.setName(groupName);
+                    groupInfo.setgroup(id);
                     Get.toNamed('/groupChat');
                   },
                   child: Container(

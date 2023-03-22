@@ -15,7 +15,7 @@ void createGroup(String name, List<String> members) async {
       ),
     );
     await Future.delayed(const Duration(seconds: 2));
-    Get.offAllNamed('/groupHome');
+    Get.toNamed('/groupHome');
   } else {
     CustomSnackBar.show(data['content']['message']);
   }

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:app/config/base.dart';
 import 'package:app/view-model/utils/group_id.dart';
 import 'package:app/view-model/utils/token.dart';
@@ -18,58 +20,49 @@ class GroupChatPage extends StatefulWidget {
 
 class _GroupChatPageState extends State<GroupChatPage> {
   final AppColors _appColors = Get.find();
+  final Token _token = Get.find();
+  final GroupId _idGroup = Get.find();
   String text = "";
-  late var dados;
+  var dados = [];
   late IO.Socket socket;
-
   @override
   void initState() {
     super.initState();
-    Map<String, String> headers = {
-      'Authorization': 'Bearer token',
-    };
     socket = IO.io('${Base().url}', <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': true,
-      'extraHeaders': headers,
+      'extraHeaders': {
+        'Authorization': 'Bearer ${_token.token}',
+      }
     });
     socket.onConnect((_) {
-      print('connected');
-      final token =
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDE3ZDUxYTdmODg4NGE2MDc1NzFiOGIiLCJuYW1lIjoiTFVDQVMgU0lMVkEiLCJuaWNrIjoibHVjYXMiLCJlbWFpbCI6Imx1Y2FzQGVtYWlsLmNvbSIsImlhdCI6MTY3OTQ2MTU4MCwiZXhwIjoxNjc5NDY1MTgwfQ.RklPZkxe40PZm7bB2-XHXztVLvdosflvYdGcdhkf59Q";
-      Map json = {'group_id': "6419ee0a0e85f6f15e3478ea", 'token': '$token'};
-      socket.emitWithAck('select_group', {
-        'group_id': "6419ee0a0e85f6f15e3478ea",
-        'token': '$token'
-      }, ack: (data) {
-        setState(() {
-          dados = data;
-        });
-        print('$data');
-      });
+      // _idGroup = Get.put(GroupId());
       socket.connect();
     });
-  }
-
-  void reset() {
-    print('Hello');
-    final token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDE3ZDUxYTdmODg4NGE2MDc1NzFiOGIiLCJuYW1lIjoiTFVDQVMgU0lMVkEiLCJuaWNrIjoibHVjYXMiLCJlbWFpbCI6Imx1Y2FzQGVtYWlsLmNvbSIsImlhdCI6MTY3OTQ2MTU4MCwiZXhwIjoxNjc5NDY1MTgwfQ.RklPZkxe40PZm7bB2-XHXztVLvdosflvYdGcdhkf59Q";
-    Map json = {'group_id': "6419ee0a0e85f6f15e3478ea", 'token': '$token'};
     socket.emitWithAck('select_group', {
-      'group_id': "6419ee0a0e85f6f15e3478ea",
-      'token': '$token'
+      'group_id': "${_idGroup.groupId}",
+      'token': '${_token.token}'
     }, ack: (data) {
       setState(() {
         dados = data;
       });
-      print('$data');
+      Get.put(GroupId()).setData(data);
     });
+    socket.on('message', (data) {
+      print(data);
+      setState(() {
+        dados.add(data);
+      });
+    });
+  }
+  @override
+  void dispose() {
+    socket.disconnect();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    reset();
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -87,20 +80,45 @@ class _GroupChatPageState extends State<GroupChatPage> {
                   Expanded(
                     flex: 7,
                     child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          for (var msg in dados)
-                            Container(
+                      child: new ListView.builder(
+
+                          shrinkWrap: true,
+                          physics: ClampingScrollPhysics(),
+                          itemCount: dados.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
                               padding: const EdgeInsets.only(top: 10),
                               child: CustomChat(
-                                username: '${msg['username']}',
-                                postText: '${msg['text']}',
+                                username: '${dados[index]['username']}',
+                                postText: '${dados[index]['text']}',
                                 leftMarging: 0,
                                 rightMarging: 40,
                               ),
-                            ),
-                        ],
-                      ),
+                            );
+                          }),
+                      // Column(
+                      //   children: [
+                      //     for (var msg in dados)
+                      //       Container(
+                      //         padding: const EdgeInsets.only(top: 10),
+                      //         child: CustomChat(
+                      //           username: '${msg['username']}',
+                      //           postText: '${msg['text']}',
+                      //           leftMarging: 0,
+                      //           rightMarging: 40,
+                      //         ),
+                      //       ),
+                      //     Container(
+                      //       padding: const EdgeInsets.only(top: 10),
+                      //       child: CustomChat(
+                      //         username: '1111111111111',
+                      //         postText: '111111111111',
+                      //         leftMarging: 0,
+                      //         rightMarging: 40,
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
                     ),
                   ),
                   Expanded(
@@ -151,19 +169,11 @@ class _GroupChatPageState extends State<GroupChatPage> {
                             child: FloatingActionButton(
                               backgroundColor: _appColors.redColor.value,
                               onPressed: () {
-                                final token =
-                                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDE3ZDUxYTdmODg4NGE2MDc1NzFiOGIiLCJuYW1lIjoiTFVDQVMgU0lMVkEiLCJuaWNrIjoibHVjYXMiLCJlbWFpbCI6Imx1Y2FzQGVtYWlsLmNvbSIsImlhdCI6MTY3OTQ2MTU4MCwiZXhwIjoxNjc5NDY1MTgwfQ.RklPZkxe40PZm7bB2-XHXztVLvdosflvYdGcdhkf59Q";
-                                Map json = {
-                                  'group_id': "6419ee0a0e85f6f15e3478ea",
-                                  'token': '$token'
-                                };
                                 socket.emitWithAck('message', {
-                                  'group_id': "6419ee0a0e85f6f15e3478ea",
-                                  'token': '$token',
+                                  'group_id': "${_idGroup.groupId}",
+                                  'token': '${_token.token}',
                                   'message': "${text}"
-                                }, ack: (data) {
-                                  print('$token');
-                                }, binary: true);
+                                });
                               },
                               child: const Icon(Icons.arrow_forward, size: 30),
                             ),
@@ -197,13 +207,5 @@ class _GroupChatPageState extends State<GroupChatPage> {
         bottomNavigationBar: CustomNavBar(),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    print("Bye");
-    // Disconnect the socket when the page is disposed
-    socket.disconnect();
-    super.dispose();
   }
 }

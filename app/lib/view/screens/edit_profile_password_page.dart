@@ -3,9 +3,12 @@ import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_input.dart';
 import 'package:app/view/widgets/custom_big_button.dart';
+import '../../view-model/services/update_password_service.dart';
+import '../../view-model/utils/token.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
+import 'dart:convert';
 
 class EditPasswordPage extends StatelessWidget {
   EditPasswordPage({super.key});
@@ -14,6 +17,10 @@ class EditPasswordPage extends StatelessWidget {
   final TextEditingController _newPasswordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
+  dynamic sendToken = "";
+  dynamic req = "";
+  dynamic param = "";
+  String reqString = "";
 
   @override
   Widget build(BuildContext context) {
@@ -63,10 +70,6 @@ class EditPasswordPage extends StatelessWidget {
                 ),
 
                 //Itens do Menu
-                CustomInput(
-                  inputTittle: 'Senha Atual:',
-                  controller: _passwordController,
-                ),
                 const SizedBox(height: 16),
                 CustomInput(
                   inputTittle: 'Nova Senha:',
@@ -89,7 +92,12 @@ class EditPasswordPage extends StatelessWidget {
                       if (equalityValidate(_newPasswordController.text,
                           _confirmPasswordController.text))
                         {
-                          Get.back(),
+                          sendToken = Get.find<Token>().token,
+                          req = {"password": _newPasswordController.text},
+                          reqString = jsonEncode(req),
+                          param = "Senha",
+                          updatePassword(sendToken, reqString, param,
+                              _newPasswordController.text),
                         },
                     },
                   ),

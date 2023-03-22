@@ -12,6 +12,7 @@ Future<Map<String, dynamic>> newUpdateReq(String? token, String req) async {
     body: req,
   );
   final jsonResponse = jsonDecode(response.body);
+  print(jsonResponse);
 
   return <String, dynamic>{
     'status': response.statusCode,

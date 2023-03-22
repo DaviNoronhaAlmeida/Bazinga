@@ -47,6 +47,7 @@ class CustomPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var maxWidth = MediaQuery.of(context).size.width;
     final TextEditingController commentController = TextEditingController();
     TextEditingController likesController = TextEditingController();
     likesController.text = likes.toString();
@@ -74,6 +75,7 @@ class CustomPost extends StatelessWidget {
                 color: appColors.backgroundColor.value,
               ),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -84,14 +86,20 @@ class CustomPost extends StatelessWidget {
                       color: appColors.textColor.value,
                     ),
                   ),
+
                   const SizedBox(height: 16),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 16,
-                      ),
+                  //ERRO
+                  /* Expanded( */
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 16,
+                    ),
+                    child: SizedBox(
+                      height: 420,
                       child: ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
                         itemCount: commentUser.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
@@ -118,7 +126,7 @@ class CustomPost extends StatelessWidget {
                                       Radius.circular(30),
                                     ),
                                   ),
-                                  width: double.infinity,
+                                  width: maxWidth,
                                   child: Padding(
                                     padding: const EdgeInsets.all(16.0),
                                     child: Text(
@@ -141,9 +149,10 @@ class CustomPost extends StatelessWidget {
                   ),
 
                   //INPUT
+                  const Spacer(),
                   SingleChildScrollView(
-                    child: Expanded(
-                      flex: 1,
+                    child: SizedBox(
+                      height: 70,
                       child: Container(
                         margin: const EdgeInsets.only(top: 10.0),
                         child: Row(

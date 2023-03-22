@@ -3,7 +3,7 @@ import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_input.dart';
 import 'package:app/view/widgets/custom_big_button.dart';
 import 'package:app/view/widgets/custom_snackbar.dart';
-import '../../view-model/services/update_service.dart';
+import '../../view-model/services/update_name_service.dart';
 import '../../view-model/utils/token.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -88,7 +88,7 @@ class EditNameEmailPage extends StatelessWidget {
                         req = {"nick": _nameController.text};
                         String reqString = jsonEncode(req);
                         param = "Nome de Usuário";
-                        update(
+                        updateName(
                             sendToken, reqString, param, _nameController.text);
                       }
                     },

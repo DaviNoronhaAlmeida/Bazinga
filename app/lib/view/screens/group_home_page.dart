@@ -12,8 +12,8 @@ class GroupHomePage extends StatelessWidget {
   GroupHomePage({super.key});
 
   final AppColors _appColors = Get.find();
-  final RefreshController _refreshController = RefreshController();
   final GroupsController _groupController = Get.put(GroupsController());
+  final RefreshController _refreshController = RefreshController();
 
   @override
   Widget build(BuildContext context) {

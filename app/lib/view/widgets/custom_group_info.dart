@@ -1,7 +1,6 @@
 import 'package:app/view-model/utils/group_id.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../model/authentication/group_id_req.dart';
 import '../styles/app_colors.dart';
 
 class GroupInfo extends StatelessWidget {
@@ -32,7 +31,6 @@ class GroupInfo extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {
                     print(id);
-                    final req = groupIdReq(id);
                     Get.toNamed('/groupChat');
                   },
                   child: Container(

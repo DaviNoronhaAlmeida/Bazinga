@@ -25,12 +25,14 @@ class CustomGroupAppBar extends StatelessWidget with PreferredSizeWidget {
         centerTitle: false,
         title: Container(
           padding: const EdgeInsets.only(top: 20),
-          constraints: const BoxConstraints(maxWidth: 200),
+          constraints: const BoxConstraints(maxWidth: 210),
           child: Text(
-            groupName,
+            groupName.length > 17
+                ? "${groupName.substring(0, 17)}..."
+                : groupName,
             style: const TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
+              fontSize: 20,
+              fontWeight: FontWeight.w400,
               color: Colors.white,
             ),
           ),

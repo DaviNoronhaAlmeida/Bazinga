@@ -14,13 +14,12 @@ import 'dart:async';
 
 class GroupChatPage extends StatefulWidget {
   const GroupChatPage({super.key});
+
   @override
   State<GroupChatPage> createState() => _GroupChatPageState();
 }
 
 class _GroupChatPageState extends State<GroupChatPage> {
-  ScrollController _controllerScroll = ScrollController(initialScrollOffset: 0.0,keepScrollOffset: true);
-  final TextEditingController _controller = TextEditingController();
   final AppColors _appColors = Get.find();
   final Token _token = Get.find();
   final GroupId _idGroup = Get.find();
@@ -30,13 +29,6 @@ class _GroupChatPageState extends State<GroupChatPage> {
   var dados = [];
   late IO.Socket socket;
 
-  void _scrollTop() {
-    _controllerScroll.animateTo(
-      _controllerScroll.position.maxScrollExtent+200,
-      duration: Duration(seconds: 2),
-      curve: Curves.fastOutSlowIn,
-    );
-  }
   @override
   void initState() {
     scrollController = ScrollController();
@@ -58,22 +50,22 @@ class _GroupChatPageState extends State<GroupChatPage> {
     }, ack: (data) {
       setState(() {
         dados = data;
-        _scrollTop();
       });
       _idGroup.setData(data);
     });
     socket.on('message', (data) {
       setState(() {
         dados.add(data);
-        _scrollTop();
       });
     });
   }
-  // @override
-  // void dispose() {
-  //   socket.disconnect();
-  //   super.dispose();
-  // }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    socket.disconnect();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,76 +90,62 @@ class _GroupChatPageState extends State<GroupChatPage> {
               padding: const EdgeInsets.all(0),
               child: Column(
                 children: [
-                  Expanded(
-                    flex: 7,
-                    child: SingleChildScrollView(
-                      controller: _controllerScroll,
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          physics: ClampingScrollPhysics(),
-                          itemCount: dados.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Container(
-                              padding: const EdgeInsets.only(top: 10),
-                              child: CustomChat(
-                                username: '${dados[index]['username']}',
-                                postText: '${dados[index]['text']}',
-                                leftMarging: 0,
-                                rightMarging: 40,
-                              ),
-                            );
-                          }),
-                      // Column(
-                      //   children: [
-                      //     for (var msg in dados)
-                      //       Container(
-                      //         padding: const EdgeInsets.only(top: 10),
-                      //         child: CustomChat(
-                      //           username: '${msg['username']}',
-                      //           postText: '${msg['text']}',
-                      //           leftMarging: 0,
-                      //           rightMarging: 40,
-                      //         ),
-                      //       ),
-                      //     Container(
-                      //       padding: const EdgeInsets.only(top: 10),
-                      //       child: CustomChat(
-                      //         username: '1111111111111',
-                      //         postText: '111111111111',
-                      //         leftMarging: 0,
-                      //         rightMarging: 40,
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                    ),
+                  SizedBox(
+                    height: 520,
+                    child: ListView.builder(
+                        controller: scrollController,
+                        shrinkWrap: true,
+                        physics: const ClampingScrollPhysics(),
+                        itemCount: dados.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: myNick == dados[index]['username']
+                                ? CustomChat(
+                                    username: '${dados[index]['username']}',
+                                    postText: '${dados[index]['text']}',
+                                    leftMarging: 60,
+                                    rightMarging: 0,
+                                  )
+                                : CustomChat(
+                                    username: '${dados[index]['username']}',
+                                    postText: '${dados[index]['text']}',
+                                    leftMarging: 0,
+                                    rightMarging: 40,
+                                  ),
+                          );
+                        }),
                   ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 10.0),
-                      child: Row(
-                        children: [
-                          Container(
-                            height: 90,
-                            width: 280,
-                            alignment: Alignment.bottomLeft,
-                            child: TextField(
-                              controller: _controller,
-                              onChanged: (value) => {
-                                setState(() {
-                                  text = value;
-                                })
-                              },
-                              maxLines: null,
-                              decoration: InputDecoration(
-                                contentPadding:
-                                    const EdgeInsets.symmetric(horizontal: 12),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: _appColors.redColor.value,
-                                      width: 2),
-                                  borderRadius: BorderRadius.circular(10.0),
+                  SingleChildScrollView(
+                    child: SizedBox(
+                      height: 70,
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 10.0),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 90,
+                              width: 280,
+                              alignment: Alignment.center,
+                              child: TextField(
+                                controller: inputController,
+                                maxLines: null,
+                                textInputAction: TextInputAction.done,
+                                decoration: InputDecoration(
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 12),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: _appColors.redColor.value,
+                                        width: 2),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: _appColors.redColor.value,
+                                        width: 2),
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
                                 ),
                                 style: TextStyle(
                                   fontFamily: 'Roboto',
@@ -177,25 +155,29 @@ class _GroupChatPageState extends State<GroupChatPage> {
                                 ),
                               ),
                             ),
-                          ),
-                          const Spacer(),
-                          Container(
-                            height: 40,
-                            alignment: Alignment.bottomLeft,
-                            child: FloatingActionButton(
-                              backgroundColor: _appColors.redColor.value,
-                              onPressed: () {
-                                socket.emitWithAck('message', {
-                                  'group_id': "${_idGroup.groupId}",
-                                  'token': '${_token.token}',
-                                  'message': "${text}"
-                                });
-                                setState(() {
-                                  text = "";
-                                  _controller.text = "";
-                                });
-                              },
-                              child: const Icon(Icons.arrow_forward, size: 30),
+                            const Spacer(),
+                            Container(
+                              height: 40,
+                              alignment: Alignment.bottomLeft,
+                              child: FloatingActionButton(
+                                backgroundColor: _appColors.redColor.value,
+                                onPressed: () {
+                                  if (inputController.text.isNotEmpty) {
+                                    socket.emitWithAck(
+                                      'message',
+                                      {
+                                        'group_id': "${_idGroup.groupId}",
+                                        'token': '${_token.token}',
+                                        'message': inputController.text
+                                      },
+                                    );
+                                    inputController.clear();
+                                    scrollDown();
+                                  }
+                                },
+                                child:
+                                    const Icon(Icons.arrow_forward, size: 30),
+                              ),
                             ),
                           ],
                         ),

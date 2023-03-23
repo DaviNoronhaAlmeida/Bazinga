@@ -34,7 +34,9 @@ class EditGroupPage extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 10),
                       child: RichText(
                         text: TextSpan(
-                          text: groupInfo.groupName,
+                          text: groupInfo.groupName.length > 17
+                              ? "${groupInfo.groupName.substring(0, 17)}..."
+                              : groupInfo.groupName,
                           style: TextStyle(
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400,
@@ -66,7 +68,7 @@ class EditGroupPage extends StatelessWidget {
               ),
               const Spacer(),
               CustomSettingsOption(
-                function: () => {Get.toNamed('/editGroupMember')},
+                function: () => {Get.toNamed('/editGroupRemoveMember')},
                 tittle: 'Remover Membros',
                 description: 'Remover Membros do Grupo',
               ),

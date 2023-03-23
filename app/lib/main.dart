@@ -1,3 +1,4 @@
+import 'package:app/view/screens/edit_group_remove_member.dart';
 import 'package:app/view/screens/login_page.dart';
 import 'package:app/view/screens/register_page.dart';
 import 'package:app/view/screens/feed_page.dart';
@@ -9,7 +10,7 @@ import 'package:app/view/screens/group_chat_page.dart';
 import 'package:app/view/screens/edit_group_page.dart';
 import 'package:app/view/screens/edit_group_name_page.dart';
 import 'package:app/view/screens/edit_group_icon_page.dart';
-import 'package:app/view/screens/edit_group_member_page.dart';
+import 'package:app/view/screens/edit_group_add_member_page.dart';
 import 'package:app/view/screens/delete_group_page.dart';
 import 'package:app/view/screens/profile_page.dart';
 import 'package:app/view/screens/settings_page.dart';
@@ -82,7 +83,11 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/editGroupMember',
-          page: () => EditGroupMemberPage(),
+          page: () => EditGroupAddMemberPage(),
+        ),
+        GetPage(
+          name: '/editGroupRemoveMember',
+          page: () => EditGroupRemoveMemberPage(),
         ),
         GetPage(
           name: '/deleteGroup',

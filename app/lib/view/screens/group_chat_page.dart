@@ -5,7 +5,6 @@ import 'package:app/view/widgets/custom_group_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_chat_bubble.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 // ignore: library_prefixes
 import 'package:socket_io_client/socket_io_client.dart' as IO;
@@ -70,9 +69,10 @@ class _GroupChatPageState extends State<GroupChatPage> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: non_constant_identifier_names
     final String GroupName = _idGroup.groupName;
     Timer(
-        Duration(milliseconds: 100),
+        const Duration(milliseconds: 100),
         () =>
             scrollController.jumpTo(scrollController.position.maxScrollExtent));
     return GestureDetector(
@@ -213,6 +213,6 @@ class _GroupChatPageState extends State<GroupChatPage> {
 
   void scrollDown() {
     scrollController.animateTo(scrollController.position.maxScrollExtent,
-        duration: Duration(seconds: 2), curve: Curves.easeOut);
+        duration: const Duration(seconds: 2), curve: Curves.easeOut);
   }
 }

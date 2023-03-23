@@ -76,24 +76,22 @@ class _GroupChatPageState extends State<GroupChatPage> {
               padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
-                  Expanded(
-                    flex: 7,
-                    child: SingleChildScrollView(
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          physics: const ClampingScrollPhysics(),
-                          itemCount: dados.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Container(
-                              padding: const EdgeInsets.only(top: 10),
-                              child: CustomChat(
-                                username: '${dados[index]['username']}',
-                                postText: '${dados[index]['text']}',
-                                leftMarging: 0,
-                                rightMarging: 40,
-                              ),
-                            );
-                          }),
+                  SingleChildScrollView(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      physics: const ClampingScrollPhysics(),
+                      itemCount: dados.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: CustomChat(
+                            username: '${dados[index]['username']}',
+                            postText: '${dados[index]['text']}',
+                            leftMarging: 0,
+                            rightMarging: 40,
+                          ),
+                        );
+                      },
                       // Column(
                       //   children: [
                       //     for (var msg in dados)

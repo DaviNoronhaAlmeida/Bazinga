@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:app/config/base.dart';
 import 'package:app/view-model/utils/group_id.dart';
 import 'package:app/view-model/utils/token.dart';
@@ -13,12 +11,12 @@ import '../styles/app_colors.dart';
 
 class GroupChatPage extends StatefulWidget {
   const GroupChatPage({super.key});
-
   @override
   State<GroupChatPage> createState() => _GroupChatPageState();
 }
 
 class _GroupChatPageState extends State<GroupChatPage> {
+  ScrollController _controllerScroll = ScrollController(initialScrollOffset: 0.0,keepScrollOffset: true);
   final TextEditingController _controller = TextEditingController();
   final AppColors _appColors = Get.find();
   final Token _token = Get.find();
@@ -26,6 +24,15 @@ class _GroupChatPageState extends State<GroupChatPage> {
   String text = "";
   var dados = [];
   late IO.Socket socket;
+
+  void _scrollTop() {
+    _controllerScroll.animateTo(
+      _controllerScroll.position.maxScrollExtent+200,
+      duration: Duration(seconds: 2),
+      curve: Curves.fastOutSlowIn,
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -46,20 +53,22 @@ class _GroupChatPageState extends State<GroupChatPage> {
     }, ack: (data) {
       setState(() {
         dados = data;
+        _scrollTop();
       });
       Get.put(GroupId()).setData(data);
     });
     socket.on('message', (data) {
       setState(() {
         dados.add(data);
+        _scrollTop();
       });
     });
   }
-  @override
-  void dispose() {
-    socket.disconnect();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   socket.disconnect();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -80,8 +89,8 @@ class _GroupChatPageState extends State<GroupChatPage> {
                   Expanded(
                     flex: 7,
                     child: SingleChildScrollView(
-                      child: new ListView.builder(
-
+                      controller: _controllerScroll,
+                      child: ListView.builder(
                           shrinkWrap: true,
                           physics: ClampingScrollPhysics(),
                           itemCount: dados.length,
@@ -176,7 +185,7 @@ class _GroupChatPageState extends State<GroupChatPage> {
                                   'message': "${text}"
                                 });
                                 setState(() {
-                                  text= "";
+                                  text = "";
                                   _controller.text = "";
                                 });
                               },

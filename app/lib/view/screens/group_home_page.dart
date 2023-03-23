@@ -37,6 +37,7 @@ class GroupHomePage extends StatelessWidget {
             ),
           ),
           Obx(() {
+            // ignore: invalid_use_of_protected_member, unnecessary_nullable_for_final_variable_declarations
             final List<dynamic>? groupData = _groupController.groupData.value;
             if (groupData != null) {
               return Expanded(

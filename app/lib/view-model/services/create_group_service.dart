@@ -16,6 +16,7 @@ void createGroup(String name, List<String> members) async {
       ),
     );
     await Future.delayed(const Duration(seconds: 2));
+    // ignore: no_leading_underscores_for_local_identifiers
     final GroupsController _groupController = Get.put(GroupsController());
     _groupController.loadFeed();
     Get.toNamed('/groupHome');

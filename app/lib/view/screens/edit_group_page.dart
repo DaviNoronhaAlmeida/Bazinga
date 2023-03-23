@@ -87,7 +87,7 @@ class EditGroupPage extends StatelessWidget {
               child: FloatingActionButton(
                 backgroundColor: _appColors.redColor.value,
                 onPressed: () {
-                  Navigator.pop(context);
+                  Get.toNamed('/groupChat');
                 },
                 child: const Icon(Icons.arrow_back, size: 30),
               ),

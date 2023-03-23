@@ -9,6 +9,7 @@ void deleteGroup(BuildContext context, String id) async {
   Map<String, dynamic> data = await deleteGroupReq(id);
 
   if (data['status'] == 200) {
+    // ignore: no_leading_underscores_for_local_identifiers
     final GroupsController _groupController = Get.put(GroupsController());
     _groupController.loadFeed();
     // ignore: use_build_context_synchronously

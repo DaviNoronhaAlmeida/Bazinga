@@ -1,14 +1,18 @@
+import 'package:app/view-model/services/change_member_service.dart';
+import 'package:app/view-model/validators/name_validator.dart';
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_input.dart';
 import 'package:app/view/widgets/custom_big_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../view-model/utils/group_id.dart';
 import '../styles/app_colors.dart';
 
 class EditGroupNamePage extends StatelessWidget {
   EditGroupNamePage({super.key});
   final AppColors _appColors = Get.find();
+  final GroupId groupInfo = Get.find();
   final TextEditingController _nameController = TextEditingController();
 
   @override
@@ -44,7 +48,9 @@ class EditGroupNamePage extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 10),
                         child: RichText(
                           text: TextSpan(
-                            text: 'Nome do Grupo',
+                            text: groupInfo.groupName.length > 17
+                                ? "${groupInfo.groupName.substring(0, 17)}..."
+                                : groupInfo.groupName,
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400,
@@ -72,7 +78,12 @@ class EditGroupNamePage extends StatelessWidget {
                   child: CustomBigButton(
                     tittleBtn: 'SALVAR',
                     customMargin: 70,
-                    function: () => Get.back(),
+                    function: () {
+                      if (nameValidate(_nameController.text)) {
+                        changeMembers(_nameController.text, groupInfo.members,
+                            groupInfo.groupId);
+                      }
+                    },
                   ),
                 ),
               ],

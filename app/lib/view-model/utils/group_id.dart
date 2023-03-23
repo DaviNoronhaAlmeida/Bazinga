@@ -18,6 +18,7 @@ class GroupId extends GetxController {
 
   void setName(String name) {
     _groupName = name;
+    update();
   }
 
   void setData(var arr) {

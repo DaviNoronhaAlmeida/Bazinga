@@ -39,11 +39,13 @@ class DeleteGroupPage extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 10),
                       child: RichText(
                         text: TextSpan(
-                          text: groupInfo.groupName,
+                          text: groupInfo.groupName.length > 19
+                              ? "${groupInfo.groupName.substring(0, 19)}..."
+                              : groupInfo.groupName,
                           style: TextStyle(
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400,
-                            fontSize: 30,
+                            fontSize: 24,
                             color: _appColors.textColor.value,
                           ),
                         ),

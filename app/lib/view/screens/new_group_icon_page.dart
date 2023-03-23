@@ -1,5 +1,4 @@
 import 'package:app/view-model/services/create_group_service.dart';
-import 'package:app/view-model/validators/nickname_validator.dart';
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_input.dart';
@@ -9,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../view-model/controllers/groups_controller.dart';
 import '../../view-model/services/search_user_id_service.dart';
+import '../../view-model/validators/name_validator.dart';
 import '../styles/app_colors.dart';
 
 class NewGroupIconPage extends StatelessWidget {
@@ -76,9 +76,10 @@ class NewGroupIconPage extends StatelessWidget {
                 tittleBtn: 'CRIAR GRUPO',
                 customMargin: 15,
                 function: () {
-                  if (nickValidate(_nameController.text)) {
+                  if (nameValidate(_nameController.text)) {
                     createGroup(_nameController.text, usersId.users);
                     groups.loadFeed();
+                    usersId.users = [];
                   }
                 },
               ),

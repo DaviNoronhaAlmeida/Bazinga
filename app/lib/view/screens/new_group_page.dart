@@ -145,7 +145,7 @@ class NewGroupPage extends StatelessWidget {
               child: Column(
                 children: [
                   Align(
-                    alignment: Alignment.topLeft,
+                    alignment: Alignment.center,
                     child: RichText(
                       text: TextSpan(
                         text: 'Usuários adicionados',
@@ -159,27 +159,20 @@ class NewGroupPage extends StatelessWidget {
                     ),
                   ),
                   Align(
-                    alignment: Alignment.topLeft,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          GetBuilder<SearchUsersId>(
-                            init: SearchUsersId(),
-                            builder: (context) {
-                              return Text(
-                                'Escolhidos: ${context.users.length}',
-                                style: TextStyle(
-                                  fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 18,
-                                  color: _appColors.descriptionColor.value,
-                                ),
-                              );
-                            },
+                    alignment: Alignment.center,
+                    child: GetBuilder<SearchUsersId>(
+                      init: SearchUsersId(),
+                      builder: (context) {
+                        return Text(
+                          'Escolhidos: ${context.users.length}',
+                          style: TextStyle(
+                            fontFamily: 'Roboto',
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18,
+                            color: _appColors.descriptionColor.value,
                           ),
-                        ],
-                      ),
+                        );
+                      },
                     ),
                   ),
                 ],

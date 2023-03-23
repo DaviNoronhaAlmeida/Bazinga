@@ -30,7 +30,7 @@ class GroupHomePage extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: 'Roboto',
                   fontWeight: FontWeight.w400,
-                  fontSize: 30,
+                  fontSize: 25,
                   color: _appColors.textColor.value,
                 ),
               ),

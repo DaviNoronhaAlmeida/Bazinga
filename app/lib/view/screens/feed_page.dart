@@ -7,6 +7,7 @@ import 'package:app/view/widgets/custom_post.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
+// ignore: library_prefixes
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 // ignore: depend_on_referenced_packages
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -31,7 +32,7 @@ class _FeedPageState extends State<FeedPage> {
     setState(() {
       _controllerScroll.animateTo(
         _controllerScroll.position.maxScrollExtent,
-        duration: Duration(seconds: 2),
+        duration: const Duration(seconds: 2),
         curve: Curves.fastOutSlowIn,
       );
     });
@@ -41,14 +42,16 @@ class _FeedPageState extends State<FeedPage> {
     final scaffold = ScaffoldMessenger.of(context);
     scaffold.showSnackBar(
       SnackBar(
-        duration: Duration(seconds: 5),
+        duration: const Duration(seconds: 5),
         content: const Text('Novas Postagens'),
-        backgroundColor: Color.fromRGBO(2, 80, 0, 0.95),
-        action: SnackBarAction(label: 'Atualizar', onPressed: (){
-          _feedController.loadFeed();
-          _scrollTop();
-          scaffold.hideCurrentSnackBar;
-        }),
+        backgroundColor: const Color.fromRGBO(2, 80, 0, 0.95),
+        action: SnackBarAction(
+            label: 'Atualizar',
+            onPressed: () {
+              _feedController.loadFeed();
+              _scrollTop();
+              scaffold.hideCurrentSnackBar;
+            }),
       ),
     );
   }
@@ -56,7 +59,7 @@ class _FeedPageState extends State<FeedPage> {
   @override
   void initState() {
     super.initState();
-    socket = IO.io('${Base().url}', <String, dynamic>{
+    socket = IO.io(Base().url, <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': true,
       'extraHeaders': {
@@ -67,8 +70,7 @@ class _FeedPageState extends State<FeedPage> {
       // _idGroup = Get.put(GroupId());
       socket.connect();
     });
-    socket.on('posts', (data) async{
-      print(data);
+    socket.on('posts', (data) async {
       _showToast(context);
     });
   }
@@ -98,54 +100,57 @@ class _FeedPageState extends State<FeedPage> {
               itemBuilder: (BuildContext context, int index) {
                 return Column(
                   children: [
-                      Column(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: CustomPost(
-                              postId: feedData[index]['_id'],
-                              username: feedData[index]['id_creator'] != null
-                                  ? feedData[index]['id_creator']['nick']
-                                  : '',
-                              postText: feedData[index]['content'],
-                              likes: feedData[index]['likes'] != null
-                                  ? feedData[index]['likes'].length
-                                  : 0,
-                              likingUsers: feedData[index]['likes'] != null
-                                  ? List<String>.from(feedData[index]['likes']
-                                  .map((like) => like['nick'].toString()))
-                                  : [],
-                              likedId: feedData[index]['likes'] != null
-                                  ? List<String>.from(feedData[index]['likes']
-                                  .map((like) => like['_id'].toString()))
-                                  : [],
-                              img: feedData[index].containsKey('img') && feedData[index]['img'] != ""
-                                  ? feedData[index]['img'].toString()
-                                  : null,
-                              comments: feedData[index]['comments'] != null
-                                  ? feedData[index]['comments'].length
-                                  : 0,
-                              commentUser: feedData[index]['comments'] != null
-                                  ? List<String>.from(feedData[index]['comments'].map(
-                                      (comment) => comment['id_creator']['nick']
-                                      .toString()))
-                                  : [],
-                              commentContent: feedData[index]['comments'] != null
-                                  ? List<String>.from(feedData[index]['comments'].map(
-                                      (comment) => comment['content'].toString()))
-                                  : [],
-                            ),
+                    Column(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: CustomPost(
+                            postId: feedData[index]['_id'],
+                            username: feedData[index]['id_creator'] != null
+                                ? feedData[index]['id_creator']['nick']
+                                : '',
+                            postText: feedData[index]['content'],
+                            likes: feedData[index]['likes'] != null
+                                ? feedData[index]['likes'].length
+                                : 0,
+                            likingUsers: feedData[index]['likes'] != null
+                                ? List<String>.from(feedData[index]['likes']
+                                    .map((like) => like['nick'].toString()))
+                                : [],
+                            likedId: feedData[index]['likes'] != null
+                                ? List<String>.from(feedData[index]['likes']
+                                    .map((like) => like['_id'].toString()))
+                                : [],
+                            img: feedData[index].containsKey('img') &&
+                                    feedData[index]['img'] != ""
+                                ? feedData[index]['img'].toString()
+                                : null,
+                            comments: feedData[index]['comments'] != null
+                                ? feedData[index]['comments'].length
+                                : 0,
+                            commentUser: feedData[index]['comments'] != null
+                                ? List<String>.from(feedData[index]['comments']
+                                    .map((comment) => comment['id_creator']
+                                            ['nick']
+                                        .toString()))
+                                : [],
+                            commentContent: feedData[index]['comments'] != null
+                                ? List<String>.from(feedData[index]['comments']
+                                    .map((comment) =>
+                                        comment['content'].toString()))
+                                : [],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 40, vertical: 20),
-                            child: Divider(
-                              color: _appColors.dividerColor.value,
-                              thickness: 2,
-                            ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 40, vertical: 20),
+                          child: Divider(
+                            color: _appColors.dividerColor.value,
+                            thickness: 2,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
+                    ),
                   ],
                 );
               },

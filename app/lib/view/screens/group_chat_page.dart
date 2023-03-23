@@ -115,29 +115,6 @@ class _GroupChatPageState extends State<GroupChatPage> {
                                   ),
                           );
                         }),
-                    // Column(
-                    //   children: [
-                    //     for (var msg in dados)
-                    //       Container(
-                    //         padding: const EdgeInsets.only(top: 10),
-                    //         child: CustomChat(
-                    //           username: '${msg['username']}',
-                    //           postText: '${msg['text']}',
-                    //           leftMarging: 0,
-                    //           rightMarging: 40,
-                    //         ),
-                    //       ),
-                    //     Container(
-                    //       padding: const EdgeInsets.only(top: 10),
-                    //       child: CustomChat(
-                    //         username: '1111111111111',
-                    //         postText: '111111111111',
-                    //         leftMarging: 0,
-                    //         rightMarging: 40,
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
                   ),
                   SingleChildScrollView(
                     child: SizedBox(

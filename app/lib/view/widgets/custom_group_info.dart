@@ -87,7 +87,7 @@ class GroupInfo extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              Padding(
+                              /* Padding(
                                 padding: const EdgeInsets.only(left: 10),
                                 child: RichText(
                                   text: TextSpan(
@@ -100,7 +100,7 @@ class GroupInfo extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                              ),
+                              ), */
                             ],
                           ),
                         ],

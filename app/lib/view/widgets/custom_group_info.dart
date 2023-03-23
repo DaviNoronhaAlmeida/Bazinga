@@ -4,18 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../styles/app_colors.dart';
 
+// ignore: must_be_immutable
 class GroupInfo extends StatelessWidget {
   final String groupName;
   final String icon;
   final String lastMessage;
   final String id;
+  dynamic messages;
+  final List<dynamic> members;
 
   GroupInfo(
       {super.key,
       required this.groupName,
       required this.id,
       required this.icon,
-      required this.lastMessage});
+      required this.lastMessage,
+      required this.messages,
+      required this.members});
 
   final AppColors _appColors = Get.find();
 
@@ -30,8 +35,11 @@ class GroupInfo extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: GestureDetector(
-                  onTap: () async{
-                    var res = await selectGroupReq(id);
+                  onTap: () async {
+                    await selectGroupReq(id);
+                    GroupId group = Get.put(GroupId());
+                    group.setName(groupName);
+                    group.setMembers(members);
                     Get.toNamed('/groupChat');
                   },
                   child: Container(
@@ -79,11 +87,11 @@ class GroupInfo extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              Padding(
+                              /* Padding(
                                 padding: const EdgeInsets.only(left: 10),
                                 child: RichText(
                                   text: TextSpan(
-                                    text: id,
+                                    text: lastMessage,
                                     style: TextStyle(
                                       fontFamily: 'Roboto',
                                       fontWeight: FontWeight.w400,
@@ -92,7 +100,7 @@ class GroupInfo extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                              ),
+                              ), */
                             ],
                           ),
                         ],

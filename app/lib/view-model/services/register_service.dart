@@ -1,6 +1,7 @@
 import 'package:app/model/authentication/register_req.dart';
 import 'package:app/view/widgets/custom_dialog.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import '../../view/widgets/custom_snackbar.dart';
 import '../validators/email_validator.dart';
 import '../validators/nickname_validator.dart';
@@ -15,7 +16,12 @@ void register(
 
     if (data['status'] == 200) {
       // ignore: use_build_context_synchronously
-      showCustomDialog(context, 'Cadastrado com sucesso!', 'ENTRAR');
+      showCustomDialog(
+        context,
+        'Cadastrado com sucesso!',
+        'ENTRAR',
+        () => Get.toNamed('/'),
+      );
     } else {
       CustomSnackBar.show(data['content']['message']);
     }

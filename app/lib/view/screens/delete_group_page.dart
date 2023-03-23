@@ -1,13 +1,18 @@
+import 'package:app/view-model/controllers/groups_controller.dart';
+import 'package:app/view-model/services/delete_group_service.dart';
 import 'package:app/view/widgets/custom_appbar.dart';
 import 'package:app/view/widgets/custom_navbar.dart';
 import 'package:app/view/widgets/custom_big_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../view-model/utils/group_id.dart';
 import '../styles/app_colors.dart';
 
 class DeleteGroupPage extends StatelessWidget {
   DeleteGroupPage({super.key});
   final AppColors _appColors = Get.find();
+  final GroupId groupInfo = Get.find();
+  final GroupsController groups = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +39,7 @@ class DeleteGroupPage extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 10),
                       child: RichText(
                         text: TextSpan(
-                          text: 'Nome do Grupo',
+                          text: groupInfo.groupName,
                           style: TextStyle(
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400,
@@ -74,9 +79,12 @@ class DeleteGroupPage extends StatelessWidget {
                 const Spacer(),
                 const Spacer(),
                 CustomBigButton(
-                  tittleBtn: 'SALVAR',
+                  tittleBtn: 'EXCLUIR',
                   customMargin: 0,
-                  function: () => Get.back(),
+                  function: () {
+                    deleteGroup(context, groupInfo.groupId);
+                    groups.loadFeed();
+                  },
                 ),
               ],
             ),

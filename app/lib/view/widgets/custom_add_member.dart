@@ -50,7 +50,7 @@ class AddMember extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 10),
                             child: RichText(
                               text: TextSpan(
-                                text: username.length < 20
+                                text: username.length > 20
                                     ? "${username.substring(0, 20)}..."
                                     : username,
                                 style: TextStyle(
@@ -72,6 +72,7 @@ class AddMember extends StatelessWidget {
                           color: _appColors.textColor.value,
                           onPressed: () async {
                             await usersId.search(username);
+                            Get.back();
                           },
                         ),
                       ],

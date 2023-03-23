@@ -53,6 +53,7 @@ class GroupHomePage extends StatelessWidget {
                           ? group['messages'].last['text']
                           : "",
                       messages: group['messages'],
+                      members: group['members'],
                     );
                   },
                 ),

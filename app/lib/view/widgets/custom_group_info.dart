@@ -11,6 +11,7 @@ class GroupInfo extends StatelessWidget {
   final String lastMessage;
   final String id;
   dynamic messages;
+  final List<dynamic> members;
 
   GroupInfo(
       {super.key,
@@ -18,7 +19,8 @@ class GroupInfo extends StatelessWidget {
       required this.id,
       required this.icon,
       required this.lastMessage,
-      required this.messages});
+      required this.messages,
+      required this.members});
 
   final AppColors _appColors = Get.find();
 
@@ -37,6 +39,7 @@ class GroupInfo extends StatelessWidget {
                     await selectGroupReq(id);
                     GroupId group = Get.put(GroupId());
                     group.setName(groupName);
+                    group.setMembers(members);
                     Get.toNamed('/groupChat');
                   },
                   child: Container(

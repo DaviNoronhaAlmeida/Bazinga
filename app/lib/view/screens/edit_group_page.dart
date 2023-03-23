@@ -52,17 +52,23 @@ class EditGroupPage extends StatelessWidget {
                 tittle: 'Editar Nome',
                 description: 'Trocar Nome do Grupo',
               ),
-              // const Spacer(),
+              const Spacer(),
               // CustomSettingsOption(
               //   function: () => {Get.toNamed('/editGroupIcon')},
               //   tittle: 'Editar Ícone',
               //   description: 'Trocar Imagem do Grupo',
               // ),
+              //const Spacer(),
+              CustomSettingsOption(
+                function: () => {Get.toNamed('/editGroupMember')},
+                tittle: 'Adicionar Membros',
+                description: 'Adicionar Novos Membros ao Grupo',
+              ),
               const Spacer(),
               CustomSettingsOption(
                 function: () => {Get.toNamed('/editGroupMember')},
-                tittle: 'Editar Membros',
-                description: 'Adicionar ou Remover Membros',
+                tittle: 'Remover Membros',
+                description: 'Remover Membros do Grupo',
               ),
               const Spacer(),
               CustomSettingsOption(

@@ -7,6 +7,7 @@ import 'package:app/view/widgets/custom_big_button.dart';
 //import 'package:app/view/widgets/custom_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../view-model/controllers/groups_controller.dart';
 import '../../view-model/services/search_user_id_service.dart';
 import '../styles/app_colors.dart';
 
@@ -17,6 +18,7 @@ class NewGroupIconPage extends StatelessWidget {
   final AppColors _appColors = Get.find();
   final TextEditingController _nameController = TextEditingController();
   final SearchUsersId usersId = Get.find();
+  final GroupsController groups = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +78,7 @@ class NewGroupIconPage extends StatelessWidget {
                 function: () {
                   if (nickValidate(_nameController.text)) {
                     createGroup(_nameController.text, usersId.users);
+                    groups.loadFeed();
                   }
                 },
               ),

@@ -28,6 +28,20 @@ class GroupHomePage extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             child: Column(
               children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, bottom: 30),
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'Meus Grupos de Chat',
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 30,
+                        color: _appColors.textColor.value,
+                      ),
+                    ),
+                  ),
+                ),
                 for (var group in groupData)
                   GroupInfo(
                     groupName: group['name'],

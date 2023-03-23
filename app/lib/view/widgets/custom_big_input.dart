@@ -17,6 +17,7 @@ class CustomBigInput extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
+            height: 10,
             margin: const EdgeInsets.symmetric(vertical: 5),
             padding: const EdgeInsets.only(bottom: 10),
             child: Text(

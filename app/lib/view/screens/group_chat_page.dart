@@ -33,7 +33,7 @@ class _GroupChatPageState extends State<GroupChatPage> {
   void initState() {
     scrollController = ScrollController();
     super.initState();
-    socket = IO.io(Base().url, <String, dynamic>{
+    socket = IO.io('${Base().url}', <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': true,
       'extraHeaders': {
@@ -61,20 +61,13 @@ class _GroupChatPageState extends State<GroupChatPage> {
   }
 
   @override
-  void dispose() {
-    scrollController.dispose();
-    socket.disconnect();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     // ignore: non_constant_identifier_names
     final String GroupName = _idGroup.groupName;
     Timer(
-        const Duration(milliseconds: 0),
+        const Duration(milliseconds: 10),
         () => scrollController
-            .jumpTo(scrollController.position.maxScrollExtent + 200));
+            .jumpTo(scrollController.position.maxScrollExtent + 400));
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -90,103 +83,109 @@ class _GroupChatPageState extends State<GroupChatPage> {
               padding: const EdgeInsets.all(0),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 520,
-                    child: ListView.builder(
-                        controller: scrollController,
-                        shrinkWrap: true,
-                        physics: const ClampingScrollPhysics(),
-                        itemCount: dados.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              padding: const EdgeInsets.only(top: 10),
-                              child: myNick == dados[index]['username']
-                                  ? CustomChat(
-                                      username: '${dados[index]['username']}',
-                                      postText: '${dados[index]['text']}',
-                                      leftMarging: 60,
-                                      rightMarging: 0,
-                                    )
-                                  : CustomChat(
-                                      username: '${dados[index]['username']}',
-                                      postText: '${dados[index]['text']}',
-                                      leftMarging: 0,
-                                      rightMarging: 40,
-                                    ),
-                            ),
-                          );
-                        }),
+                  Expanded(
+                    flex: 7,
+                    child: SizedBox(
+                      height: 540,
+                      child: ListView.builder(
+                          controller: scrollController,
+                          shrinkWrap: true,
+                          physics: const ClampingScrollPhysics(),
+                          itemCount: dados.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                padding: const EdgeInsets.only(top: 10),
+                                child: myNick == dados[index]['username']
+                                    ? CustomChat(
+                                        username: '${dados[index]['username']}',
+                                        postText: '${dados[index]['text']}',
+                                        leftMarging: 60,
+                                        rightMarging: 0,
+                                      )
+                                    : CustomChat(
+                                        username: '${dados[index]['username']}',
+                                        postText: '${dados[index]['text']}',
+                                        leftMarging: 0,
+                                        rightMarging: 40,
+                                      ),
+                              ),
+                            );
+                          }),
+                    ),
                   ),
 
                   // INPUT
-                  SingleChildScrollView(
-                    child: SizedBox(
-                      height: 70,
-                      child: Container(
-                        margin: const EdgeInsets.only(top: 10.0),
-                        padding: const EdgeInsets.all(10.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: 50,
-                              width: 280,
-                              alignment: Alignment.center,
-                              child: TextField(
-                                controller: inputController,
-                                maxLines: null,
-                                textInputAction: TextInputAction.done,
-                                decoration: InputDecoration(
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      horizontal: 12),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: _appColors.redColor.value,
-                                        width: 2),
-                                    borderRadius: BorderRadius.circular(10.0),
+                  Expanded(
+                    flex: 1,
+                    child: SingleChildScrollView(
+                      child: SizedBox(
+                        height: 70,
+                        child: Container(
+                          margin: const EdgeInsets.only(top: 10.0),
+                          padding: const EdgeInsets.all(10.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: 50,
+                                width: 280,
+                                alignment: Alignment.center,
+                                child: TextField(
+                                  controller: inputController,
+                                  maxLines: null,
+                                  textInputAction: TextInputAction.done,
+                                  decoration: InputDecoration(
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 12),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: _appColors.redColor.value,
+                                          width: 2),
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: _appColors.redColor.value,
+                                          width: 2),
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
                                   ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: _appColors.redColor.value,
-                                        width: 2),
-                                    borderRadius: BorderRadius.circular(10.0),
+                                  style: TextStyle(
+                                    fontFamily: 'Roboto',
+                                    color: _appColors.textColor.value,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                style: TextStyle(
-                                  fontFamily: 'Roboto',
-                                  color: _appColors.textColor.value,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
+                              ),
+                              const Spacer(),
+                              Container(
+                                height: 40,
+                                alignment: Alignment.bottomLeft,
+                                child: FloatingActionButton(
+                                  backgroundColor: _appColors.redColor.value,
+                                  onPressed: () {
+                                    if (inputController.text.isNotEmpty) {
+                                      socket.emitWithAck(
+                                        'message',
+                                        {
+                                          'group_id': "${_idGroup.groupId}",
+                                          'token': '${_token.token}',
+                                          'message': inputController.text
+                                        },
+                                      );
+                                      inputController.clear();
+                                      scrollDown();
+                                    }
+                                  },
+                                  child:
+                                      const Icon(Icons.arrow_forward, size: 30),
                                 ),
                               ),
-                            ),
-                            const Spacer(),
-                            Container(
-                              height: 40,
-                              alignment: Alignment.bottomLeft,
-                              child: FloatingActionButton(
-                                backgroundColor: _appColors.redColor.value,
-                                onPressed: () {
-                                  if (inputController.text.isNotEmpty) {
-                                    socket.emitWithAck(
-                                      'message',
-                                      {
-                                        'group_id': "${_idGroup.groupId}",
-                                        'token': '${_token.token}',
-                                        'message': inputController.text
-                                      },
-                                    );
-                                    inputController.clear();
-                                    scrollDown();
-                                  }
-                                },
-                                child:
-                                    const Icon(Icons.arrow_forward, size: 30),
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -221,5 +220,13 @@ class _GroupChatPageState extends State<GroupChatPage> {
   void scrollDown() {
     scrollController.animateTo(scrollController.position.maxScrollExtent,
         duration: const Duration(seconds: 2), curve: Curves.easeOut);
+  }
+
+  @override
+  void dispose() {
+    socket.close();
+    socket.dispose();
+    ScrollController().dispose();
+    print("bye");
   }
 }

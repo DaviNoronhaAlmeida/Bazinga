@@ -7,13 +7,13 @@ void newComment(String text, String? token, String postId) async {
   Map<String, dynamic> data = await newCommentReq(text, token, postId);
 
   if (data['status'] == 200) {
-    showDialog(
+    /* showDialog(
       context: Get.context!,
       builder: (_) => const AlertDialog(
         title: Text('Comentário enviado'),
         content: Text('Seu comentário foi publicado com sucesso!'),
       ),
-    );
+    ); */
     await Future.delayed(const Duration(seconds: 2));
   } else {
     CustomSnackBar.show(data['content']['message']);

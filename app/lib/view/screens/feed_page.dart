@@ -31,7 +31,7 @@ class _FeedPageState extends State<FeedPage> {
   void _scrollTop() {
     setState(() {
       _controllerScroll.animateTo(
-        _controllerScroll.position.maxScrollExtent,
+        0.0,
         duration: const Duration(seconds: 2),
         curve: Curves.fastOutSlowIn,
       );
@@ -93,10 +93,11 @@ class _FeedPageState extends State<FeedPage> {
               _feedController.loadFeed();
             },
             child: ListView.builder(
-              controller: _controllerScroll,
-              // padding: const EdgeInsets.all(20),
+              //controller: _controllerScroll,
+              padding: const EdgeInsets.all(20),
               itemCount: feedData.length,
-              reverse: true,
+              reverse: false,
+              physics: ClampingScrollPhysics(),
               itemBuilder: (BuildContext context, int index) {
                 return Column(
                   children: [

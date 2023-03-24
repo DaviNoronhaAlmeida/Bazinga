@@ -14,7 +14,6 @@ Future<Map<String, dynamic>> feedReq() async {
     },
   );
   final jsonResponse = jsonDecode(response.body);
-
   return <String, dynamic>{
     'status': response.statusCode,
     'content': jsonResponse,

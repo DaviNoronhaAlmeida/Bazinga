@@ -60,11 +60,11 @@ class GroupInfo extends StatelessWidget {
                           vertical: 10, horizontal: 20),
                       child: Row(
                         children: [
-                          const Icon(
+                          /* const Icon(
                             Icons.account_circle,
                             color: Colors.white,
                             size: 50,
-                          ),
+                          ), */
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -79,7 +79,7 @@ class GroupInfo extends StatelessWidget {
                                       style: TextStyle(
                                         fontFamily: 'Roboto',
                                         fontWeight: FontWeight.w400,
-                                        fontSize: 18,
+                                        fontSize: 22,
                                         color: _appColors.textColor.value,
                                       ),
                                     ),

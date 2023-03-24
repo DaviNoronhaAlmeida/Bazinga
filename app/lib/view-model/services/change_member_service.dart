@@ -3,10 +3,14 @@ import 'package:app/view/widgets/custom_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../controllers/groups_controller.dart';
+
 void changeMembers(String name, List<dynamic> members, String id) async {
   Map<String, dynamic> data = await changeMembersReq(id, name, members);
 
   if (data['status'] == 200) {
+    final GroupsController groupController = Get.put(GroupsController());
+    groupController.loadFeed();
     showDialog(
       context: Get.context!,
       builder: (_) => const AlertDialog(

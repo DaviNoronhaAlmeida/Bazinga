@@ -24,6 +24,7 @@ class NewPostPage extends StatefulWidget {
 class _NewPostPageState extends State<NewPostPage> {
   File? _image;
   final TextEditingController _postController = TextEditingController();
+  final AppColors _appColors = Get.find();
   dynamic sendToken = "";
   String imagePath = '';
 
@@ -47,78 +48,74 @@ class _NewPostPageState extends State<NewPostPage> {
 
   @override
   Widget build(BuildContext context) {
+    final AppColors appColors = Get.find();
     String serverPath;
-    return GetBuilder<AppColors>(
-      init: AppColors(),
-      builder: (_) {
-        return GestureDetector(
-          onTap: () {
-            FocusScope.of(context).unfocus();
-          },
-          child: Scaffold(
-            appBar: CustomAppBar(),
-            resizeToAvoidBottomInset: false,
-            backgroundColor: _.backgroundColor.value,
-            body: Center(
-              child: Container(
-                margin: const EdgeInsets.only(top: 30, bottom: 50),
-                child: Column(
-                  children: [
-                    //INPUT
-                    CustomBigInput(
-                      inputTittle: 'Nova Publicação:',
-                      controller: _postController,
-                    ),
-                    const Spacer(),
-                    if (_image != null)
-                      SizedBox(
-                        height: 130,
-                        child: Image.file(_image!),
-                      ),
-                    const Spacer(),
-
-                    //UPLOAD IMAGEM
-                    ElevatedButton(
-                      onPressed: _getImage,
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                          _.redColor.value,
-                        ),
-                      ),
-                      child: const Text('ADICIONAR IMAGEM'),
-                    ),
-
-                    //BOTÃO
-                    GetBuilder<Token>(
-                      builder: (token) => CustomBigButton(
-                        tittleBtn: 'PUBLICAR',
-                        customMargin: 15,
-                        function: () async {
-                          sendToken = Get.find<Token>().token;
-                          if (imagePath != '') {
-                            final serverPath = await uploadImg(imagePath);
-                            newPost(_postController.text.trim(), sendToken,
-                                serverPath['content']['url']);
-                          } else {
-                            serverPath = '';
-                            newPost(_postController.text.trim(), sendToken,
-                                serverPath);
-                          }
-                          Get.find<FeedController>()
-                              .refreshController
-                              .requestRefresh();
-                          Get.toNamed('/feed');
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            bottomNavigationBar: CustomNavBar(),
-          ),
-        );
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
       },
+      child: Scaffold(
+        appBar: CustomAppBar(),
+        resizeToAvoidBottomInset: false,
+        backgroundColor: appColors.backgroundColor.value,
+        body: Center(
+          child: Container(
+            margin: const EdgeInsets.only(top: 30, bottom: 50),
+            child: Column(
+              children: [
+                //INPUT
+                CustomBigInput(
+                  inputTittle: 'Nova Publicação:',
+                  controller: _postController,
+                ),
+                const Spacer(),
+                if (_image != null)
+                  SizedBox(
+                    height: 130,
+                    child: Image.file(_image!),
+                  ),
+                const Spacer(),
+
+                //UPLOAD IMAGEM
+                ElevatedButton(
+                  onPressed: _getImage,
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      appColors.redColor.value,
+                    ),
+                  ),
+                  child: const Text('ADICIONAR IMAGEM'),
+                ),
+
+                //BOTÃO
+                GetBuilder<Token>(
+                  builder: (token) => CustomBigButton(
+                    tittleBtn: 'PUBLICAR',
+                    customMargin: 15,
+                    function: () async {
+                      sendToken = Get.find<Token>().token;
+                      if (imagePath != '') {
+                        final serverPath = await uploadImg(imagePath);
+                        newPost(_postController.text.trim(), sendToken,
+                            serverPath['content']['url']);
+                      } else {
+                        serverPath = '';
+                        newPost(
+                            _postController.text.trim(), sendToken, serverPath);
+                      }
+                      Get.find<FeedController>()
+                          .refreshController
+                          .requestRefresh();
+                      Get.toNamed('/feed');
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        bottomNavigationBar: CustomNavBar(),
+      ),
     );
   }
 }

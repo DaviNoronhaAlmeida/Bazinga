@@ -72,9 +72,9 @@ class _GroupChatPageState extends State<GroupChatPage> {
     // ignore: non_constant_identifier_names
     final String GroupName = _idGroup.groupName;
     Timer(
-        const Duration(milliseconds: 100),
-        () =>
-            scrollController.jumpTo(scrollController.position.maxScrollExtent));
+        const Duration(milliseconds: 0),
+        () => scrollController
+            .jumpTo(scrollController.position.maxScrollExtent + 200));
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();

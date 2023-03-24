@@ -22,72 +22,77 @@ class NewGroupIconPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: _appColors.backgroundColor.value,
-      appBar: CustomAppBar(),
-      body: Container(
-        padding: const EdgeInsets.all(20),
-        child: Center(
-          child: Column(
-            children: [
-              //Search User
-              CustomInput(
-                inputTittle: 'Nome do Grupo:',
-                controller: _nameController,
-                hide: false,
-              ),
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: _appColors.backgroundColor.value,
+        appBar: CustomAppBar(),
+        body: Container(
+          padding: const EdgeInsets.all(20),
+          child: Center(
+            child: Column(
+              children: [
+                //Search User
+                CustomInput(
+                  inputTittle: 'Nome do Grupo:',
+                  controller: _nameController,
+                  hide: false,
+                ),
 
-              // Align(
-              //   alignment: Alignment.topLeft,
-              //   child: Padding(
-              //     padding: const EdgeInsets.all(20),
-              //     child: Text(
-              //       'Ícones:',
-              //       style: TextStyle(
-              //         fontFamily: 'Roboto',
-              //         color: _appColors.textColor.value,
-              //         fontSize: 19,
-              //         fontWeight: FontWeight.w400,
-              //       ),
-              //     ),
-              //   ),
-              // ),
-              // SizedBox(
-              //   height: 350,
-              //   child: RawScrollbar(
-              //     thumbVisibility: true,
-              //     thickness: 5,
-              //     controller: _scroll,
-              //     child: SingleChildScrollView(
-              //       controller: _scroll,
-              //       child: Column(
-              //         children: [
-              //           ChooseIcon(),
-              //         ],
-              //       ),
-              //     ),
-              //   ),
-              // ),
+                // Align(
+                //   alignment: Alignment.topLeft,
+                //   child: Padding(
+                //     padding: const EdgeInsets.all(20),
+                //     child: Text(
+                //       'Ícones:',
+                //       style: TextStyle(
+                //         fontFamily: 'Roboto',
+                //         color: _appColors.textColor.value,
+                //         fontSize: 19,
+                //         fontWeight: FontWeight.w400,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                // SizedBox(
+                //   height: 350,
+                //   child: RawScrollbar(
+                //     thumbVisibility: true,
+                //     thickness: 5,
+                //     controller: _scroll,
+                //     child: SingleChildScrollView(
+                //       controller: _scroll,
+                //       child: Column(
+                //         children: [
+                //           ChooseIcon(),
+                //         ],
+                //       ),
+                //     ),
+                //   ),
+                // ),
 
-              //Next button
-              const Spacer(),
-              CustomBigButton(
-                tittleBtn: 'CRIAR GRUPO',
-                customMargin: 15,
-                function: () {
-                  if (nameValidate(_nameController.text)) {
-                    createGroup(_nameController.text, usersId.users);
-                    groups.loadFeed();
-                    usersId.users = [];
-                  }
-                },
-              ),
-            ],
+                //Next button
+                const Spacer(),
+                CustomBigButton(
+                  tittleBtn: 'CRIAR GRUPO',
+                  customMargin: 15,
+                  function: () {
+                    if (nameValidate(_nameController.text)) {
+                      createGroup(_nameController.text, usersId.users);
+                      groups.loadFeed();
+                      usersId.users = [];
+                    }
+                  },
+                ),
+              ],
+            ),
           ),
         ),
+        bottomNavigationBar: CustomNavBar(),
       ),
-      bottomNavigationBar: CustomNavBar(),
     );
   }
 }

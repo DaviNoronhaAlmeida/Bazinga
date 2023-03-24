@@ -98,33 +98,40 @@ class _GroupChatPageState extends State<GroupChatPage> {
                         physics: const ClampingScrollPhysics(),
                         itemCount: dados.length,
                         itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: myNick == dados[index]['username']
-                                ? CustomChat(
-                                    username: '${dados[index]['username']}',
-                                    postText: '${dados[index]['text']}',
-                                    leftMarging: 60,
-                                    rightMarging: 0,
-                                  )
-                                : CustomChat(
-                                    username: '${dados[index]['username']}',
-                                    postText: '${dados[index]['text']}',
-                                    leftMarging: 0,
-                                    rightMarging: 40,
-                                  ),
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: myNick == dados[index]['username']
+                                  ? CustomChat(
+                                      username: '${dados[index]['username']}',
+                                      postText: '${dados[index]['text']}',
+                                      leftMarging: 60,
+                                      rightMarging: 0,
+                                    )
+                                  : CustomChat(
+                                      username: '${dados[index]['username']}',
+                                      postText: '${dados[index]['text']}',
+                                      leftMarging: 0,
+                                      rightMarging: 40,
+                                    ),
+                            ),
                           );
                         }),
                   ),
+
+                  // INPUT
                   SingleChildScrollView(
                     child: SizedBox(
                       height: 70,
                       child: Container(
                         margin: const EdgeInsets.only(top: 10.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              height: 90,
+                              height: 50,
                               width: 280,
                               alignment: Alignment.center,
                               child: TextField(

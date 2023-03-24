@@ -27,11 +27,11 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          const Icon(
+          /* const Icon(
             Icons.account_circle,
             color: Colors.white,
             size: 30,
-          ),
+          ), */
           const SizedBox(width: 10),
           Text(
             userName,

@@ -21,7 +21,8 @@ class FeedController extends GetxController {
     Map<String, dynamic> data = await feedReq();
 
     if (data['status'] == 200) {
-      feedData.value = data['content'];
+      feedData.value = data['content'].reversed.toList();
+      print(feedData.value);
     } else {
       CustomSnackBar.show(data['content']['message']);
     }

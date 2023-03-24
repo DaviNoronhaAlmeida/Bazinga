@@ -28,11 +28,11 @@ class SettingsPage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(
+                      /* const Icon(
                         Icons.account_circle,
                         color: Colors.white,
                         size: 70,
-                      ),
+                      ), */
                       Padding(
                         padding: const EdgeInsets.only(left: 10),
                         child: RichText(

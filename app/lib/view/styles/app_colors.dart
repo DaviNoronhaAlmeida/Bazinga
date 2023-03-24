@@ -33,14 +33,6 @@ class AppColors extends GetxController {
   void updateColors() {
     isDarkMode.value = !isDarkMode.value;
     if (isDarkMode.value) {
-      barColor.value = lightBarColor;
-      backgroundColor.value = lightBackgroundColor;
-      bgPostsColor.value = lightBgPostsColor;
-      textColor.value = lightTextColor;
-      descriptionColor.value = lightDescriptionColor;
-      dividerColor.value = lightDivider;
-      settingsDescription.value = lightSettingsDescription;
-    } else {
       barColor.value = darkBarColor;
       backgroundColor.value = darkBackgroundColor;
       bgPostsColor.value = darkBgPostsColor;
@@ -48,6 +40,14 @@ class AppColors extends GetxController {
       descriptionColor.value = darkDescriptionColor;
       dividerColor.value = darkDivider;
       settingsDescription.value = darkSettingsDescription;
+    } else {
+      barColor.value = lightBarColor;
+      backgroundColor.value = lightBackgroundColor;
+      bgPostsColor.value = lightBgPostsColor;
+      textColor.value = lightTextColor;
+      descriptionColor.value = lightDescriptionColor;
+      dividerColor.value = lightDivider;
+      settingsDescription.value = lightSettingsDescription;
     }
   }
 }

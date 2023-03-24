@@ -14,9 +14,18 @@ class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
 
   final AppColors _appColors = Get.find();
+  ScrollController _controllerScroll = ScrollController(keepScrollOffset: true);
   final ProfileController _profileController = Get.put(ProfileController());
   final RefreshController _refreshController = RefreshController();
   final nick = Get.find<Info>().name;
+
+  void _scrollTop() {
+    _controllerScroll.animateTo(
+      0.0,
+      duration: const Duration(seconds: 2),
+      curve: Curves.fastOutSlowIn,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +37,7 @@ class ProfilePage extends StatelessWidget {
         final List<dynamic>? profileData = _profileController.profileData.value;
         if (profileData != null) {
           return SmartRefresher(
-            controller: RefreshController(),
+            controller: _refreshController,
             onRefresh: () {
               Future.delayed(const Duration(seconds: 2)).then((_) {
                 _refreshController.refreshCompleted();
@@ -45,11 +54,11 @@ class ProfilePage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(
+                        /* const Icon(
                           Icons.account_circle,
                           color: Colors.white,
                           size: 70,
-                        ),
+                        ), */
                         Padding(
                           padding: const EdgeInsets.only(left: 10),
                           child: RichText(

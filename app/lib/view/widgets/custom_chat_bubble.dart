@@ -27,11 +27,11 @@ class CustomChat extends StatelessWidget {
             // Nome de usuário e ícone
             Row(
               children: [
-                const Icon(
+                /* const Icon(
                   Icons.account_circle,
                   color: Colors.white,
                   size: 40,
-                ),
+                ), */
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: RichText(
@@ -70,7 +70,7 @@ class CustomChat extends StatelessWidget {
                   alignment: Alignment.topLeft,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 20),
+                        vertical: 20, horizontal: 20),
                     child: Text(
                       postText,
                       textAlign: TextAlign.left,

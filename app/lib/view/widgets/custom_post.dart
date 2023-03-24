@@ -237,11 +237,11 @@ class CustomPost extends StatelessWidget {
           // Nome de usuário e ícone
           Row(
             children: [
-              const Icon(
+              /* const Icon(
                 Icons.account_circle,
                 color: Colors.white,
                 size: 40,
-              ),
+              ), */
               Padding(
                 padding: const EdgeInsets.only(left: 10),
                 child: RichText(

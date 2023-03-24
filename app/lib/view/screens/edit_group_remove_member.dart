@@ -15,7 +15,7 @@ class EditGroupRemoveMemberPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<dynamic> members = groupInfo.members;
-    List<dynamic> excluded = [];
+    List<dynamic> excluded = [].obs;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: _appColors.backgroundColor.value,
@@ -88,10 +88,11 @@ class EditGroupRemoveMemberPage extends StatelessWidget {
                                                   left: 10),
                                               child: RichText(
                                                 text: TextSpan(
-                                                  text: members[index].length >
+                                                  text: members[index]['nick']
+                                                              .length >
                                                           20
-                                                      ? "${members[index].substring(0, 20)}..."
-                                                      : members[index],
+                                                      ? "${members[index]['nick'].substring(0, 20)}..."
+                                                      : members[index]['nick'],
                                                   style: TextStyle(
                                                     fontFamily: 'Roboto',
                                                     fontWeight: FontWeight.w400,
@@ -111,8 +112,9 @@ class EditGroupRemoveMemberPage extends StatelessWidget {
                                             ),
                                             color: _appColors.textColor.value,
                                             onPressed: () {
+                                              excluded
+                                                  .add(members[index]['nick']);
                                               members.remove(members[index]);
-                                              excluded.add(members[index]);
                                             },
                                           ),
                                         ],
@@ -137,13 +139,15 @@ class EditGroupRemoveMemberPage extends StatelessWidget {
                 ),
                 Align(
                   alignment: Alignment.center,
-                  child: Text(
-                    'Membros selecionados: ${excluded.length}',
-                    style: TextStyle(
-                      fontFamily: 'Roboto',
-                      fontWeight: FontWeight.w400,
-                      fontSize: 18,
-                      color: _appColors.descriptionColor.value,
+                  child: Obx(
+                    () => Text(
+                      'Membros selecionados: ${excluded.length}',
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 18,
+                        color: _appColors.descriptionColor.value,
+                      ),
                     ),
                   ),
                 ),
@@ -170,7 +174,7 @@ class EditGroupRemoveMemberPage extends StatelessWidget {
               child: FloatingActionButton(
                 backgroundColor: _appColors.redColor.value,
                 onPressed: () {
-                  Get.back();
+                  Get.toNamed('/editGroup');
                 },
                 child: const Icon(Icons.arrow_back, size: 30),
               ),

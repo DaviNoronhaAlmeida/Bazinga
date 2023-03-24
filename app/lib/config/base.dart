@@ -1,3 +1,3 @@
 class Base {
-  String url = "http://45.77.164.76:3000";
+  String url = "https://bazinga.zapto.org";
 }

@@ -11,7 +11,7 @@ void changeMembers(String name, List<dynamic> members, String id) async {
       context: Get.context!,
       builder: (_) => const AlertDialog(
         title: Text('Atualizado!'),
-        content: Text('Membros adicionados com sucesso!'),
+        content: Text('Grupo atualizado com sucesso!'),
       ),
     );
     await Future.delayed(const Duration(seconds: 2));

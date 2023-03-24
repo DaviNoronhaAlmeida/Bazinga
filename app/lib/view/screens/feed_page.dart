@@ -21,7 +21,8 @@ class FeedPage extends StatefulWidget {
 }
 
 class _FeedPageState extends State<FeedPage> {
-  ScrollController _controllerScroll = ScrollController(keepScrollOffset: true);
+  final ScrollController _controllerScroll =
+      ScrollController(keepScrollOffset: true);
   final AppColors _appColors = Get.put(AppColors());
   final FeedController _feedController = Get.put(FeedController());
   final RefreshController _refreshController = RefreshController();

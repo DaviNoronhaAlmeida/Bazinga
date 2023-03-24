@@ -85,7 +85,7 @@ class _GroupChatPageState extends State<GroupChatPage> {
         appBar: CustomGroupAppBar(groupName: GroupName),
         body: Stack(
           children: [
-            //Página principal
+            //Página principal 2
             Container(
               padding: const EdgeInsets.all(0),
               child: Column(

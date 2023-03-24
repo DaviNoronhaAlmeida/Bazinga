@@ -22,7 +22,6 @@ class FeedController extends GetxController {
 
     if (data['status'] == 200) {
       feedData.value = data['content'].reversed.toList();
-      print(feedData.value);
     } else {
       CustomSnackBar.show(data['content']['message']);
     }

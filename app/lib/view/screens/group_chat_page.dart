@@ -91,7 +91,7 @@ class _GroupChatPageState extends State<GroupChatPage> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 520,
+                    height: 550,
                     child: ListView.builder(
                         controller: scrollController,
                         shrinkWrap: true,

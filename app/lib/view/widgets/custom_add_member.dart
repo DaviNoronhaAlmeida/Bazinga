@@ -40,11 +40,11 @@ class AddMember extends StatelessWidget {
                         vertical: 10, horizontal: 20),
                     child: Row(
                       children: [
-                        const Icon(
+                        /* const Icon(
                           Icons.account_circle,
                           color: Colors.white,
                           size: 50,
-                        ),
+                        ), */
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.only(left: 10),

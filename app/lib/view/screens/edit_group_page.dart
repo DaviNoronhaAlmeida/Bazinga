@@ -25,11 +25,11 @@ class EditGroupPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(
+                    /* const Icon(
                       Icons.account_circle,
                       color: Colors.white,
                       size: 70,
-                    ),
+                    ), */
                     Padding(
                       padding: const EdgeInsets.only(left: 10),
                       child: RichText(
@@ -73,6 +73,7 @@ class EditGroupPage extends StatelessWidget {
                 description: 'Remover Membros do Grupo',
               ),
               const Spacer(),
+
               CustomSettingsOption(
                 function: () => {Get.toNamed('/deleteGroup')},
                 tittle: 'Excluir Grupo',

@@ -45,11 +45,11 @@ class EditNameEmailPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       //Ícone e nome do grupo
-                      const Icon(
+                      /* const Icon(
                         Icons.account_circle,
                         color: Colors.white,
                         size: 70,
-                      ),
+                      ), */
                       Padding(
                         padding: const EdgeInsets.only(left: 10),
                         child: RichText(
